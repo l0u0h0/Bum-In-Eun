@@ -88,6 +88,16 @@ function Body1() {
 // TAB FRAGMENT
 function Tab1() {
   const list = [1, 2, 3, 4, 5];
+  const dt = new Date();
+  const Now =
+    dt.getFullYear() +
+    "년 " +
+    +(dt.getMonth() + 1) +
+    "월 " +
+    dt.getDate() +
+    "일 " +
+    dt.getHours() +
+    "시 ";
   return (
     <div key="main_Tab1" className="contents">
       <div className="table-area-first">
@@ -105,7 +115,7 @@ function Tab1() {
         </table>
       </div>
       <div className="update-time">
-        <p>2022-01-01 12:00 기준</p>
+        <p>{Now} 기준</p>
       </div>
     </div>
   );

@@ -9,10 +9,10 @@ export default function DictionaryMain() {
       <Header />
       <Card body className="dictionarymain-body">
         <Card body className="first-table">
-          <h3>조회가 많았던 키워드</h3>
+          <h3 className="table-title">조회가 많았던 키워드</h3>
         </Card>
         <Card body className="second-table">
-          <h3>추천이 많았던 키워드</h3>
+          <h3 className="table-title">추천이 많았던 키워드</h3>
         </Card>
       </Card>
       <Banner />
