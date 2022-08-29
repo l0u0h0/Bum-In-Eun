@@ -1,0 +1,65 @@
+// SEARCH MAIN
+.App-search {
+  .search-body {
+    width: 90%;
+    height: 800px;
+    margin: auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    .mb-3 {
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 2px 2px rgb(170, 170, 170);
+      .search-btn {
+        border: none;
+      }
+      .search-text {
+        border: none;
+        border-bottom: 2px solid gray;
+      }
+    }
+
+    // SEARCH RESULT
+    .search-result {
+      h2 {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      p {
+        font-size: 12pt;
+        color: rgb(99, 99, 99);
+      }
+      .result-crime {
+        margin-top: 10%;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 4px 4px rgb(170, 170, 170);
+        p {
+          margin-left: 10px;
+        }
+      }
+      .result-word {
+        margin-top: 5%;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 4px 4px rgb(170, 170, 170);
+        p {
+          margin-left: 10px;
+        }
+      }
+      .result-static {
+        margin-top: 5%;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 4px 4px rgb(170, 170, 170);
+        text-align: center;
+        h2 {
+          text-align: start;
+        }
+        img {
+          margin-top: 10px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}

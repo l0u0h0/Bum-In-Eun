@@ -1,0 +1,122 @@
+// CRIME MAIN
+.App-crimemain {
+  .crimemain-body {
+    width: 90%;
+    height: 800px;
+    margin: auto;
+    margin-top: 25%;
+    margin-bottom: 10%;
+    .category-area {
+      margin: 5%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      a {
+        width: 40%;
+        margin: 20px;
+        .category {
+          height: 170px;
+          font-size: 20pt;
+          font-weight: bold;
+          font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+      }
+    }
+  }
+}
+
+//CRIME RESULT
+.App-crimeresult {
+  .crimeresult-body {
+    width: 90%;
+    min-height: 965px;
+    height: auto;
+    overflow: hidden;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    border-radius: 1rem;
+    box-shadow: 1px 1px 2px 2px rgb(170, 170, 170);
+    text-align: center;
+    .result-title {
+      margin-top: 3%;
+      font-size: 3rem;
+      color: #003333;
+    }
+    .title-body-between {
+      height: 0.2rem;
+    }
+    .result-body {
+      display: flex;
+      justify-content: center;
+      .result-table {
+        width: 90%;
+        border-collapse: separate;
+        border-spacing: 0 2rem;
+        text-align: start;
+        td {
+          border-bottom: 1px solid black;
+        }
+        .result-word {
+          width: 20%;
+          font-size: 1.7rem;
+          font-weight: 600;
+          a {
+            color: black;
+            text-decoration: none;
+          }
+          .result-word-link:hover {
+            color: #003333;
+            transform: scale(1.2);
+            transition: all 1s;
+          }
+        }
+        .result-mean {
+          width: 80%;
+          font-size: 1.3rem;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
+
+// CRIME DETAIL
+.App-crimedetail {
+  .crimedetail-body {
+    width: 90%;
+    min-height: 965px;
+    height: auto;
+    overflow: hidden;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    border-radius: 1rem;
+    box-shadow: 1px 1px 2px 2px rgb(170, 170, 170);
+    text-align: center;
+    .detail-title {
+      margin-top: 3%;
+      font-size: 3rem;
+      color: #003333;
+    }
+    .title-body-between {
+      height: 0.2rem;
+    }
+    .detail-body {
+      display: block;
+      justify-content: center;
+      h3 {
+        margin-top: 5%;
+        font-size: 2.5rem;
+      }
+      img {
+        width: 95%;
+        margin-top: 5%;
+      }
+      p {
+        margin-top: 5%;
+        font-size: 1.75rem;
+      }
+    }
+  }
+}
