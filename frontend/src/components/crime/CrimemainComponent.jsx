@@ -1,8 +1,10 @@
+// import
 import React from "react";
+import { Link } from "react-router-dom";
 import Header from "../common/HeaderComponent";
 import Banner from "../common/BannerComponent";
-import { Link } from "react-router-dom";
 
+// Main Area
 export default function Crimemain() {
   return (
     <div className="App-crimemain">

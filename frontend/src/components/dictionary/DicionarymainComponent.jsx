@@ -1,9 +1,11 @@
+// import
 import React from "react";
 import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import Banner from "../common/BannerComponent";
 import Header from "../common/HeaderComponent";
-import { Link } from "react-router-dom";
 
+// Main Area
 export default function DictionaryMain() {
   const list = [1, 2, 3, 4, 5];
   return (

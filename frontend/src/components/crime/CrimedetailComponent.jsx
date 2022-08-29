@@ -1,9 +1,12 @@
+// import
 import React from "react";
 import { Card } from "react-bootstrap";
-import Header from "../common/HeaderComponent";
-import ex_img from "../../image/camera.png";
 import { useLocation } from "react-router-dom";
+import Header from "../common/HeaderComponent";
+// ex_img
+import ex_img from "../../image/camera.png";
 
+// Detail Area
 export default function Crimedetail() {
   const location = new URLSearchParams(useLocation().search);
   const category = location.get("category");

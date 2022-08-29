@@ -19,7 +19,7 @@ import { Link, useNavigate } from "react-router-dom";
 // axios import
 // import axios from "axios";
 
-// MAIN AREA
+// Main Area
 export default function MainComponent() {
   return (
     <div className="App-main">
@@ -36,7 +36,7 @@ export default function MainComponent() {
   );
 }
 
-// TAB AREA
+// Tab Area
 function Body1() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
@@ -85,7 +85,7 @@ function Body1() {
   );
 }
 
-// TAB FRAGMENT
+// Tab Fragment
 function Tab1() {
   const list = [1, 2, 3, 4, 5];
   const dt = new Date();
