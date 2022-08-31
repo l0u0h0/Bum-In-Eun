@@ -11,16 +11,16 @@ export default function Crimemain() {
       <Header />
       <div className="crimemain-body">
         <div className="category-area">
-          <Link to="/crimeresult?category=gambling">
+          <Link to="/crime/result?category=gambling">
             <button className="btn btn--link category">도박</button>
           </Link>
-          <Link to="/crimeresult?category=voicefishing">
+          <Link to="/crime/result?category=voicefishing">
             <button className="btn btn--link category">보이스 피싱</button>
           </Link>
-          <Link to="/crimeresult?category=drug">
+          <Link to="/crime/result?category=drug">
             <button className="btn btn--link category">마약</button>
           </Link>
-          <Link to="/crimeresult?category=gendercrime">
+          <Link to="/crime/result?category=gendercrime">
             <button className="btn btn--link category">성범죄</button>
           </Link>
         </div>

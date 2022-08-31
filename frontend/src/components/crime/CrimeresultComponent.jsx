@@ -69,7 +69,7 @@ export default function Crimeresult() {
                 <tr className="result-row" key={`table_row_${num}`}>
                   <td className="result-word">
                     <Link
-                      to={`/crimedetail?category=${category}&word=${
+                      to={`/crime/detail?category=${category}&word=${
                         data.word + (num + 1)
                       }&mean=${data.mean}`}
                     >

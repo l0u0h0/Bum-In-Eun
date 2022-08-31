@@ -7,7 +7,13 @@ import Header from "../common/HeaderComponent";
 
 // Main Area
 export default function DictionaryMain() {
-  const list = [1, 2, 3, 4, 5];
+  const lists = [
+    { num: 1, word: "킹받네" },
+    { num: 2, word: "킹받네" },
+    { num: 3, word: "킹받네" },
+    { num: 4, word: "킹받네" },
+    { num: 5, word: "킹받네" },
+  ];
   return (
     <div className="App-dictionarymain">
       <Header />
@@ -16,12 +22,12 @@ export default function DictionaryMain() {
           <h3 className="table-title">조회가 많았던 키워드</h3>
           <table className="table-content">
             <tbody>
-              {list.map((num) => (
-                <tr key={`table_row_${num}`}>
-                  <th className="data-rank">{num}.</th>
+              {lists.map((list) => (
+                <tr key={`table_row_${list.num}`}>
+                  <th className="data-rank">{list.num}.</th>
                   <td className="data-word">
-                    <Link to="/crimeresult?category=gambling">
-                      <div className="data-word-link">킹받네</div>
+                    <Link to={`/dictionary/detail?word=${list.word}`}>
+                      <div className="data-word-link">{list.word}</div>
                     </Link>
                   </td>
                 </tr>
@@ -33,12 +39,12 @@ export default function DictionaryMain() {
           <h3 className="table-title">추천이 많았던 키워드</h3>
           <table className="table-content">
             <tbody>
-              {list.map((num) => (
-                <tr key={`table_row_${num}`}>
-                  <th className="data-rank">{num}.</th>
+              {lists.map((list) => (
+                <tr key={`table_row_${list.num}`}>
+                  <th className="data-rank">{list.num}.</th>
                   <td className="data-word">
-                    <Link to="/crimeresult?category=gambling">
-                      <div className="data-word-link">킹받네</div>
+                    <Link to={`/dictionary/detail?word=${list.word}`}>
+                      <div className="data-word-link">{list.word}</div>
                     </Link>
                   </td>
                 </tr>
