@@ -14,27 +14,43 @@ export default function Dictionarydetail() {
     // example data
     setData([
       {
+        idx: 0,
         word: `${word}`,
         mean: `이 단어의 첫 번째 의미입니다.`,
+        count: 5,
       },
       {
+        idx: 1,
         word: `${word}`,
         mean: `이 단어의 두 번째 의미입니다.`,
+        count: 4,
       },
       {
+        idx: 2,
         word: `${word}`,
         mean: `이 단어의 세 번째 의미입니다.`,
+        count: 3,
       },
       {
+        idx: 3,
         word: `${word}`,
         mean: `이 단어의 네 번째 의미입니다.`,
+        count: 2,
       },
       {
+        idx: 4,
         word: `${word}`,
         mean: `이 단어의 다섯 번째 의미입니다.`,
+        count: 1,
       },
     ]);
   }, [word]);
+
+  const count = (data) => {
+    console.log(data);
+    setData({ count: data.count + 1 });
+  };
+
   return (
     <div className="App-crimedetail">
       <Header />
@@ -48,6 +64,15 @@ export default function Dictionarydetail() {
                 <tr className="result-row" key={`table_row_${num}`}>
                   <td className="result-word"></td>
                   <td className="result-mean">{data.mean}</td>
+                  <td className="result-count">
+                    <button
+                      onClick={() => {
+                        count(data);
+                      }}
+                    >
+                      {data.count}
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
