@@ -65,9 +65,9 @@ export default function Dictionarydetail() {
     setData(copy);
   };
   return (
-    <div className="App-crimedetail">
+    <div className="App-dictionarydetail">
       <Header />
-      <Card body className="crimedetail-body">
+      <Card body className="dictionarydetail-body">
         <h2 className="detail-title">{word}</h2>
         <hr className="title-body-between" />
         <div className="detail-body">
@@ -89,20 +89,21 @@ export default function Dictionarydetail() {
               ))}
             </tbody>
           </table>
+          <hr className="table-add-between" />
           <div className="comment-add-area">
             <InputGroup className="mb-3">
               <FormControl
                 aria-label="Example text with button addon"
-                aria-describedby="search-addon"
+                aria-describedby="add-addon"
                 placeholder="단어의 뜻을 입력하세요."
-                className="search-text"
+                className="add-text"
                 ref={setRef}
                 type="input"
               />
               <Button
                 as="input"
                 type="submit"
-                className="search-btn"
+                className="add-btn"
                 variant="outline-secondary"
                 id="button-addon1"
                 onClick={add}
