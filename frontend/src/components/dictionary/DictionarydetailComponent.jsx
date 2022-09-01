@@ -3,13 +3,15 @@ import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import Header from "../common/HeaderComponent";
-// ex_img
+// react-bootstrap
+import { InputGroup, Button, FormControl } from "react-bootstrap";
 
 // Detail Area
 export default function Dictionarydetail() {
   const location = new URLSearchParams(useLocation().search);
   const word = location.get("word");
   const [data, setData] = useState([]);
+  const [ref, setRef] = useState(null);
   useEffect(() => {
     // example data
     setData([
@@ -51,6 +53,17 @@ export default function Dictionarydetail() {
     copy[datas.idx] = { ...copy[datas.idx], count: datas.count + 1 };
     setData(copy);
   };
+
+  const add = () => {
+    let copy = [...data];
+    copy.push({
+      idx: data.length,
+      word: data[0].word,
+      mean: ref.value,
+      count: 0,
+    });
+    setData(copy);
+  };
   return (
     <div className="App-crimedetail">
       <Header />
@@ -58,13 +71,12 @@ export default function Dictionarydetail() {
         <h2 className="detail-title">{word}</h2>
         <hr className="title-body-between" />
         <div className="detail-body">
-          <table className="result-table">
+          <table className="mean-table">
             <tbody>
               {data.map((data, num) => (
-                <tr className="result-row" key={`table_row_${num}`}>
-                  <td className="result-word"></td>
-                  <td className="result-mean">{data.mean}</td>
-                  <td className="result-count">
+                <tr className="mean-row" key={`table_row_${num}`}>
+                  <td className="mean-comment">{data.mean}</td>
+                  <td className="mean-count">
                     <button
                       onClick={() => {
                         count(data);
@@ -77,6 +89,27 @@ export default function Dictionarydetail() {
               ))}
             </tbody>
           </table>
+          <div className="comment-add-area">
+            <InputGroup className="mb-3">
+              <FormControl
+                aria-label="Example text with button addon"
+                aria-describedby="search-addon"
+                placeholder="단어의 뜻을 입력하세요."
+                className="search-text"
+                ref={setRef}
+                type="input"
+              />
+              <Button
+                as="input"
+                type="submit"
+                className="search-btn"
+                variant="outline-secondary"
+                id="button-addon1"
+                onClick={add}
+                value="등록"
+              />
+            </InputGroup>
+          </div>
         </div>
       </Card>
     </div>
