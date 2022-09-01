@@ -47,14 +47,10 @@ export default function Dictionarydetail() {
   }, [word]);
 
   const count = (datas) => {
-    console.log(datas);
-    setData([datas.idx, { ...datas, count: datas.count + 1 }]);
-    console.log(data[datas.idx]);
+    let copy = [...data];
+    copy[datas.idx] = { ...copy[datas.idx], count: datas.count + 1 };
+    setData(copy);
   };
-
-  useEffect(() => {
-    console.log(data);
-  });
   return (
     <div className="App-crimedetail">
       <Header />
@@ -71,7 +67,6 @@ export default function Dictionarydetail() {
                   <td className="result-count">
                     <button
                       onClick={() => {
-                        setData({ count: data.count + 1 });
                         count(data);
                       }}
                     >
