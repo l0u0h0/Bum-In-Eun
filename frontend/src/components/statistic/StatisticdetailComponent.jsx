@@ -19,8 +19,8 @@ export default function Statisticdetail() {
         <div className="detail-body">
           <h3>{word}</h3>
           <div className="mean-table">
-            <p>키워드에 대한 정의 1</p>
-            <p>키워드에 대한 정의 2</p>
+            <p> - 키워드에 대한 정의 1</p>
+            <p> - 키워드에 대한 정의 2</p>
           </div>
           <div className="static-area">
             <h4>키워드 언급량 추이</h4>
