@@ -6,6 +6,7 @@ import Header from "./common/HeaderComponent";
 import { InputGroup, Button, FormControl } from "react-bootstrap";
 // testimg
 import staticimg from "../image/img_6.png";
+import { Link } from "react-router-dom";
 
 // Search main Component
 export default function SearchComponent() {
@@ -13,7 +14,7 @@ export default function SearchComponent() {
   const [search, setSearch] = useState({
     data: "검색어를 입력해주세요.",
     test: {
-      crime: "한마디로 좋은 손님",
+      crime: { word: "한마디로 좋은 손님", category: "도박" },
       word: ["1. 개구리의 함북 방언", "2. 한마디로 좋은 손님"],
       static: staticimg,
     },
@@ -68,19 +69,28 @@ function Searchresult(search) {
   const data = search.data.test;
   return (
     <div className="search-result">
-      <div className="result-crime">
-        <h2>범죄 사전</h2>
-        <p>{data.crime}</p>
-      </div>
-      <div className="result-word">
-        <h2>은어 사전</h2>
-        {data.word &&
-          data.word.map((text, i) => <p key={`mean_${i}`}>{text}</p>)}
-      </div>
-      <div className="result-static">
-        <h2>통계 추세</h2>
-        <img src={data.static} alt="static-result" />
-      </div>
+      <Link
+        to={`/crime/detail?category=${data.crime.category}&word=${search.data.data}&mean=${data.crime.word}`}
+      >
+        <div className="result-crime">
+          <h2>범죄 사전</h2>
+          <p>카테고리 - {data.crime.category}</p>
+          <p>{data.crime.word}</p>
+        </div>
+      </Link>
+      <Link to={`/dictionary/detail?word=${search.data.data}`}>
+        <div className="result-word">
+          <h2>은어 사전</h2>
+          {data.word &&
+            data.word.map((text, i) => <p key={`mean_${i}`}>{text}</p>)}
+        </div>
+      </Link>
+      <Link to={`/statistic/detail?word=${search.data.data}`}>
+        <div className="result-static">
+          <h2>통계 추세</h2>
+          <img src={data.static} alt="static-result" />
+        </div>
+      </Link>
     </div>
   );
 }
