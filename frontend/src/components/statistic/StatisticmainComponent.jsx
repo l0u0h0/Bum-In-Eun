@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import Banner from "../common/BannerComponent";
 import Header from "../common/HeaderComponent";
 
-// Detail Area
-export default function Dictionarydetail() {
+// Main Area
+export default function Statisticmain() {
   const [data, setData] = useState([]);
   useEffect(() => {
     // example data
@@ -43,7 +43,7 @@ export default function Dictionarydetail() {
     <div className="App-staticmain">
       <Header />
       <Card body className="staticmain-body">
-        <h2 className="staticmain-title">통계</h2>
+        <h2 className="main-title">통계</h2>
         <hr className="title-body-between" />
         <div className="static-body">
           <table className="static-table">
