@@ -16,20 +16,27 @@ import Crimedetail from "./components/crime/CrimedetailComponent";
 import DictionaryMain from "./components/dictionary/DicionarymainComponent";
 import Dictionarydetail from "./components/dictionary/DictionarydetailComponent";
 import Statisticmain from "./components/statistic/StatisticmainComponent";
+import Statisticdetail from "./components/statistic/StatisticdetailComponent";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
+          {/* MAIN */}
           <Route path="/" element={<MainComponent />} />
+          {/* SEARCH */}
           <Route path="/search" element={<SearchComponent />} />
+          {/* CRIME */}
           <Route path="/crime" element={<Crimemain />} />
           <Route path="/crime/result" element={<Crimeresult />} />
           <Route path="/crime/detail" element={<Crimedetail />} />
+          {/* DICTIONARY */}
           <Route path="/dictionary" element={<DictionaryMain />} />
           <Route path="/dictionary/detail" element={<Dictionarydetail />} />
+          {/* STATIC */}
           <Route path="/statistic" element={<Statisticmain />} />
+          <Route path="/statistic/detail" element={<Statisticdetail />} />
         </Routes>
       </BrowserRouter>
     </div>
