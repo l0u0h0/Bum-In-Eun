@@ -52,16 +52,21 @@ div {
     .tab-title {
       height: 10%;
       margin-bottom: 10px;
-      box-sizing: border-box;
+      // box-sizing: border-box;
       .title {
         font-size: 15pt;
         text-align: center;
       }
-      .swiper-slide-thumb-active .title {
-        font-weight: bold;
-        color: #003333;
-        padding-bottom: 10px;
+      .swiper-slide-thumb-active {
         border-bottom: 3px solid #003333;
+        transition: all 0.5s;
+        .title {
+          transform: scale(1.2);
+          transition: all 1s;
+          font-weight: bold;
+          color: #003333;
+          padding-bottom: 10px;
+        }
       }
     }
     .tab-contents {
