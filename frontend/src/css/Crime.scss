@@ -2,10 +2,8 @@
 .App-crimemain {
   .crimemain-body {
     width: 90%;
-    min-height: 70vh;
     margin: auto;
     margin-top: 25%;
-    margin-bottom: 10%;
     .category-area {
       margin: 5%;
       display: flex;
@@ -29,7 +27,6 @@
 .App-crimeresult {
   .crimeresult-body {
     width: 90%;
-    min-height: 100vh;
     overflow: hidden;
     margin: auto;
     margin-top: 5%;
@@ -84,7 +81,6 @@
 .App-crimedetail {
   .crimedetail-body {
     width: 90%;
-    min-height: 100vh;
     overflow: hidden;
     margin: auto;
     margin-top: 5%;

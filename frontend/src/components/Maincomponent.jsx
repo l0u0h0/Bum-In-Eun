@@ -153,13 +153,19 @@ function Tab2() {
 }
 
 function Tab3() {
+  let navigate = useNavigate();
+  function LinkClick() {
+    navigate("/statistic");
+  }
   return (
     <div key="main_Tab3" className="contents">
       <div className="static-data-area">
         <img src={staticimg} alt="staticimg" className="static-img" />
       </div>
       <div className="link-area">
-        <button className="btn btn--link">더 많은 정보 확인</button>
+        <button className="btn btn--link" onClick={LinkClick}>
+          더 많은 정보 확인
+        </button>
       </div>
     </div>
   );

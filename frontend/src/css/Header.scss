@@ -1,34 +1,39 @@
 /* HEADER COMMON */
-.header {
-  height: 70px;
+.App-header {
+  width: 480px;
+  max-height: 70px;
   background-color: #003333;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  .back-area {
+  top: 0;
+  position: fixed;
+  z-index: 9;
+  .header {
     display: flex;
-    /* HEADER BACK BUTTON */
-    .back {
-      width: 50px;
-      height: 50px;
-      margin-left: 25px;
+    justify-content: space-between;
+    align-items: center;
+    .back-area {
+      display: flex;
+      /* HEADER BACK BUTTON */
+      .back {
+        width: 50px;
+        height: 50px;
+        margin-left: 25px;
+      }
     }
-  }
-  .logo-area {
-    display: flex;
-    /* HEADER LOGO IMG */
-    .logo {
-      height: 70px;
+    .logo-area {
+      display: flex;
+      /* HEADER LOGO IMG */
+      .logo {
+        height: 70px;
+      }
     }
-  }
-  .search-area {
-    display: flex;
-    /* HEADER SEARCH BUTTON */
-    .search {
-      width: 40px;
-      height: 40px;
-      margin-right: 25px;
+    .search-area {
+      display: flex;
+      /* HEADER SEARCH BUTTON */
+      .search {
+        width: 40px;
+        height: 40px;
+        margin-right: 25px;
+      }
     }
   }
 }

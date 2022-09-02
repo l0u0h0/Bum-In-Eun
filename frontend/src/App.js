@@ -5,6 +5,7 @@ import "./css/Banner.scss";
 import "./css/Search.scss";
 import "./css/Crime.scss";
 import "./css/Dictionary.scss";
+import "./css/Statistic.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MainComponent from "./components/Maincomponent";
 import SearchComponent from "./components/SearchComponent";
@@ -14,6 +15,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Crimedetail from "./components/crime/CrimedetailComponent";
 import DictionaryMain from "./components/dictionary/DicionarymainComponent";
 import Dictionarydetail from "./components/dictionary/DictionarydetailComponent";
+import Statisticmain from "./components/statistic/StatisticmainComponent";
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
           <Route path="/crime/detail" element={<Crimedetail />} />
           <Route path="/dictionary" element={<DictionaryMain />} />
           <Route path="/dictionary/detail" element={<Dictionarydetail />} />
+          <Route path="/statistic" element={<Statisticmain />} />
         </Routes>
       </BrowserRouter>
     </div>

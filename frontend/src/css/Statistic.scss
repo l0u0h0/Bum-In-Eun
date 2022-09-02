@@ -1,0 +1,54 @@
+// STATIC MAIN
+.App-staticmain {
+  .staticmain-body {
+    width: 90%;
+    overflow: hidden;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    border-radius: 1rem;
+    box-shadow: 1px 1px 2px 2px rgb(170, 170, 170);
+    text-align: center;
+    .staticmain-title {
+      margin-top: 3%;
+      font-size: 2.5rem;
+      color: #003333;
+    }
+    .title-body-between {
+      height: 0.2rem;
+    }
+    .staticmain-body {
+      display: block;
+      justify-content: center;
+      .static-table {
+        width: 90%;
+        height: 300px;
+        margin: 30px;
+        margin-top: 10%;
+        font-size: 14pt;
+        border-collapse: separate;
+        border-spacing: 0 0.6rem;
+        .mean-comment {
+          width: 90%;
+        }
+        .mean-count {
+          width: 10%;
+          button {
+            min-width: 40px;
+            min-height: 40px;
+            background: none;
+            border: 0.1px solid black;
+            border-radius: 5px;
+          }
+          button:hover {
+            background-color: cornflowerblue;
+            color: white;
+            border: none;
+            transform: scale(1.2);
+            transition: all 0.5s;
+          }
+        }
+      }
+    }
+  }
+}

@@ -13,19 +13,21 @@ export default function Header() {
     navigate(-1);
   };
   return (
-    <div className="header">
-      <div className="back-area">
-        <img className="back" src={back} alt="backicon" onClick={Back} />
-      </div>
-      <div className="logo-area">
-        <Link to="/">
-          <img className="logo" src={logo} alt="logo" />
-        </Link>
-      </div>
-      <div className="search-area">
-        <Link to="/search">
-          <img className="search" src={search} alt="searchicon" />
-        </Link>
+    <div className="App-header">
+      <div className="header">
+        <div className="back-area">
+          <img className="back" src={back} alt="backicon" onClick={Back} />
+        </div>
+        <div className="logo-area">
+          <Link to="/">
+            <img className="logo" src={logo} alt="logo" />
+          </Link>
+        </div>
+        <div className="search-area">
+          <Link to="/search">
+            <img className="search" src={search} alt="searchicon" />
+          </Link>
+        </div>
       </div>
     </div>
   );
