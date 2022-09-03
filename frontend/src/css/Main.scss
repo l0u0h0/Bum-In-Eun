@@ -4,15 +4,12 @@ div {
 }
 
 .App {
-  // margin: 100px;
-  // width: 615px;
   font-family: Arial, Helvetica, sans-serif;
   min-height: 80vh;
-  max-width: 480px;
-  min-width: 320px;
+  width: 100%;
   margin: auto;
-  margin-top: 100px;
-  margin-bottom: 120px;
+  margin-top: 6.25rem;
+  margin-bottom: 7.5rem;
   background-color: #fcfcfc;
 }
 
@@ -23,9 +20,9 @@ div {
 // BTN COMMON
 .btn--link {
   width: 100%;
-  height: 48px;
+  height: 2.5rem;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 0.3125rem;
   border: none;
   box-shadow: 1px 1px 2px 2px rgb(170, 170, 170);
   font-size: medium;
@@ -33,28 +30,28 @@ div {
 }
 
 .body {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
 
   /* MAIN BODY FIRST */
   .main-body-first {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
     h2 {
       font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
         sans-serif;
       color: rgb(99, 99, 99);
     }
     .swiper-area {
-      height: 350px;
+      height: 21.875rem;
       margin-top: 5%;
     }
     .tab-title {
       height: 10%;
-      margin-bottom: 10px;
+      margin-bottom: 0.625rem;
       // box-sizing: border-box;
       .title {
-        font-size: 15pt;
+        font-size: 1rem;
         text-align: center;
       }
       .swiper-slide-thumb-active {
@@ -65,7 +62,7 @@ div {
           transition: all 1s;
           font-weight: bold;
           color: #003333;
-          padding-bottom: 10px;
+          padding-bottom: 0.625rem;
         }
       }
     }
@@ -79,7 +76,7 @@ div {
         /* TAB FRAGMENT 1 */
         .table-area-first table {
           width: 90%;
-          margin-left: 30px;
+          margin-left: 1.875rem;
           margin-top: 3%;
           font-size: large;
           border-collapse: separate;
@@ -89,7 +86,7 @@ div {
           }
           .data-word {
             width: 60%;
-            padding-left: 50px;
+            padding-left: 3.125rem;
             text-align: start;
           }
           .data-state {
@@ -101,14 +98,14 @@ div {
         }
         .update-time {
           margin-top: 4%;
-          padding-right: 30px;
+          padding-right: 1.875rem;
           text-align: end;
         }
 
         /* TAB FRAGMENT 2 */
         .table-area-second table {
           width: 90%;
-          margin-left: 30px;
+          margin-left: 1.875rem;
           margin-top: 3%;
           font-size: large;
           border-collapse: separate;
@@ -118,7 +115,7 @@ div {
           }
           .data-word {
             width: 60%;
-            padding-left: 50px;
+            padding-left: 3.125rem;
             text-align: start;
           }
           .data-state {
@@ -132,13 +129,13 @@ div {
         /* TAB FRAGMENT 3 */
         .static-data-area .static-img {
           width: 70%;
-          margin-top: 5%;
+          margin-top: 10%;
         }
 
         .btn--link {
           width: 90%;
-          height: 40px;
-          margin-top: 20px;
+          height: 2.5rem;
+          margin-top: 1.25rem;
           background-color: white;
           border-radius: 5px;
           border: none;
@@ -151,14 +148,14 @@ div {
   }
   /* MAIN BODY SECOND */
   .main-body-second {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
     h2 {
       color: rgb(99, 99, 99);
     }
     .btn--link {
       width: 100%;
-      height: 50px;
+      height: 3.125rem;
       background-color: white;
       border-radius: 5px;
       border: none;
@@ -172,8 +169,7 @@ div {
     // }
     /* MAIN BODY SECOND NEWSAREA */
     .news-area {
-      margin-top: 20px;
-      margin-right: 20px;
+      margin-top: 1.25rem;
       .news-row {
         display: flex;
         .news_script {
@@ -195,8 +191,12 @@ div {
         }
         .news_image {
           width: 30%;
+          margin-left: 2%;
+          display: flex;
+          align-items: center;
           img {
-            max-width: 150px;
+            // max-width: 9.375em;
+            width: 100%;
           }
         }
       }

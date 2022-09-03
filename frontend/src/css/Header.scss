@@ -1,9 +1,9 @@
 /* HEADER COMMON */
 .App-header {
-  width: 480px;
-  max-height: 80px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  width: 100%;
+  max-height: 10%;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
   background-color: #003333;
   border-end-start-radius: 0.5rem;
   border-end-end-radius: 0.5rem;
@@ -19,25 +19,26 @@
       display: flex;
       /* HEADER BACK BUTTON */
       .back {
-        width: 50px;
-        height: 50px;
-        margin-left: 25px;
+        width: 3.125rem;
+        height: 3.125rem;
+        margin-left: 1.5625rem;
       }
     }
     .logo-area {
       display: flex;
       /* HEADER LOGO IMG */
       .logo {
-        height: 70px;
+        max-height: 3.75rem;
+        min-height: 3.125rem;
       }
     }
     .search-area {
       display: flex;
       /* HEADER SEARCH BUTTON */
       .search {
-        width: 40px;
-        height: 40px;
-        margin-right: 25px;
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-right: 1.5626rem;
       }
     }
   }

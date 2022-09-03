@@ -2,7 +2,7 @@
 .App-dictionarymain {
   .dictionarymain-body {
     width: 90%;
-    height: auto;
+    height: 100%;
     overflow: hidden;
     margin: auto;
     margin-top: 10%;
@@ -11,20 +11,20 @@
     box-shadow: 1px 1px 2px 2px rgb(170, 170, 170);
     text-align: center;
     .first-table {
-      width: 70%;
-      height: 300px;
-      margin: 30px;
+      width: 60vw;
+      height: 35vh;
+      margin: 3%;
       margin-top: 10%;
       border-radius: 1rem;
       box-shadow: 1px 1px 2px 2px rgb(170, 170, 170);
       .table-title {
-        font-size: 18pt;
+        font-size: 2.5vh;
       }
       .table-content {
         width: 90%;
         margin-left: 10px;
         margin-top: 10%;
-        font-size: large;
+        font-size: 2vh;
         border-collapse: separate;
         border-spacing: 0 0.6rem;
         .data-rank {
@@ -32,7 +32,7 @@
         }
         .data-word {
           width: 90%;
-          padding-left: 40px;
+          padding-left: 10%;
           text-align: start;
           a {
             color: black;
@@ -47,21 +47,21 @@
       }
     }
     .second-table {
-      width: 70%;
-      height: 300px;
-      margin: 30px;
+      width: 60vw;
+      height: 35vh;
+      margin: 3%;
       margin-top: 20%;
       left: 20%;
       border-radius: 1rem;
       box-shadow: 1px 1px 2px 2px rgb(170, 170, 170);
       .table-title {
-        font-size: 18pt;
+        font-size: 2.5vh;
       }
       .table-content {
         width: 90%;
         margin-left: 10px;
         margin-top: 10%;
-        font-size: large;
+        font-size: 2vh;
         border-collapse: separate;
         border-spacing: 0 0.6rem;
         .data-rank {
@@ -69,7 +69,7 @@
         }
         .data-word {
           width: 90%;
-          padding-left: 40px;
+          padding-left: 10%;
           text-align: start;
           a {
             color: black;
@@ -110,10 +110,10 @@
       justify-content: center;
       .mean-table {
         width: 90%;
-        height: 300px;
-        margin: 30px;
+        height: 35vh;
+        margin: 1.875rem;
         margin-top: 10%;
-        font-size: 14pt;
+        font-size: 1rem;
         border-collapse: separate;
         border-spacing: 0 0.6rem;
         .mean-comment {
@@ -122,8 +122,9 @@
         .mean-count {
           width: 10%;
           button {
-            min-width: 40px;
-            min-height: 40px;
+            background-color: rgb(226, 238, 248);
+            min-width: 2.5rem;
+            min-height: 2.5rem;
             background: none;
             border: 0.1px solid black;
             border-radius: 5px;
@@ -143,7 +144,7 @@
           .add-text {
             border: none;
             border-bottom: 2px solid gray;
-            font-size: 14pt;
+            font-size: 1rem;
           }
           .add-btn {
             border: none;
