@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 import Banner from "./common/BannerComponent";
 import Header from "./common/HeaderComponent";
 // ex_newsimg
-import newsimg_1 from "../image/img_1.png";
-import newsimg_2 from "../image/img_2.png";
-import newsimg_3 from "../image/img_3.png";
-import newsimg_4 from "../image/img_4.png";
+// import newsimg_1 from "../image/img_1.png";
+// import newsimg_2 from "../image/img_2.png";
+// import newsimg_3 from "../image/img_3.png";
+// import newsimg_4 from "../image/img_4.png";
 // ex_staticimg
 import staticimg from "../image/img_6.png";
 // Swiper import
@@ -17,7 +17,7 @@ import "swiper/css";
 import { Link, useNavigate } from "react-router-dom";
 
 // axios import
-// import axios from "axios";
+import axios from "axios";
 
 // Main Area
 export default function MainComponent() {
@@ -28,8 +28,8 @@ export default function MainComponent() {
         <Body1 />
       </div>
       <div className="body">
-        {/* <Body2 /> */}
-        <Body2Example />
+        <Body2 />
+        {/* <Body2Example /> */}
       </div>
       <Banner />
     </div>
@@ -172,116 +172,50 @@ function Tab3() {
 }
 
 // NEWS API
-// function Body2() {
-//   const [newslist, setNewslist] = useState(null);
-//   const [loading, setLoading] = useState(false);
+function Body2() {
+  const [newslist, setNewslist] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-//   useEffect(() => {
-//     const options = {
-//       method: "GET",
-//       url: "https://api.newscatcherapi.com/v2/search",
-//       params: {
-//         q: "전기차",
-//         lang: "ko",
-//         sort_by: "relevancy",
-//         page: "1",
-//       },
-//       headers: {
-//         "x-api-key": "xfvkgp-Pa2JHG3SBqzOqpNdyjsG0Ofa6rkYJz-0ELVU",
-//       },
-//     };
-//     const newsApi = async () => {
-//       setLoading(true);
-//       try {
-//         const result = await axios.request(options);
-//         console.log(result);
-//         setNewslist(result.data.articles);
-//       } catch (error) {
-//         console.log(error);
-//       }
-//       setLoading(false);
-//     };
-//     newsApi();
-//   }, []);
-//   if (loading) {
-//     return <div>로딩중입니다</div>;
-//   }
-//   if (!newslist) {
-//     return null;
-//   }
-//   return (
-//     <div className="main-body-second">
-//       <h2>범죄 관련 뉴스</h2>
-//       <div className="news-area">
-//         {newslist.map((news) => (
-//           <News key={news._id} news={news} />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
-// const News = ({ news }) => {
-//   const { title, excerpt, link, media } = news;
-//   return (
-//     <>
-//       {media && (
-//         <>
-//           <div>
-//             <h2>
-//               <a href={link} target="_blank" rel="nooper noreferrer">
-//                 {title}
-//               </a>
-//             </h2>
-//             <p>{excerpt}</p>
-//           </div>
-
-//           <div>
-//             <a href={link} target="_blank" rel="noopener noreferrer">
-//               <img src={media} alt="news_thumnail" />
-//             </a>
-//           </div>
-//         </>
-//       )}
-//     </>
-//   );
-// };
-
-// api 라이센스 문제로 이미지로 잠시 대체
-function Body2Example() {
-  const [examplelist, setExamplelist] = useState([]);
   useEffect(() => {
-    const result = [
-      {
-        img: newsimg_1,
-        _id: "newsimg_1",
-        alt: "ex_img_1",
+    const options = {
+      method: "GET",
+      url: "https://api.newscatcherapi.com/v2/search",
+      params: {
+        q: "범죄",
+        lang: "ko",
+        sort_by: "relevancy",
+        page: "1",
+        page_size: "4",
       },
-      {
-        img: newsimg_2,
-        _id: "newsimg_2",
-        alt: "ex_img_2",
+      headers: {
+        "x-api-key": "CiOSrlmjIYfW-7KivPgTc6j0DDOn9WcLZBZNwayT1TI",
       },
-      {
-        img: newsimg_3,
-        _id: "newsimg_3",
-        alt: "ex_img_3",
-      },
-      {
-        img: newsimg_4,
-        _id: "newsimg_4",
-        alt: "ex_img_4",
-      },
-    ];
-    setExamplelist(result);
+    };
+    const newsApi = async () => {
+      setLoading(true);
+      try {
+        const result = await axios.request(options);
+        console.log(result);
+        setNewslist(result.data.articles);
+      } catch (error) {
+        console.log(error);
+      }
+      setLoading(false);
+    };
+    newsApi();
   }, []);
-
+  if (loading) {
+    return <div>로딩중입니다</div>;
+  }
+  if (!newslist) {
+    return null;
+  }
   return (
     <div className="main-body-second">
       <h2>범죄 관련 뉴스</h2>
       <div className="news-area">
-        {examplelist.map((img) => (
-          <Example key={img._id} list={img} />
+        {newslist.map((news) => (
+          <News key={news._id} news={news} />
         ))}
       </div>
       <Link to="/crime">
@@ -291,11 +225,85 @@ function Body2Example() {
   );
 }
 
-const Example = ({ list }) => {
-  const { img, alt } = list;
+const News = ({ news }) => {
+  const { title, excerpt, link, media } = news;
   return (
-    <div>
-      <img src={img} alt={alt} />
-    </div>
+    <>
+      {media && (
+        <div className="news-row">
+          <div className="news_script">
+            <h2>
+              <a href={link} target="_blank" rel="nooper noreferrer">
+                {title}
+              </a>
+            </h2>
+            <p>
+              <a href={link} target="_blank" rel="nooper noreferrer">
+                {excerpt}
+              </a>
+            </p>
+          </div>
+
+          <div className="news_image">
+            <a href={link} target="_blank" rel="noopener noreferrer">
+              <img src={media} alt="news_thumnail" />
+            </a>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
+
+// api 라이센스 문제로 이미지로 잠시 대체
+// function Body2Example() {
+//   const [examplelist, setExamplelist] = useState([]);
+//   useEffect(() => {
+//     const result = [
+//       {
+//         img: newsimg_1,
+//         _id: "newsimg_1",
+//         alt: "ex_img_1",
+//       },
+//       {
+//         img: newsimg_2,
+//         _id: "newsimg_2",
+//         alt: "ex_img_2",
+//       },
+//       {
+//         img: newsimg_3,
+//         _id: "newsimg_3",
+//         alt: "ex_img_3",
+//       },
+//       {
+//         img: newsimg_4,
+//         _id: "newsimg_4",
+//         alt: "ex_img_4",
+//       },
+//     ];
+//     setExamplelist(result);
+//   }, []);
+
+//   return (
+//     <div className="main-body-second">
+//       <h2>범죄 관련 뉴스</h2>
+//       <div className="news-area">
+//         {examplelist.map((img) => (
+//           <Example key={img._id} list={img} />
+//         ))}
+//       </div>
+//       <Link to="/crime">
+//         <button className="btn btn--link">범죄 관련 은어 확인</button>
+//       </Link>
+//     </div>
+//   );
+// }
+
+// const Example = ({ list }) => {
+//   const { img, alt } = list;
+//   return (
+//     <div>
+//       <img src={img} alt={alt} />
+//     </div>
+//   );
+// };

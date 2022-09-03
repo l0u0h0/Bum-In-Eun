@@ -167,8 +167,39 @@ div {
       color: rgb(99, 99, 99);
     }
     /* MAIN BODY SECOND EXAMPLE */
-    .news-area img {
-      width: 100%;
+    // .news-area img {
+    //   width: 100%;
+    // }
+    /* MAIN BODY SECOND NEWSAREA */
+    .news-area {
+      margin-top: 20px;
+      margin-right: 20px;
+      .news-row {
+        display: flex;
+        .news_script {
+          width: 70%;
+          h2 {
+            font-size: 1rem;
+            a {
+              color: black;
+              text-decoration: none;
+            }
+          }
+          p {
+            font-size: 0.7rem;
+            a {
+              color: black;
+              text-decoration: none;
+            }
+          }
+        }
+        .news_image {
+          width: 30%;
+          img {
+            max-width: 150px;
+          }
+        }
+      }
     }
   }
 }
