@@ -1,5 +1,89 @@
 @import "~bootstrap/scss/bootstrap";
 
-div:root {
-  font-size: 16px;
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.App {
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 80vh;
+  width: 100%;
+  margin: auto;
+}
+
+// moblie
+@media only screen and (min-width: 301px) and (max-width: 500px) {
+  div.App {
+    width: 100%;
+  }
+  div.App-banner {
+    .banner-img {
+      width: 100%;
+    }
+  }
+}
+@media only screen and (max-width: 300px) {
+  html {
+    font-size: 62.5%;
+    line-height: 1.285;
+  }
+  div.App-banner {
+    .banner-img {
+      width: 100%;
+    }
+  }
+}
+
+// tablet
+@media only screen and (min-width: 501px) and (max-width: 1000px) {
+  div.App {
+    width: 100%;
+  }
+  div.App-banner {
+    width: 100%;
+    max-height: 10%;
+    text-align: center;
+  }
+}
+
+// PC
+@media only screen and (min-width: 1001px) {
+  html,
+  body,
+  #root {
+    background: black;
+  }
+  div.App {
+    min-height: 100vh;
+    max-width: 480px;
+    min-width: 320px;
+    margin: auto;
+  }
+  div.App-header {
+    max-width: 480px;
+    min-width: 320px;
+  }
+  div.App-banner {
+    max-width: 480px;
+    min-width: 320px;
+    .banner-img {
+      max-width: 480px;
+      min-width: 320px;
+    }
+  }
+  div.App-dictionarymain {
+    .dictionarymain-body {
+      .first-table {
+        width: 60%;
+      }
+      .second-table {
+        width: 60%;
+        left: 30%;
+      }
+    }
+  }
 }

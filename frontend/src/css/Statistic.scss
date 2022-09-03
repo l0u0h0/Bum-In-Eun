@@ -1,11 +1,14 @@
 // STATIC MAIN
 .App-staticmain {
+  width: 100%;
+  height: 100vh;
+  background-color: #fcfcfc;
+  padding-top: 6.25rem;
+  padding-bottom: 7.5rem;
   .staticmain-body {
     width: 90%;
     overflow: hidden;
     margin: auto;
-    margin-top: 5%;
-    margin-bottom: 10%;
     border-radius: 1rem;
     box-shadow: 1px 1px 2px 2px rgb(170, 170, 170);
     text-align: center;
@@ -59,6 +62,11 @@
 
 // STATIC DETAIL
 .App-staticdetail {
+  width: 100%;
+  height: 100vh;
+  background-color: #fcfcfc;
+  padding-top: 6.25rem;
+  padding-bottom: 7.5rem;
   .staticdetail-body {
     width: 90%;
     overflow: hidden;

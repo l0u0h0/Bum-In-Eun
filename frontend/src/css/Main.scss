@@ -3,14 +3,11 @@ div {
   box-sizing: border-box;
 }
 
-.App {
-  font-family: Arial, Helvetica, sans-serif;
-  min-height: 80vh;
+.App-main {
   width: 100%;
-  margin: auto;
-  margin-top: 6.25rem;
-  margin-bottom: 7.5rem;
   background-color: #fcfcfc;
+  padding-top: 6.25rem;
+  padding-bottom: 7.5rem;
 }
 
 .App-main .header .back-area .back {
@@ -25,7 +22,7 @@ div {
   border-radius: 0.3125rem;
   border: none;
   box-shadow: 1px 1px 2px 2px rgb(170, 170, 170);
-  font-size: medium;
+  font-size: 1rem;
   color: rgb(99, 99, 99);
 }
 
@@ -67,7 +64,7 @@ div {
       }
     }
     .tab-contents {
-      height: 80%;
+      height: 90%;
       .swiper-wrapper {
         display: flex;
       }
@@ -78,7 +75,7 @@ div {
           width: 90%;
           margin-left: 1.875rem;
           margin-top: 3%;
-          font-size: large;
+          font-size: 1.2rem;
           border-collapse: separate;
           border-spacing: 0 10px;
           .data-rank {
@@ -107,7 +104,7 @@ div {
           width: 90%;
           margin-left: 1.875rem;
           margin-top: 3%;
-          font-size: large;
+          font-size: 1.2rem;
           border-collapse: separate;
           border-spacing: 0 10px;
           .data-rank {
@@ -131,17 +128,9 @@ div {
           width: 70%;
           margin-top: 10%;
         }
-
         .btn--link {
           width: 90%;
-          height: 2.5rem;
           margin-top: 1.25rem;
-          background-color: white;
-          border-radius: 5px;
-          border: none;
-          box-shadow: 1px 1px 2px 2px rgb(170, 170, 170);
-          font-size: medium;
-          color: rgb(99, 99, 99);
         }
       }
     }

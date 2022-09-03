@@ -1,9 +1,13 @@
 // CRIME MAIN
 .App-crimemain {
+  width: 100%;
+  height: 100vh;
+  background-color: #fcfcfc;
+  padding-top: 6.25rem;
+  padding-bottom: 7.5rem;
   .crimemain-body {
     width: 90%;
     margin: auto;
-    margin-top: 25%;
     .category-area {
       margin: 5%;
       display: flex;
@@ -25,12 +29,15 @@
 
 //CRIME RESULT
 .App-crimeresult {
+  width: 100%;
+  height: 100vh;
+  background-color: #fcfcfc;
+  padding-top: 6.25rem;
+  padding-bottom: 7.5rem;
   .crimeresult-body {
     width: 90%;
     overflow: hidden;
     margin: auto;
-    margin-top: 5%;
-    margin-bottom: 10%;
     border-radius: 1rem;
     box-shadow: 1px 1px 2px 2px rgb(170, 170, 170);
     text-align: center;
@@ -79,12 +86,15 @@
 
 // CRIME DETAIL
 .App-crimedetail {
+  width: 100%;
+  height: 100vh;
+  background-color: #fcfcfc;
+  padding-top: 6.25rem;
+  padding-bottom: 7.5rem;
   .crimedetail-body {
     width: 90%;
     overflow: hidden;
     margin: auto;
-    margin-top: 5%;
-    margin-bottom: 10%;
     border-radius: 1rem;
     box-shadow: 1px 1px 2px 2px rgb(170, 170, 170);
     text-align: center;

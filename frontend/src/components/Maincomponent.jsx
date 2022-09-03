@@ -79,7 +79,6 @@ function Body1() {
           </SwiperSlide>
         </Swiper>
       </div>
-
       <hr />
     </div>
   );
