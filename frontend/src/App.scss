@@ -20,12 +20,17 @@ body,
   div.App {
     width: 100%;
   }
+  .body .main-body-first .tab-contents .contents .static-data-area .static-img {
+    width: 70%;
+    margin-top: 10%;
+  }
   div.App-banner {
     .banner-img {
       width: 100%;
     }
   }
 }
+// moblie_galaxy_fold
 @media only screen and (max-width: 300px) {
   html {
     font-size: 62.5%;
@@ -36,12 +41,30 @@ body,
       width: 100%;
     }
   }
+  div.main-body-first .swiper-area {
+    min-height: 40vh;
+  }
+  .body .main-body-first .tab-contents .contents .static-data-area .static-img {
+    width: 80%;
+    margin-top: 10%;
+    margin-bottom: 5%;
+  }
 }
 
 // tablet
 @media only screen and (min-width: 501px) and (max-width: 1000px) {
   div.App {
     width: 100%;
+  }
+  div.App-header {
+    min-height: 8vh;
+    div.header {
+      margin-top: 1%;
+    }
+  }
+  .body .main-body-first .tab-contents .contents .static-data-area .static-img {
+    width: 50%;
+    margin-top: 2%;
   }
   div.App-banner {
     width: 100%;
@@ -62,6 +85,10 @@ body,
     max-width: 480px;
     min-width: 320px;
     margin: auto;
+  }
+  .body .main-body-first .tab-contents .contents .static-data-area .static-img {
+    width: 70%;
+    margin-top: 10%;
   }
   div.App-header {
     max-width: 480px;
