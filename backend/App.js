@@ -1,19 +1,30 @@
 const express = require("express");
+const path = require("path");
+const morgan = require("morgan");
+
+const { sequelize } = require("./models");
 
 const app = express();
-app.use(express.json());
-
-const PORT = 5000;
-
 const mainRouter = require("./router/main");
+
+app.set("port", process.env.PORT || 5000);
+
+sequelize
+  .sync({ force: false })
+  .then(() => {
+    console.log("데이터베이스 연결 성공");
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 app.use("/main", mainRouter);
 
-app.use((err, req, res, next) => {
-  res.statusCode = err.statusCode || 500;
-  res.send(err.message);
-});
+app.use(morgan("dev"));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-app.listen(PORT, () => {
-  console.log(`Express server is running port: ${PORT}`);
+app.listen(app.get("port"), () => {
+  console.log(app.get("port"), "번 포트에서 대기 중");
 });

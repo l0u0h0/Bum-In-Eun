@@ -1,5 +1,7 @@
-import dotenv from "dotenv";
-dotenv.config();
+require("dotenv").config();
+// import dotenv from "dotenv";
+
+// dotenv.config();
 
 const development = {
   dialect: "mssql",
@@ -25,4 +27,4 @@ const test = {
   database: process.env.DB_NAME,
 };
 
-export default { development, production, test };
+module.exports = { development, production, test };
