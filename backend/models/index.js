@@ -7,6 +7,7 @@ const config = require("../config/config")[env];
 const db = {};
 
 const sequelize = new Sequelize(
+  { dialectModule: tedious },
   config.database,
   config.username,
   config.password,
