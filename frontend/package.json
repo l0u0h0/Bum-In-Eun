@@ -1,6 +1,6 @@
 {
   "name": "capston_project",
-  "version": "1.1.1",
+  "version": "1.2.1",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
@@ -17,6 +17,7 @@
     "redux": "^4.2.0",
     "redux-actions": "^2.6.5",
     "redux-devtools-extension": "^2.13.9",
+    "redux-first-history": "^5.0.12",
     "redux-saga": "^1.2.1",
     "sass": "^1.53.0",
     "swiper": "^8.2.4",

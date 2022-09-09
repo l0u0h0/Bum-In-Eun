@@ -194,7 +194,6 @@ function Body2() {
       setLoading(true);
       try {
         const result = await axios.request(options);
-        console.log(result);
         setNewslist(result.data.articles);
       } catch (error) {
         console.log(error);
