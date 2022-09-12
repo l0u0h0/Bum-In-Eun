@@ -8,7 +8,7 @@ const development = {
   host: process.env.DB_HOST,
   username: process.env.USER_NAME,
   password: process.env.USER_PASSWD,
-  database: process.env.DB_NAME,
+  database: process.env.DB_DATABASE,
   dialectOptions: {
     options: {
       encrypt: false, // 오류 발생시 추가 한 부분!
@@ -21,7 +21,7 @@ const production = {
   host: process.env.DB_HOST,
   username: process.env.USER_NAME,
   password: process.env.USER_PASSWD,
-  database: process.env.DB_NAME,
+  database: process.env.DB_DATABASE,
   dialectOptions: {
     options: {
       encrypt: false, // 오류 발생시 추가 한 부분!
@@ -34,7 +34,7 @@ const test = {
   host: process.env.DB_HOST,
   username: process.env.USER_NAME,
   password: process.env.USER_PASSWD,
-  database: process.env.DB_NAME,
+  database: process.env.DB_DATABASE,
   dialectOptions: {
     options: {
       encrypt: false, // 오류 발생시 추가 한 부분!

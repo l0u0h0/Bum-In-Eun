@@ -1,23 +1,27 @@
-module.exports = function (sequelize, DataTypes) {
-  const Data = sequelize.define(
-    "Data",
+"use strict";
+const { Model } = require("sequelize");
+module.exports = (sequelize, DataTypes) => {
+  class data extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+  }
+  data.init(
     {
-      id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
-        primaryKey: true,
-      },
-      Data: { type: DataTypes.STRING, allowNull: false },
-      Time: { type: DataTypes.DATE, allowNull: false },
+      id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+      text: DataTypes.STRING,
+      time: DataTypes.DATE,
     },
     {
-      charset: "utf8mb4",
-      collate: "utf8mb4_general_ci",
-      freezeTableName: true,
-      tableName: "data",
+      timestamps: false,
+      sequelize,
+      modelName: "data",
     }
   );
-
-  return Data;
+  return data;
 };
