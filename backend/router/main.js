@@ -1,8 +1,9 @@
 const express = require("express");
+const { Data } = require("../models");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
   res.send("Main data parsing");
 });
 
