@@ -2,11 +2,18 @@ module.exports = function (sequelize, DataTypes) {
   const Data = sequelize.define(
     "Data",
     {
-      No: { type: DataTypes.STRING(50) },
-      Data: { type: DataTypes.STRING(30) },
-      Time: { type: DataTypes.DATE },
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true,
+      },
+      Data: { type: DataTypes.STRING, allowNull: false },
+      Time: { type: DataTypes.DATE, allowNull: false },
     },
     {
+      charset: "utf8mb4",
+      collate: "utf8mb4_general_ci",
       freezeTableName: true,
       tableName: "data",
     }

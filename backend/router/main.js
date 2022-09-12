@@ -4,7 +4,17 @@ const { Data } = require("../models");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  res.send("Main data parsing");
+  try {
+    const tests = await Data.create({
+      Data: "test",
+      Time: 1,
+    });
+    console.log(tests);
+    res.status(200).json(tests);
+  } catch (err) {
+    console.error(err);
+  }
+  res.send("tests create");
 });
 
 module.exports = router;

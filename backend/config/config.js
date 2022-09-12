@@ -9,6 +9,11 @@ const development = {
   username: process.env.USER_NAME,
   password: process.env.USER_PASSWD,
   database: process.env.DB_NAME,
+  dialectOptions: {
+    options: {
+      encrypt: false, // 오류 발생시 추가 한 부분!
+    },
+  },
 };
 
 const production = {
@@ -17,6 +22,11 @@ const production = {
   username: process.env.USER_NAME,
   password: process.env.USER_PASSWD,
   database: process.env.DB_NAME,
+  dialectOptions: {
+    options: {
+      encrypt: false, // 오류 발생시 추가 한 부분!
+    },
+  },
 };
 
 const test = {
@@ -25,6 +35,11 @@ const test = {
   username: process.env.USER_NAME,
   password: process.env.USER_PASSWD,
   database: process.env.DB_NAME,
+  dialectOptions: {
+    options: {
+      encrypt: false, // 오류 발생시 추가 한 부분!
+    },
+  },
 };
 
 module.exports = { development, production, test };
