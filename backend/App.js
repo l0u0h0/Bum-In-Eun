@@ -6,6 +6,7 @@ const db = require("./models");
 
 const app = express();
 const mainRouter = require("./router/main");
+const testRouter = require("./router/test");
 
 app.set("port", process.env.PORT || 3306);
 
@@ -20,6 +21,7 @@ db.sequelize
   });
 
 app.use("/main", mainRouter);
+app.use("/test", testRouter);
 
 app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "public")));
