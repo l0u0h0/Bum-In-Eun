@@ -10,7 +10,7 @@ body,
 
 .App {
   font-family: Arial, Helvetica, sans-serif;
-  min-height: 80vh;
+  min-height: 90vh;
   width: 100%;
   margin: auto;
 }
@@ -82,7 +82,7 @@ body,
   }
   div.App {
     min-height: 100vh;
-    max-width: 480px;
+    max-width: 390px;
     min-width: 320px;
     margin: auto;
   }
@@ -91,14 +91,14 @@ body,
     margin-top: 10%;
   }
   div.App-header {
-    max-width: 480px;
+    max-width: 390px;
     min-width: 320px;
   }
   div.App-banner {
-    max-width: 480px;
+    max-width: 390px;
     min-width: 320px;
     .banner-img {
-      max-width: 480px;
+      max-width: 390px;
       min-width: 320px;
     }
   }
