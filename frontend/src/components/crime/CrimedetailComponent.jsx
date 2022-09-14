@@ -2,7 +2,7 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
-import Header from "../common/HeaderComponent";
+import Header from "../../common/HeaderComponent";
 // ex_img
 import ex_img from "../../image/camera.png";
 

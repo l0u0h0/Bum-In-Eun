@@ -1,7 +1,7 @@
 // import
 import React, { useState, useEffect } from "react";
-import Banner from "./common/BannerComponent";
-import Header from "./common/HeaderComponent";
+import Banner from "../common/BannerComponent";
+import Header from "../common/HeaderComponent";
 // ex_newsimg
 // import newsimg_1 from "../image/img_1.png";
 // import newsimg_2 from "../image/img_2.png";

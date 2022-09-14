@@ -1,7 +1,7 @@
 // import
 import React from "react";
 // Banner_img
-import banner from "../../image/img_5.png";
+import banner from "../image/img_5.png";
 
 // Banner Area
 export default function Banner() {

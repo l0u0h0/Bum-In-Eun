@@ -1,7 +1,7 @@
 // import
 import React, { useState } from "react";
-import Banner from "./common/BannerComponent";
-import Header from "./common/HeaderComponent";
+import Banner from "../common/BannerComponent";
+import Header from "../common/HeaderComponent";
 // react-bootstrap
 import { InputGroup, Button, FormControl } from "react-bootstrap";
 // testimg

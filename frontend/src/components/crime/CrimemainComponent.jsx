@@ -1,8 +1,8 @@
 // import
 import React from "react";
 import { Link } from "react-router-dom";
-import Header from "../common/HeaderComponent";
-import Banner from "../common/BannerComponent";
+import Header from "../../common/HeaderComponent";
+import Banner from "../../common/BannerComponent";
 
 // Main Area
 export default function Crimemain() {

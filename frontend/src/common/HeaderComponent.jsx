@@ -2,9 +2,9 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 // Header_img
-import back from "../../image/back.png";
-import logo from "../../image/img.png";
-import search from "../../image/search.png";
+import back from "../image/back.png";
+import logo from "../image/img.png";
+import search from "../image/search.png";
 
 // Header Area
 export default function Header() {

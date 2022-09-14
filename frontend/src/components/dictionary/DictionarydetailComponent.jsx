@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
-import Header from "../common/HeaderComponent";
+import Header from "../../common/HeaderComponent";
 // react-bootstrap
 import { InputGroup, Button, FormControl } from "react-bootstrap";
 

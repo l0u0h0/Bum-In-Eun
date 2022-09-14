@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-import Header from "../common/HeaderComponent";
+import Header from "../../common/HeaderComponent";
 
 // Result Area
 export default function Crimeresult() {
