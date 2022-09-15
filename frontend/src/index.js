@@ -5,6 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+/** import css */
+import "./App.scss";
+import "./css/Main.scss";
+import "./css/Header.scss";
+import "./css/Banner.scss";
+import "./css/Search.scss";
+import "./css/Crime.scss";
+import "./css/Dictionary.scss";
+import "./css/Statistic.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,15 +1,8 @@
-import "./App.scss";
-import "./css/Main.scss";
-import "./css/Header.scss";
-import "./css/Banner.scss";
-import "./css/Search.scss";
-import "./css/Crime.scss";
-import "./css/Dictionary.scss";
-import "./css/Statistic.scss";
-import "bootstrap/dist/css/bootstrap.min.css";
+/** import */
 import { Route, Routes } from "react-router-dom";
 import { HistoryRouter as Router } from "redux-first-history/rr6";
 import { history } from "./redux/store";
+/** import container */
 import CrimeContainer from "./container/CrimeContainer";
 import DictionaryContainer from "./container/DictionaryContainer";
 import StatisticContainer from "./container/StatisticContainer";

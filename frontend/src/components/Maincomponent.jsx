@@ -249,6 +249,7 @@ const News = ({ news }) => {
           </div>
         </div>
       )}
+      <hr />
     </>
   );
 };
