@@ -7,19 +7,14 @@ import "./css/Crime.scss";
 import "./css/Dictionary.scss";
 import "./css/Statistic.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-import MainComponent from "./components/Maincomponent";
-import SearchComponent from "./components/SearchComponent";
-import Crimemain from "./components/crime/CrimemainComponent";
-import Crimeresult from "./components/crime/CrimeresultComponent";
 import { Route, Routes } from "react-router-dom";
 import { HistoryRouter as Router } from "redux-first-history/rr6";
 import { history } from "./redux/store";
-import Crimedetail from "./components/crime/CrimedetailComponent";
-import DictionaryMain from "./components/dictionary/DictionarymainComponent";
-import Dictionarydetail from "./components/dictionary/DictionarydetailComponent";
-import Statisticmain from "./components/statistic/StatisticmainComponent";
-import Statisticdetail from "./components/statistic/StatisticdetailComponent";
 import CrimeContainer from "./container/CrimeContainer";
+import DictionaryContainer from "./container/DictionaryContainer";
+import StatisticContainer from "./container/StatisticContainer";
+import MainContainer from "./container/MainContainer";
+import SearchContainer from "./container/SearchContainer";
 
 function App() {
   return (
@@ -27,22 +22,19 @@ function App() {
       <Router history={history}>
         <Routes>
           {/* MAIN */}
-          <Route path="/" element={<MainComponent />} />
+          <Route path="/" element={<MainContainer />} />
           {/* SEARCH */}
-          <Route path="/search" element={<SearchComponent />} />
+          <Route path="/search" element={<SearchContainer />} />
           {/* CRIME */}
-          {/* <Route path="/crime" element={<Crimemain />} />
-          <Route path="/crime/result" element={<Crimeresult />} />
-          <Route path="/crime/detail" element={<Crimedetail />} /> */}
           <Route path="/crime" element={<CrimeContainer />} />
           <Route path="/crime/result" element={<CrimeContainer />} />
           <Route path="/crime/detail" element={<CrimeContainer />} />
           {/* DICTIONARY */}
-          <Route path="/dictionary" element={<DictionaryMain />} />
-          <Route path="/dictionary/detail" element={<Dictionarydetail />} />
+          <Route path="/dictionary" element={<DictionaryContainer />} />
+          <Route path="/dictionary/detail" element={<DictionaryContainer />} />
           {/* STATIC */}
-          <Route path="/statistic" element={<Statisticmain />} />
-          <Route path="/statistic/detail" element={<Statisticdetail />} />
+          <Route path="/statistic" element={<StatisticContainer />} />
+          <Route path="/statistic/detail" element={<StatisticContainer />} />
         </Routes>
       </Router>
     </div>

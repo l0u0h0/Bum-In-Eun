@@ -7,6 +7,7 @@ import { useEffect } from "react";
 
 const CrimeContainer = () => {
   const path = useLocation().pathname;
+  console.log(useLocation());
   const [pathName, setPathName] = useState();
   useEffect(() => {
     setPathName(path);

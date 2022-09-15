@@ -1,4 +1,4 @@
-const { default: MainComponent } = require("../components/Maincomponent");
+import MainComponent from "../components/Maincomponent";
 
 const MainContainer = () => {
   return <MainComponent />;

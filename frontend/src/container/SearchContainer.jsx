@@ -1,4 +1,4 @@
-const { default: SearchComponent } = require("../components/SearchComponent");
+import SearchComponent from "../components/SearchComponent";
 
 const SearchContainer = () => {
   return <SearchComponent />;
