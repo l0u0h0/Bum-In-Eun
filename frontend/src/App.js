@@ -15,10 +15,11 @@ import { Route, Routes } from "react-router-dom";
 import { HistoryRouter as Router } from "redux-first-history/rr6";
 import { history } from "./redux/store";
 import Crimedetail from "./components/crime/CrimedetailComponent";
-import DictionaryMain from "./components/dictionary/DicionarymainComponent";
+import DictionaryMain from "./components/dictionary/DictionarymainComponent";
 import Dictionarydetail from "./components/dictionary/DictionarydetailComponent";
 import Statisticmain from "./components/statistic/StatisticmainComponent";
 import Statisticdetail from "./components/statistic/StatisticdetailComponent";
+import CrimeContainer from "./container/CrimeContainer";
 
 function App() {
   return (
@@ -30,9 +31,12 @@ function App() {
           {/* SEARCH */}
           <Route path="/search" element={<SearchComponent />} />
           {/* CRIME */}
-          <Route path="/crime" element={<Crimemain />} />
+          {/* <Route path="/crime" element={<Crimemain />} />
           <Route path="/crime/result" element={<Crimeresult />} />
-          <Route path="/crime/detail" element={<Crimedetail />} />
+          <Route path="/crime/detail" element={<Crimedetail />} /> */}
+          <Route path="/crime" element={<CrimeContainer />} />
+          <Route path="/crime/result" element={<CrimeContainer />} />
+          <Route path="/crime/detail" element={<CrimeContainer />} />
           {/* DICTIONARY */}
           <Route path="/dictionary" element={<DictionaryMain />} />
           <Route path="/dictionary/detail" element={<Dictionarydetail />} />
