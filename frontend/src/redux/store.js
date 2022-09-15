@@ -4,6 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { createReduxHistoryContext } from "redux-first-history";
 import { createBrowserHistory } from "history";
 import rootSaga from "./module/rootSaga";
+import datas from "./module/data";
 
 const { createReduxHistory, routerMiddleware, routerReducer } =
   createReduxHistoryContext({
@@ -16,6 +17,7 @@ export const store = createStore(
   combineReducers({
     router: routerReducer,
     //... reducer 작성
+    datas,
   }),
   composeWithDevTools(applyMiddleware(sagaMiddleware, routerMiddleware))
 );

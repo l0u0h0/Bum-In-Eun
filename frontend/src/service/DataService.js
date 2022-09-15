@@ -6,6 +6,6 @@ const API_URL =
 export default class DataService {
   static async getData() {
     const response = await axios.get(API_URL);
-    return response;
+    return response.data;
   }
 }
