@@ -6,6 +6,8 @@ import { createBrowserHistory } from "history";
 import rootSaga from "./module/rootSaga";
 import datas from "./module/data";
 
+// const history = createBrowserHistory();
+
 const { createReduxHistory, routerMiddleware, routerReducer } =
   createReduxHistoryContext({
     history: createBrowserHistory(),

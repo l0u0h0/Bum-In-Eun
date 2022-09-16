@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MainComponent from "../components/Maincomponent";
 
-import getDatas from "../redux/module/data";
+import getData from "../redux/module/data";
 
 const MainContainer = () => {
   const datas = useSelector((state) => state.datas.datas);
@@ -11,15 +11,17 @@ const MainContainer = () => {
 
   const dispatch = useDispatch();
 
-  const getDatasSaga = useCallback(() => {
-    dispatch(getDatas());
+  const getDatas = useCallback(() => {
+    console.log("dispatch");
+    dispatch(getData());
+    console.log("after");
   }, [dispatch]);
   return (
     <MainComponent
       datas={datas}
       loading={loading}
       error={error}
-      getDatasSaga={getDatasSaga}
+      getDatas={getDatas}
     />
   );
 };

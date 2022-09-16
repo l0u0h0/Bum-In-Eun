@@ -1,8 +1,15 @@
 import DataService from "../../service/DataService";
 import { createActions, handleActions } from "redux-actions";
-import { call, put, select, takeEvery, takeLatest } from "redux-saga/effects";
+import { call, put, takeEvery } from "redux-saga/effects";
+import axios from "axios";
 
-const prefix = "/test";
+const prefix = "bumineun/test";
+
+const initialState = {
+  data: null,
+  loading: false,
+  error: null,
+};
 
 export const { pending, success, fail } = createActions(
   "PENDING",
@@ -19,7 +26,7 @@ const reducer = handleActions(
       error: null,
     }),
     SUCCESS: (state, action) => ({
-      datas: action.payload,
+      data: action.payload,
       loading: false,
       error: null,
     }),
@@ -29,17 +36,24 @@ const reducer = handleActions(
       error: action.payload,
     }),
   },
+  initialState,
   { prefix }
 );
 
 export default reducer;
 
-export const { getDatas } = createActions("GET_DATAS", { prefix });
+export const { getData } = createActions("GET_DATA", { prefix });
+
+console.log(getData());
+console.log(success());
 
 function* getDatasSaga() {
   try {
+    console.log(pending());
+    console.log("saga");
     yield put(pending());
-    const datas = yield call(DataService.getData);
+    console.log(success);
+    const datas = yield call(DataService.getDatas);
     yield put(success(datas));
   } catch (error) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
@@ -47,5 +61,5 @@ function* getDatasSaga() {
 }
 
 export function* datasSaga() {
-  yield takeEvery(`${prefix}/GET_DATA`, getDatasSaga);
+  yield takeEvery(`${prefix}/GET_DATAS`, getDatasSaga);
 }
