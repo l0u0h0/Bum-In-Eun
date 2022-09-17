@@ -1,6 +1,6 @@
 import DataService from "../../service/DataService";
 import { createActions, handleActions } from "redux-actions";
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put, takeEvery, all } from "redux-saga/effects";
 import axios from "axios";
 
 const prefix = "bumineun/test";
@@ -44,16 +44,12 @@ export default reducer;
 
 export const { getData } = createActions("GET_DATA", { prefix });
 
-console.log(getData());
-console.log(success());
-
-function* getDatasSaga() {
+function* getDataSaga() {
+  console.log("start");
   try {
-    console.log(pending());
     console.log("saga");
     yield put(pending());
-    console.log(success);
-    const datas = yield call(DataService.getDatas);
+    const datas = yield call(DataService.getData);
     yield put(success(datas));
   } catch (error) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
@@ -61,5 +57,5 @@ function* getDatasSaga() {
 }
 
 export function* datasSaga() {
-  yield takeEvery(`${prefix}/GET_DATAS`, getDatasSaga);
+  yield takeEvery(`${prefix}/GET_DATAS`, getDataSaga);
 }

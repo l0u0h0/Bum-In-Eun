@@ -20,13 +20,11 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 // Main Area
-export default function MainComponent({ datas, loading, error, getDatas }) {
-  // useEffect(() => {
-  //   console.log("call getData()");
-  //   getData();
-  // }, []);
-  console.log(datas);
-  getDatas();
+export default function MainComponent({ data, loading, error, getData }) {
+  useEffect(() => {
+    getData();
+  }, [getData]);
+  console.log(data, loading, error);
   return (
     <div className="App-main">
       <Header />
