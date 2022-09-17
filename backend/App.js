@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const path = require("path");
 const morgan = require("morgan");
 const db = require("./models");
@@ -8,7 +9,14 @@ const app = express();
 const mainRouter = require("./router/main");
 const testRouter = require("./router/test");
 
+let corsOption = {
+  origin: "http://localhost:3000",
+  credentials: true,
+};
+
 app.set("port", process.env.PORT || 3306);
+
+app.use(cors(corsOption));
 
 db.sequelize
   .sync({ force: false })

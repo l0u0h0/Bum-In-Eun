@@ -1,6 +1,6 @@
 import DataService from "../../service/DataService";
 import { createActions, handleActions } from "redux-actions";
-import { call, put, takeEvery, all } from "redux-saga/effects";
+import { call, put, takeEvery } from "redux-saga/effects";
 import axios from "axios";
 
 const prefix = "bumineun/test";
@@ -44,12 +44,20 @@ export default reducer;
 
 export const { getData } = createActions("GET_DATA", { prefix });
 
+const API_URL =
+  process.env.NODE_ENV === "production" ? "???" : "http://localhost:3306";
+
+function getDatas() {
+  const response = axios.get(`${API_URL}/test/GET_DATA`);
+  console.log(response);
+  return response.datas;
+}
+
 function* getDataSaga() {
-  console.log("start");
   try {
-    console.log("saga");
+    console.log("start");
     yield put(pending());
-    const datas = yield call(DataService.getData);
+    const datas = yield call(getDatas);
     yield put(success(datas));
   } catch (error) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
@@ -57,5 +65,5 @@ function* getDataSaga() {
 }
 
 export function* datasSaga() {
-  yield takeEvery(`${prefix}/GET_DATAS`, getDataSaga);
+  yield takeEvery(`${prefix}/GET_DATA`, getDataSaga);
 }
