@@ -3,8 +3,6 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import Header from "../../common/HeaderComponent";
-// ex_img
-import ex_img from "../../image/camera.png";
 
 // Detail Area
 export default function Crimedetail() {
@@ -20,7 +18,7 @@ export default function Crimedetail() {
         <hr className="title-body-between" />
         <div className="detail-body">
           <h3>카테고리 - {category}</h3>
-          <img src={ex_img} alt="example_image" />
+          <img src="../../image/camera.png" alt="example_image" />
           <p>{mean}</p>
         </div>
       </Card>

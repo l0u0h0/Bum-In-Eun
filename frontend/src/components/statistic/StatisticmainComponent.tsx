@@ -7,7 +7,7 @@ import Header from "../../common/HeaderComponent";
 
 // Main Area
 export default function Statisticmain() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([{ rank: 0, word_1: "", word_2: "" }]);
   useEffect(() => {
     // example data
     setData([

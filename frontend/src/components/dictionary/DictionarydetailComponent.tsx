@@ -1,17 +1,27 @@
 // import
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import Header from "../../common/HeaderComponent";
 // react-bootstrap
 import { InputGroup, Button, FormControl } from "react-bootstrap";
 
+interface dataState {
+  idx: number;
+  word: string;
+  mean: string | null;
+  count: number;
+}
+
 // Detail Area
 export default function Dictionarydetail() {
   const location = new URLSearchParams(useLocation().search);
   const word = location.get("word");
-  const [data, setData] = useState([]);
-  const [ref, setRef] = useState(null);
+  // const [ref, setRef] = useState<HTMLInputElement>({ value: "" });
+  const ref = useRef(null);
+  const [data, setData] = useState<dataState[]>([
+    { idx: 0, word: "", mean: "", count: 0 },
+  ]);
   useEffect(() => {
     // example data
     setData([
@@ -56,10 +66,11 @@ export default function Dictionarydetail() {
 
   const add = () => {
     let copy = [...data];
+    const refResult = ref.current;
     copy.push({
       idx: data.length,
       word: data[0].word,
-      mean: ref.value,
+      mean: refResult,
       count: 0,
     });
     setData(copy);
@@ -97,7 +108,7 @@ export default function Dictionarydetail() {
                 aria-describedby="add-addon"
                 placeholder="단어의 뜻을 입력하세요."
                 className="add-text"
-                ref={setRef}
+                ref={ref}
                 type="input"
               />
               <Button

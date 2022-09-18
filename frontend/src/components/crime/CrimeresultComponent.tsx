@@ -8,8 +8,8 @@ import Header from "../../common/HeaderComponent";
 export default function Crimeresult() {
   const location = new URLSearchParams(useLocation().search);
   const type = location.get("category");
-  const [category, setCategory] = useState(null);
-  const [data, setData] = useState([]);
+  const [category, setCategory] = useState("");
+  const [data, setData] = useState([{ word: "", mean: "" }]);
   useEffect(() => {
     if (type === "gambling") {
       setCategory("도박");

@@ -2,16 +2,9 @@
 import React, { useState, useEffect } from "react";
 import Banner from "../common/BannerComponent";
 import Header from "../common/HeaderComponent";
-// ex_newsimg
-// import newsimg_1 from "../image/img_1.png";
-// import newsimg_2 from "../image/img_2.png";
-// import newsimg_3 from "../image/img_3.png";
-// import newsimg_4 from "../image/img_4.png";
-// ex_staticimg
-import staticimg from "../image/img_6.png";
 // Swiper import
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Thumbs } from "swiper";
+import Swiper, { FreeMode, Thumbs } from "swiper";
 import "swiper/css";
 // Router import
 import { Link, useNavigate } from "react-router-dom";
@@ -42,7 +35,7 @@ export default function MainComponent({ data, loading, error, getData }) {
 
 // Tab Area
 function Body1() {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState<typeof Swiper>();
   return (
     <div className="main-body-first">
       <hr />
@@ -163,7 +156,7 @@ function Tab3() {
   return (
     <div key="main_Tab3" className="contents">
       <div className="static-data-area">
-        <img src={staticimg} alt="staticimg" className="static-img" />
+        <img src="../image/img_6.png" alt="staticimg" className="static-img" />
       </div>
       <div className="link-area">
         <button className="btn btn--link" onClick={LinkClick}>
@@ -176,7 +169,7 @@ function Tab3() {
 
 // NEWS API
 function Body2() {
-  const [newslist, setNewslist] = useState(null);
+  const [newslist, setNewslist] = useState([{ _id: "" }]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {

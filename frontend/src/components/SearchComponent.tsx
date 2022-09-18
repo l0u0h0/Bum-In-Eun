@@ -4,8 +4,6 @@ import Banner from "../common/BannerComponent";
 import Header from "../common/HeaderComponent";
 // react-bootstrap
 import { InputGroup, Button, FormControl } from "react-bootstrap";
-// testimg
-import staticimg from "../image/img_6.png";
 import { Link } from "react-router-dom";
 
 // Search main Component
@@ -16,7 +14,7 @@ export default function SearchComponent() {
     test: {
       crime: { word: "한마디로 좋은 손님", category: "도박" },
       word: ["1. 개구리의 함북 방언", "2. 한마디로 좋은 손님"],
-      static: staticimg,
+      static: "../image/img_6.png",
     },
   });
   const [ref, setRef] = useState(null);
