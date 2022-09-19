@@ -1,4 +1,5 @@
 /** import */
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { HistoryRouter as Router } from "redux-first-history/rr6";
 import { history } from "./redux/store";

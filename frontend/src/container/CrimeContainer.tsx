@@ -17,6 +17,8 @@ const CrimeContainer = () => {
     return <Crimeresult />;
   } else if (pathName === "/crime/detail") {
     return <Crimedetail />;
+  } else {
+    return <Crimemain />;
   }
 };
 

@@ -13,6 +13,8 @@ const StatisticContainer = () => {
     return <Statisticmain />;
   } else if (pathName === "/statistic/detail") {
     return <Statisticdetail />;
+  } else {
+    return <Statisticmain />;
   }
 };
 

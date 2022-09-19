@@ -13,6 +13,8 @@ const DictionaryContainer = () => {
     return <DictionaryMain />;
   } else if (pathName === "/dictionary/detail") {
     return <Dictionarydetail />;
+  } else {
+    return <DictionaryMain />;
   }
 };
 
