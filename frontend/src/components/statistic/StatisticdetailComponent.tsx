@@ -3,6 +3,8 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import Header from "../../common/HeaderComponent";
+// ex_img
+import ex_img from "../../image/img_6.png";
 
 // Detail Area
 export default function Statisticdetail() {
@@ -22,7 +24,7 @@ export default function Statisticdetail() {
           </div>
           <div className="static-area">
             <h4>키워드 언급량 추이</h4>
-            <img src="../../image/img_6.png" alt="example_image" />
+            <img src={ex_img} alt="example_image" />
           </div>
         </div>
       </Card>

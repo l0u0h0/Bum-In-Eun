@@ -2,9 +2,11 @@
 import React, { useState, useEffect } from "react";
 import Banner from "../common/BannerComponent";
 import Header from "../common/HeaderComponent";
+// img import
+import static_img from "../image/img_6.png";
 // Swiper import
 import { Swiper, SwiperSlide } from "swiper/react";
-import Swiper, { FreeMode, Thumbs } from "swiper";
+import SwiperCore, { FreeMode, Thumbs } from "swiper";
 import "swiper/css";
 // Router import
 import { Link, useNavigate } from "react-router-dom";
@@ -35,7 +37,7 @@ export default function MainComponent({ data, loading, error, getData }) {
 
 // Tab Area
 function Body1() {
-  const [thumbsSwiper, setThumbsSwiper] = useState<typeof Swiper>();
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
   return (
     <div className="main-body-first">
       <hr />
@@ -156,7 +158,7 @@ function Tab3() {
   return (
     <div key="main_Tab3" className="contents">
       <div className="static-data-area">
-        <img src="../image/img_6.png" alt="staticimg" className="static-img" />
+        <img src={static_img} alt="staticimg" className="static-img" />
       </div>
       <div className="link-area">
         <button className="btn btn--link" onClick={LinkClick}>

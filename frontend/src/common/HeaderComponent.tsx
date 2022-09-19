@@ -1,6 +1,10 @@
 // import
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+// Header_img
+import back from "../image/back.png";
+import logo from "../image/img.png";
+import search from "../image/search.png";
 
 // Header Area
 export default function Header() {
@@ -12,25 +16,16 @@ export default function Header() {
     <div className="App-header">
       <div className="header">
         <div className="back-area">
-          <img
-            className="back"
-            src="../image/back.png"
-            alt="backicon"
-            onClick={Back}
-          />
+          <img className="back" src={back} alt="backicon" onClick={Back} />
         </div>
         <div className="logo-area">
           <Link to="/">
-            <img className="logo" src="../image/img.png" alt="logo" />
+            <img className="logo" src={logo} alt="logo" />
           </Link>
         </div>
         <div className="search-area">
           <Link to="/search">
-            <img
-              className="search"
-              src="../image/search.png"
-              alt="searchicon"
-            />
+            <img className="search" src={search} alt="searchicon" />
           </Link>
         </div>
       </div>

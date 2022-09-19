@@ -1,23 +1,40 @@
 // import
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Banner from "../common/BannerComponent";
 import Header from "../common/HeaderComponent";
+// img import
+import static_img from "../image/img_6.png";
 // react-bootstrap
 import { InputGroup, Button, FormControl } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+interface SearchState {
+  data: string | null;
+  originData: string | undefined;
+  test: {
+    crime: {
+      word: string;
+      category: string;
+    };
+    word: [any, any];
+    static: string;
+  };
+}
+
 // Search main Component
 export default function SearchComponent() {
   const [searchstate, setSearchstate] = useState(0);
-  const [search, setSearch] = useState({
+  const [search, setSearch] = useState<SearchState>({
     data: "검색어를 입력해주세요.",
+    originData: "",
     test: {
       crime: { word: "한마디로 좋은 손님", category: "도박" },
       word: ["1. 개구리의 함북 방언", "2. 한마디로 좋은 손님"],
-      static: "../image/img_6.png",
+      static: static_img,
     },
   });
-  const [ref, setRef] = useState(null);
+  // const [ref, setRef] = useState(null);
+  const ref = useRef(null);
 
   return (
     <div className="App-search">
@@ -36,9 +53,9 @@ export default function SearchComponent() {
           <FormControl
             aria-label="Example text with button addon"
             aria-describedby="search-addon"
-            placeholder={search.data}
+            placeholder={search.originData}
             className="search-text"
-            ref={setRef}
+            ref={ref}
             type="input"
           />
         </InputGroup>
@@ -54,7 +71,8 @@ export default function SearchComponent() {
     }
     if (searchstate === 0) {
       setSearch({
-        data: ref.value,
+        data: ref.current,
+        originData: search.data?.toString(),
         test: search.test,
       });
       setSearchstate(1);
