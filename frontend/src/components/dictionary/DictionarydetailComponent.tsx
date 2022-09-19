@@ -9,7 +9,7 @@ import { InputGroup, Button, FormControl } from "react-bootstrap";
 interface dataState {
   idx: number;
   word: string;
-  mean: string | null;
+  mean: string | undefined;
   count: number;
 }
 
@@ -18,7 +18,7 @@ export default function Dictionarydetail() {
   const location = new URLSearchParams(useLocation().search);
   const word = location.get("word");
   // const [ref, setRef] = useState<HTMLInputElement>({ value: "" });
-  const ref = useRef(null);
+  const ref = useRef<HTMLInputElement>(null);
   const [data, setData] = useState<dataState[]>([
     { idx: 0, word: "", mean: "", count: 0 },
   ]);
@@ -66,7 +66,7 @@ export default function Dictionarydetail() {
 
   const add = () => {
     let copy = [...data];
-    const refResult = ref.current;
+    const refResult: string | undefined = ref.current?.value.toString();
     copy.push({
       idx: data.length,
       word: data[0].word,
