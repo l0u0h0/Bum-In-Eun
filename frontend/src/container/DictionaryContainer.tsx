@@ -1,12 +1,11 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Dictionarydetail from "../components/dictionary/DictionarydetailComponent";
 import DictionaryMain from "../components/dictionary/DictionarymainComponent";
 
 const DictionaryContainer = () => {
   const path = useLocation().pathname;
-  const [pathName, setPathName] = useState();
+  const [pathName, setPathName] = useState("");
   useEffect(() => {
     setPathName(path);
   }, [path]);

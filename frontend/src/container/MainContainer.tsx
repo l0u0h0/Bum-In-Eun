@@ -1,13 +1,13 @@
-import { useCallback } from "react";
+import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MainComponent from "../components/Maincomponent";
 
 import { getData } from "../redux/module/data";
 
 const MainContainer = () => {
-  const data = useSelector((state) => state.datas.data);
-  const loading = useSelector((state) => state.datas.loading);
-  const error = useSelector((state) => state.datas.error);
+  const data = useSelector((state: any) => state.datas.data);
+  const loading = useSelector((state: any) => state.datas.loading);
+  const error = useSelector((state: any) => state.datas.error);
   const dispatch = useDispatch();
 
   const getDatas = useCallback(() => {
