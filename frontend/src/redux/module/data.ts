@@ -1,10 +1,11 @@
 import DataService from "../../service/DataService";
 import { createActions, handleActions } from "redux-actions";
 import { call, put, takeEvery } from "redux-saga/effects";
+import { DatasState, Datatype } from "../../common/types";
 
 const prefix = "bumineun/test";
 
-const initialState = {
+const initialState: DatasState = {
   data: null,
   loading: false,
   error: null,
@@ -17,7 +18,7 @@ export const { pending, success, fail } = createActions(
   { prefix }
 );
 
-const reducer = handleActions(
+const reducer = handleActions<DatasState, Datatype[]>(
   {
     PENDING: (state, action) => ({
       ...state,
@@ -29,7 +30,7 @@ const reducer = handleActions(
       loading: false,
       error: null,
     }),
-    FAIL: (state, action) => ({
+    FAIL: (state, action: any) => ({
       ...state,
       loading: false,
       error: action.payload,
@@ -45,12 +46,10 @@ export const { getData } = createActions("GET_DATA", { prefix });
 
 function* getDataSaga() {
   try {
-    console.log("start");
     yield put(pending());
-    const datas = yield call(DataService.getDatas);
-    console.log(datas);
+    const datas: Datatype[] = yield call(DataService.getDatas);
     yield put(success(datas));
-  } catch (error) {
+  } catch (error: any) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
   }
 }

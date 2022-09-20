@@ -62,3 +62,8 @@
 >   - 헤더는 z-index 값 9로 고정
 > - CSS
 >   - 반응형 css 구현
+
+> 2022.09
+>
+> - front 타입 스크립트 적용, 에러 바운더리 적용,
+> - back express, mssqlserver로 서버 구성
