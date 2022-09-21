@@ -113,6 +113,9 @@ function Tab1({ datas, loading, error, getData }) {
     "일 " +
     dt.getHours() +
     "시 ";
+  if (datas === null) {
+    return <div>데이터 로딩중,,,</div>;
+  }
   return (
     <div key="main_Tab1" className="contents">
       <div className="table-area-first">

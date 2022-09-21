@@ -1,4 +1,4 @@
-# bumineun WebApp Front repo
+# bumineun WebApp repo
 
 > ### `범인은(bumineun)` 팀프로젝트
 
@@ -16,7 +16,7 @@
 
 > using `React`
 
-    Front (2022.06.20~)
+    Front & Back (2022.06.20~)
 
 ---
 
