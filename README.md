@@ -66,5 +66,10 @@
 
 > 2022.09
 >
-> - front 타입 스크립트 적용, 에러 바운더리 적용,
-> - back express, mssqlserver로 서버 구성
+> - front
+>   - redux-saga로 상태 관리 적용
+>   - typescript 적용으로 타입 지정 적용
+>   - error-boundary로 에러 페이지 적용
+> - back
+>   - nodejs, express로 api 서버 구축
+>   - sequelize로 mssql-server와 연동

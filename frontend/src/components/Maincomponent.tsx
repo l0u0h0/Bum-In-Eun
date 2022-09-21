@@ -13,18 +13,30 @@ import { Link, useNavigate } from "react-router-dom";
 
 // axios import
 import axios from "axios";
+import { Datatype } from "../common/types";
+
+interface Mainprops {
+  data: Datatype[] | null;
+  loading: boolean;
+  error: Error | null;
+  getData: () => void;
+}
 
 // Main Area
-export default function MainComponent({ data, loading, error, getData }) {
+const MainComponent: React.FC<Mainprops> = ({
+  data,
+  loading,
+  error,
+  getData,
+}) => {
   useEffect(() => {
     getData();
   }, [getData]);
-  console.log(data, loading, error);
   return (
     <div className="App-main">
       <Header />
       <div className="body">
-        <Body1 />
+        <Body1 datas={data} loading={loading} error={error} getData={getData} />
       </div>
       <div className="body">
         <Body2 />
@@ -33,10 +45,10 @@ export default function MainComponent({ data, loading, error, getData }) {
       <Banner />
     </div>
   );
-}
+};
 
 // Tab Area
-function Body1() {
+function Body1({ datas, loading, error, getData }) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
   return (
     <div className="main-body-first">
@@ -68,7 +80,12 @@ function Body1() {
           modules={[FreeMode, Thumbs]}
         >
           <SwiperSlide>
-            <Tab1 />
+            <Tab1
+              datas={datas}
+              loading={loading}
+              error={error}
+              getData={getData}
+            />
           </SwiperSlide>
           <SwiperSlide>
             <Tab2 />
@@ -84,7 +101,7 @@ function Body1() {
 }
 
 // Tab Fragment
-function Tab1() {
+function Tab1({ datas, loading, error, getData }) {
   const list = [1, 2, 3, 4, 5];
   const dt = new Date();
   const Now =
@@ -104,7 +121,9 @@ function Tab1() {
             {list.map((num) => (
               <tr key={`table_row_${num}`}>
                 <th className="data-rank">{num}.</th>
-                <td className="data-word">킹받네</td>
+                <td className="data-word">
+                  {datas !== null ? datas[3].Text : "null"}
+                </td>
                 <td className="data-state">-</td>
                 <td className="data-num">120,862</td>
               </tr>
@@ -305,3 +324,5 @@ const News = ({ news }) => {
 //     </div>
 //   );
 // };
+
+export default MainComponent;
