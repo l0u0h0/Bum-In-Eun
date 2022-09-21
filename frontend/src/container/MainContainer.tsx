@@ -1,10 +1,15 @@
+// import React
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Datatype, RootState } from "../common/types";
+
+// Component import
 import MainComponent from "../components/Maincomponent";
 
+// redux state import
 import { getData } from "../redux/module/data";
 
+// Container component
 const MainContainer = () => {
   const data = useSelector<RootState, Datatype[] | null>(
     (state) => state.datas.data

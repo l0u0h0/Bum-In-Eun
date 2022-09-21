@@ -1,16 +1,21 @@
+// import
 import DataService from "../../service/DataService";
 import { createActions, handleActions } from "redux-actions";
 import { call, put, takeEvery } from "redux-saga/effects";
+// type import
 import { DatasState, Datatype } from "../../common/types";
 
+// prefix
 const prefix = "bumineun/test";
 
+// initialState
 const initialState: DatasState = {
   data: null,
   loading: false,
   error: null,
 };
 
+// Actions
 export const { pending, success, fail } = createActions(
   "PENDING",
   "SUCCESS",
@@ -18,6 +23,7 @@ export const { pending, success, fail } = createActions(
   { prefix }
 );
 
+// Actions create
 const reducer = handleActions<DatasState, Datatype[]>(
   {
     PENDING: (state, action) => ({
@@ -42,8 +48,10 @@ const reducer = handleActions<DatasState, Datatype[]>(
 
 export default reducer;
 
+// Data Actions create
 export const { getData } = createActions("GET_DATA", { prefix });
 
+// example getDatasaga
 function* getDataSaga() {
   try {
     yield put(pending());
@@ -54,6 +62,7 @@ function* getDataSaga() {
   }
 }
 
+// saga create
 export function* datasSaga() {
   yield takeEvery(`${prefix}/GET_DATA`, getDataSaga);
 }
