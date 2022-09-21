@@ -22,7 +22,8 @@
 
 > 사용 라이브러리
 >
-> > `swiper`, `sass`, `react-bootstrap`, `react-router-dom.v6`, ~~`axios`~~
+> > `swiper`, `sass`, `react-bootstrap`, `react-router-dom.v6`, `axios`, `redux`, `typescript`,
+> > `express`, `sequelize`, `mssql_server`
 
 ---
 
