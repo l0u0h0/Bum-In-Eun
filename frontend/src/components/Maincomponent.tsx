@@ -1,5 +1,6 @@
 // import
 import React, { useState, useEffect } from "react";
+import moment from "moment";
 import Banner from "../common/BannerComponent";
 import Header from "../common/HeaderComponent";
 // img import
@@ -103,16 +104,11 @@ function Body1({ datas, loading, error, getData }) {
 // Tab Fragment
 function Tab1({ datas, loading, error, getData }) {
   const list = [1, 2, 3, 4, 5];
-  const dt = new Date();
-  const Now =
-    dt.getFullYear() +
-    "년 " +
-    +(dt.getMonth() + 1) +
-    "월 " +
-    dt.getDate() +
-    "일 " +
-    dt.getHours() +
-    "시 ";
+  const dt = moment();
+  const Now = `${dt.format("YYYY")}년 ${dt.format("MM")}월 ${dt.format(
+    "DD"
+  )}일 ${dt.format("HH")}시 기준`;
+
   if (datas === null) {
     return <div>데이터 로딩중,,,</div>;
   }
@@ -135,7 +131,7 @@ function Tab1({ datas, loading, error, getData }) {
         </table>
       </div>
       <div className="update-time">
-        <p>{Now} 기준</p>
+        <p>{Now}</p>
       </div>
     </div>
   );
