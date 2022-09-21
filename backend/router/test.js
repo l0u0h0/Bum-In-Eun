@@ -24,4 +24,15 @@ router.get("/GET_DATA", async (req, res) => {
     console.error(err);
   }
 });
+
+router.get("/GET_DATAS", async (req, res) => {
+  try {
+    const getdatas = await test.findAll({
+      where: { Type: "title" },
+    });
+    res.status(200).json(getdatas);
+  } catch (err) {
+    console.error(err);
+  }
+});
 module.exports = router;
