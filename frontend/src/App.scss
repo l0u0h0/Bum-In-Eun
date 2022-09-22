@@ -23,6 +23,9 @@ body,
   div.App {
     width: 100%;
   }
+  .body .main-body-first .swiper-area {
+    height: 21.875rem;
+  }
   .body .main-body-first .tab-contents .contents .static-data-area .static-img {
     width: 70%;
     margin-top: 10%;
@@ -47,7 +50,10 @@ body,
   div.main-body-first .swiper-area {
     min-height: 40vh;
   }
-  .body .main-body-first .tab-contents .contents .static-data-area .static-img {
+  .body .main-body-first .swiper-area {
+    height: 21.875rem;
+  }
+  .body .main-body-first .tab-contents .contents .static-data-area {
     width: 80%;
     margin-top: 10%;
     margin-bottom: 5%;
@@ -65,8 +71,12 @@ body,
       margin-top: 1%;
     }
   }
-  .body .main-body-first .tab-contents .contents .static-data-area .static-img {
-    width: 50%;
+  .body .main-body-first .swiper-area {
+    height: 27rem;
+  }
+  .body .main-body-first .tab-contents .contents .static-data-area {
+    width: 60%;
+    height: 17rem;
     margin-top: 2%;
   }
   div.App-banner {
@@ -88,6 +98,9 @@ body,
     max-width: 390px;
     min-width: 320px;
     margin: auto;
+  }
+  .body .main-body-first .swiper-area {
+    height: 21.875rem;
   }
   .body .main-body-first .tab-contents .contents .static-data-area .static-img {
     width: 70%;

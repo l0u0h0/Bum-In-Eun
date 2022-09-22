@@ -16,6 +16,18 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Datatype } from "../common/types";
 
+// Chart import
+import Chart from "./chartCompo/ChartComponent";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+} from "chart.js";
+
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
+
 interface Mainprops {
   data: Datatype[] | null;
   loading: boolean;
@@ -175,8 +187,9 @@ function Tab3() {
   }
   return (
     <div key="main_Tab3" className="contents">
-      <div className="static-data-area">
-        <img src={static_img} alt="staticimg" className="static-img" />
+      <div className="static-data-area" id="static-data-area">
+        {/* <img src={static_img} alt="staticimg" className="static-img" /> */}
+        <Chart />
       </div>
       <div className="link-area">
         <button className="btn btn--link" onClick={LinkClick}>

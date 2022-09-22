@@ -40,7 +40,6 @@ div {
       color: rgb(99, 99, 99);
     }
     .swiper-area {
-      height: 21.875rem;
       margin-top: 5%;
     }
     .tab-title {
@@ -124,6 +123,10 @@ div {
         }
 
         /* TAB FRAGMENT 3 */
+        .static-data-area {
+          margin-left: auto;
+          margin-right: auto;
+        }
 
         .btn--link {
           width: 90%;
