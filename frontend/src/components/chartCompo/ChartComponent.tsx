@@ -1,6 +1,10 @@
 import { Line } from "react-chartjs-2";
+import { Datatype } from "../../common/types";
 
-const Chart = ({ datas }) => {
+interface ChartProps {
+  datas: Datatype[] | null;
+}
+const Chart: React.FC<ChartProps> = ({ datas }) => {
   if (datas === null) {
     return <div>데이터 로딩중,,,</div>;
   }
