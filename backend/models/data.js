@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
       text: DataTypes.STRING,
-      time: DataTypes.DATE,
+      time: DataTypes.STRING,
     },
     {
       timestamps: false,

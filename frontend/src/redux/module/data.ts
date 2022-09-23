@@ -49,7 +49,7 @@ const reducer = handleActions<DatasState, Datatype[]>(
 export default reducer;
 
 // Data Actions create
-export const { getData } = createActions("GET_DATA", { prefix });
+export const { getDatas } = createActions("GET_DATAS", { prefix });
 
 // example getDatasaga
 function* getDataSaga() {
@@ -64,5 +64,5 @@ function* getDataSaga() {
 
 // saga create
 export function* datasSaga() {
-  yield takeEvery(`${prefix}/GET_DATA`, getDataSaga);
+  yield takeEvery(`${prefix}/GET_DATAS`, getDataSaga);
 }

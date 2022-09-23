@@ -7,11 +7,11 @@ import { Datatype, RootState } from "../common/types";
 import MainComponent from "../components/Maincomponent";
 
 // redux state import
-import { getData } from "../redux/module/data";
+import { getDatas as getDataSagaStart } from "../redux/module/data";
 
 // Container component
 const MainContainer = () => {
-  const data = useSelector<RootState, Datatype[] | null>(
+  const datas = useSelector<RootState, Datatype[] | null>(
     (state) => state.datas.data
   );
   const loading = useSelector<RootState, boolean>(
@@ -23,14 +23,14 @@ const MainContainer = () => {
   const dispatch = useDispatch();
 
   const getDatas = useCallback(() => {
-    dispatch(getData());
+    dispatch(getDataSagaStart());
   }, [dispatch]);
   return (
     <MainComponent
-      data={data}
+      datas={datas}
       loading={loading}
       error={error}
-      getData={getDatas}
+      getDatas={getDatas}
     />
   );
 };

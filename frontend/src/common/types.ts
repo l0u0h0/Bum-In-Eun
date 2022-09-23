@@ -17,6 +17,9 @@ export interface DatasState {
 
 /** example data type */
 export interface Datatype {
-  No: string;
-  Text: string;
+  // No: string;
+  // Text: string;
+  id: number;
+  text: string;
+  time: string;
 }

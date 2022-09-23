@@ -4,7 +4,7 @@ import moment from "moment";
 import Banner from "../common/BannerComponent";
 import Header from "../common/HeaderComponent";
 // img import
-import static_img from "../image/img_6.png";
+// import static_img from "../image/img_6.png";
 // Swiper import
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { FreeMode, Thumbs } from "swiper";
@@ -29,27 +29,32 @@ import {
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
 
 interface Mainprops {
-  data: Datatype[] | null;
+  datas: Datatype[] | null;
   loading: boolean;
   error: Error | null;
-  getData: () => void;
+  getDatas: () => void;
 }
 
 // Main Area
 const MainComponent: React.FC<Mainprops> = ({
-  data,
+  datas,
   loading,
   error,
-  getData,
+  getDatas,
 }) => {
   useEffect(() => {
-    getData();
-  }, [getData]);
+    getDatas();
+  }, [getDatas]);
   return (
     <div className="App-main">
       <Header />
       <div className="body">
-        <Body1 datas={data} loading={loading} error={error} getData={getData} />
+        <Body1
+          datas={datas}
+          loading={loading}
+          error={error}
+          getDatas={getDatas}
+        />
       </div>
       <div className="body">
         <Body2 />
@@ -61,7 +66,7 @@ const MainComponent: React.FC<Mainprops> = ({
 };
 
 // Tab Area
-function Body1({ datas, loading, error, getData }) {
+const Body1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
   return (
     <div className="main-body-first">
@@ -97,24 +102,24 @@ function Body1({ datas, loading, error, getData }) {
               datas={datas}
               loading={loading}
               error={error}
-              getData={getData}
+              getDatas={getDatas}
             />
           </SwiperSlide>
           <SwiperSlide>
-            <Tab2 />
+            <Tab2 datas={datas} />
           </SwiperSlide>
           <SwiperSlide>
-            <Tab3 />
+            <Tab3 datas={datas} />
           </SwiperSlide>
         </Swiper>
       </div>
       <hr />
     </div>
   );
-}
+};
 
 // Tab Fragment
-function Tab1({ datas, loading, error, getData }) {
+function Tab1({ datas, loading, error, getDatas }) {
   const list = [1, 2, 3, 4, 5];
   const dt = moment();
   const Now = `${dt.format("YYYY")}년 ${dt.format("MM")}월 ${dt.format(
@@ -129,7 +134,7 @@ function Tab1({ datas, loading, error, getData }) {
       <div className="table-area-first">
         <table>
           <tbody>
-            {list.map((num) => (
+            {/* {list.map((num) => (
               <tr key={`table_row_${num}`}>
                 <th className="data-rank">{num}.</th>
                 <td className="data-word">
@@ -138,7 +143,19 @@ function Tab1({ datas, loading, error, getData }) {
                 <td className="data-state">-</td>
                 <td className="data-num">120,862</td>
               </tr>
-            ))}
+            ))} */}
+            {datas !== null ? (
+              datas.map((data: Datatype) => (
+                <tr key={`table_row_${data.id}`}>
+                  <th className="data-rank">{data.id}.</th>
+                  <td className="data-word">{data.text}</td>
+                  <td className="data-state">-</td>
+                  <td className="data-num">120,862</td>
+                </tr>
+              ))
+            ) : (
+              <div>Null...</div>
+            )}
           </tbody>
         </table>
       </div>
@@ -149,25 +166,40 @@ function Tab1({ datas, loading, error, getData }) {
   );
 }
 
-function Tab2() {
+function Tab2({ datas }) {
   let navigate = useNavigate();
   const list = [1, 2, 3, 4, 5];
   function LinkClick() {
     navigate("/dictionary");
+  }
+  if (datas === null) {
+    return <div>데이터 로딩중,,,</div>;
   }
   return (
     <div key="main_Tab2" className="contents">
       <div className="table-area-second">
         <table>
           <tbody>
-            {list.map((num) => (
+            {/* {list.map((num) => (
               <tr key={`table_row_${num}`}>
                 <th className="data-rank">{num}.</th>
                 <td className="data-word">킹받네</td>
                 <td className="data-state">-</td>
                 <td className="data-num">120,862</td>
               </tr>
-            ))}
+            ))} */}
+            {datas !== null ? (
+              datas.map((data: Datatype) => (
+                <tr key={`table_row_${data.id}`}>
+                  <th className="data-rank">{data.id}.</th>
+                  <td className="data-word">{data.text}</td>
+                  <td className="data-state">-</td>
+                  <td className="data-num">120,862</td>
+                </tr>
+              ))
+            ) : (
+              <div>Null...</div>
+            )}
           </tbody>
         </table>
       </div>
@@ -180,7 +212,7 @@ function Tab2() {
   );
 }
 
-function Tab3() {
+function Tab3({ datas }) {
   let navigate = useNavigate();
   function LinkClick() {
     navigate("/statistic");
@@ -189,7 +221,7 @@ function Tab3() {
     <div key="main_Tab3" className="contents">
       <div className="static-data-area" id="static-data-area">
         {/* <img src={static_img} alt="staticimg" className="static-img" /> */}
-        <Chart />
+        <Chart datas={datas} />
       </div>
       <div className="link-area">
         <button className="btn btn--link" onClick={LinkClick}>

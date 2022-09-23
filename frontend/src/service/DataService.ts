@@ -12,7 +12,8 @@ const API_URL =
 // create DataService class
 export default class DataService {
   public static async getDatas(): Promise<Datatype[]> {
-    const response = await axios.get(`${API_URL}/test/GET_DATAS`);
+    // const response = await axios.get(`${API_URL}/test/GET_DATAS`);
+    const response = await axios.get(`${API_URL}/main/GET_DATAS`);
     return response.data;
   }
 

@@ -1,52 +1,64 @@
 import { Line } from "react-chartjs-2";
 
-const data = {
-  datasets: [
-    {
-      label: "Test Statistic Chart",
-      backgroundColor: "rgb(0, 0, 0)",
-      borderColor: "rgb(0, 51, 51)",
-      data: [
-        {
-          x: "킹받네",
-          y: 15,
-        },
-        {
-          x: "킹받네2",
-          y: 23,
-        },
-        {
-          x: "킹받네3",
-          y: 11,
-        },
-        {
-          x: "킹받네4",
-          y: 4,
-        },
-        {
-          x: "킹받네5",
-          y: 32,
-        },
-      ],
-    },
-  ],
-};
+const Chart = ({ datas }) => {
+  if (datas === null) {
+    return <div>데이터 로딩중,,,</div>;
+  }
+  const data = {
+    datasets: [
+      {
+        label: "Test Statistic Chart",
+        backgroundColor: "rgb(0, 51, 51)",
+        borderColor: "rgb(0, 51, 51)",
+        data: [
+          {
+            x: datas[0].text,
+            y: 15,
+          },
+          {
+            x: datas[1].text,
+            y: 23,
+          },
+          {
+            x: datas[2].text,
+            y: 11,
+          },
+          {
+            x: datas[3].text,
+            y: 4,
+          },
+          {
+            x: datas[4].text,
+            y: 32,
+          },
+        ],
+      },
+    ],
+  };
 
-const options = {
-  responsive: true,
-  interaction: {
-    mode: "index" as const,
-    intersect: false,
-  },
-  scales: {
-    y: {
-      min: 0,
-      max: 50,
+  const options = {
+    responsive: true,
+    tooltips: {
+      mode: "point" as const,
+      intersect: true,
     },
-  },
-};
+    hover: {
+      mode: "point" as const,
+      intersect: true,
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+      },
+      y: {
+        min: 0,
+        max: 50,
+      },
+    },
+  };
 
-const Chart = () => {
   return <Line options={options} data={data} />;
 };
 
