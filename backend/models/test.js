@@ -15,6 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     {
       No: { type: DataTypes.STRING, primaryKey: true },
       Text: DataTypes.STRING,
+      Time: DataTypes.STRING,
+      Type: DataTypes.STRING,
     },
     {
       timestamps: false,

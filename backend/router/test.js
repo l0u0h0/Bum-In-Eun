@@ -28,6 +28,7 @@ router.get("/GET_DATA", async (req, res) => {
 router.get("/GET_DATAS", async (req, res) => {
   try {
     const getdatas = await test.findAll({
+      limit: 10,
       where: { Type: "title" },
     });
     res.status(200).json(getdatas);

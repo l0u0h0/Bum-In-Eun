@@ -3,7 +3,7 @@ import DataService from "../../service/DataService";
 import { createActions, handleActions } from "redux-actions";
 import { call, put, takeEvery } from "redux-saga/effects";
 // type import
-import { DatasState, Datatype } from "../../common/types";
+import { DataListType, DatasState, Datatype } from "../../common/types";
 
 // prefix
 const prefix = "bumineun/test";
@@ -49,7 +49,11 @@ const reducer = handleActions<DatasState, Datatype[]>(
 export default reducer;
 
 // Data Actions create
-export const { getDatas } = createActions("GET_DATAS", { prefix });
+export const { getDatas, getListDatas } = createActions(
+  "GET_DATAS",
+  "GET_LIST_DATAS",
+  { prefix }
+);
 
 // example getDatasaga
 function* getDataSaga() {
@@ -62,7 +66,19 @@ function* getDataSaga() {
   }
 }
 
+// example getDataListSaga
+function* getDataListSaga() {
+  try {
+    yield put(pending());
+    const datasList: DataListType[] = yield call(DataService.getListDatas);
+    yield put(success(datasList));
+  } catch (error: any) {
+    yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
+  }
+}
+
 // saga create
 export function* datasSaga() {
   yield takeEvery(`${prefix}/GET_DATAS`, getDataSaga);
+  yield takeEvery(`${prefix}/GET_LIST_DATAS`, getDataListSaga);
 }

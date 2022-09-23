@@ -14,6 +14,11 @@ export interface DatasState {
   loading: boolean;
   error: Error | null;
 }
+export interface DataListState {
+  data: DataListType[] | null;
+  loading: boolean;
+  error: Error | null;
+}
 
 /** example data type */
 export interface Datatype {
@@ -22,4 +27,10 @@ export interface Datatype {
   id: number;
   text: string;
   time: string;
+}
+export interface DataListType {
+  No: string;
+  Type: string;
+  Text: string;
+  Time: string;
 }
