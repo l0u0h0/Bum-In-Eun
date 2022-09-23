@@ -27,6 +27,10 @@ export interface Datatype {
   id: number;
   text: string;
   time: string;
+  No: string;
+  Type: string;
+  Text: string;
+  Time: string;
 }
 export interface DataListType {
   No: string;

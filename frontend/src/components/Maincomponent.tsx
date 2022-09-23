@@ -106,7 +106,12 @@ const Body1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
             />
           </SwiperSlide>
           <SwiperSlide>
-            <Tab2 datas={datas} />
+            <Tab2
+              datas={datas}
+              loading={loading}
+              error={error}
+              getDatas={getDatas}
+            />
           </SwiperSlide>
           <SwiperSlide>
             <Tab3 datas={datas} />
@@ -119,15 +124,22 @@ const Body1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
 };
 
 // Tab Fragment
-function Tab1({ datas, loading, error, getDatas }) {
+const Tab1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
   // const list = [1, 2, 3, 4, 5];
-  const dt = moment();
-  const Now = `${dt.format("YYYY")}년 ${dt.format("MM")}월 ${dt.format(
-    "DD"
-  )}일 ${dt.format("HH")}시 기준`;
-
+  const [now, setNow] = useState("");
+  useEffect(() => {
+    const dt = moment();
+    setNow(
+      `${dt.format("YYYY")}년 ${dt.format("MM")}월 ${dt.format(
+        "DD"
+      )}일 ${dt.format("HH")}시 기준`
+    );
+    getDatas();
+  }, [now, getDatas]);
   if (datas === null) {
     return <div>데이터 로딩중,,,</div>;
+  } else {
+    if (datas.length > 5) return <div>데이터 로딩중,,,</div>;
   }
   return (
     <div key="main_Tab1" className="contents">
@@ -144,7 +156,7 @@ function Tab1({ datas, loading, error, getDatas }) {
                 <td className="data-num">120,862</td>
               </tr>
             ))} */}
-            {datas !== null ? (
+            {datas ? (
               datas.map((data: Datatype) => (
                 <tr key={`table_row_${data.id}`}>
                   <th className="data-rank">{data.id}.</th>
@@ -160,20 +172,25 @@ function Tab1({ datas, loading, error, getDatas }) {
         </table>
       </div>
       <div className="update-time">
-        <p>{Now}</p>
+        <p>{now}</p>
       </div>
     </div>
   );
-}
+};
 
-function Tab2({ datas }) {
+const Tab2: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
   let navigate = useNavigate();
   // const list = [1, 2, 3, 4, 5];
   function LinkClick() {
     navigate("/dictionary");
   }
+  useEffect(() => {
+    getDatas();
+  }, [getDatas]);
   if (datas === null) {
     return <div>데이터 로딩중,,,</div>;
+  } else {
+    if (datas.length > 5) return <div>데이터 로딩중,,,</div>;
   }
   return (
     <div key="main_Tab2" className="contents">
@@ -210,7 +227,7 @@ function Tab2({ datas }) {
       </div>
     </div>
   );
-}
+};
 
 function Tab3({ datas }) {
   let navigate = useNavigate();

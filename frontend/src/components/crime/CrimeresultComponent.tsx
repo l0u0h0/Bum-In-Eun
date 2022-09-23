@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import Header from "../../common/HeaderComponent";
 
 // Result Area
-export default function Crimeresult() {
+export default function Crimeresult({ datas, getList }) {
   const location = new URLSearchParams(useLocation().search);
   const type = location.get("category");
   const [category, setCategory] = useState("");
@@ -21,41 +21,52 @@ export default function Crimeresult() {
       setCategory("성범죄");
     }
     // example data
-    setData([
-      {
-        word: `${category}`,
-        mean: `이 단어는 ${category} 첫 번째 단어입니다.`,
-      },
-      {
-        word: `${category}`,
-        mean: `이 단어는 ${category} 두 번째 단어입니다.`,
-      },
-      {
-        word: `${category}`,
-        mean: `이 단어는 ${category} 세 번째 단어입니다.`,
-      },
-      {
-        word: `${category}`,
-        mean: `이 단어는 ${category} 네 번째 단어입니다.`,
-      },
-      {
-        word: `${category}`,
-        mean: `이 단어는 ${category} 다섯 번째 단어입니다.`,
-      },
-      {
-        word: `${category}`,
-        mean: `이 단어는 ${category} 여섯 번째 단어입니다.`,
-      },
-      {
-        word: `${category}`,
-        mean: `이 단어는 ${category} 일곱 번째 단어입니다.`,
-      },
-      {
-        word: `${category}`,
-        mean: `이 단어는 ${category} 여덟 번째 단어입니다.`,
-      },
-    ]);
-  }, [type, category]);
+    // setData([
+    //   {
+    //     word: `${category}`,
+    //     mean: `이 단어는 ${category} 첫 번째 단어입니다.`,
+    //   },
+    //   {
+    //     word: `${category}`,
+    //     mean: `이 단어는 ${category} 두 번째 단어입니다.`,
+    //   },
+    //   {
+    //     word: `${category}`,
+    //     mean: `이 단어는 ${category} 세 번째 단어입니다.`,
+    //   },
+    //   {
+    //     word: `${category}`,
+    //     mean: `이 단어는 ${category} 네 번째 단어입니다.`,
+    //   },
+    //   {
+    //     word: `${category}`,
+    //     mean: `이 단어는 ${category} 다섯 번째 단어입니다.`,
+    //   },
+    //   {
+    //     word: `${category}`,
+    //     mean: `이 단어는 ${category} 여섯 번째 단어입니다.`,
+    //   },
+    //   {
+    //     word: `${category}`,
+    //     mean: `이 단어는 ${category} 일곱 번째 단어입니다.`,
+    //   },
+    //   {
+    //     word: `${category}`,
+    //     mean: `이 단어는 ${category} 여덟 번째 단어입니다.`,
+    //   },
+    // ]);
+    if (datas !== null) {
+      setData(
+        datas.map(({ Type, Text }) => ({
+          word: Type,
+          mean: Text,
+        }))
+      );
+    }
+  }, [type, datas]);
+  useEffect(() => {
+    getList();
+  }, [getList]);
   return (
     <div className="App-crimeresult">
       <Header />
@@ -65,7 +76,7 @@ export default function Crimeresult() {
         <div className="result-body">
           <table className="result-table">
             <tbody>
-              {data.map((data, num) => (
+              {/* {data.map((data, num) => (
                 <tr className="result-row" key={`table_row_${num}`}>
                   <td className="result-word">
                     <Link
@@ -80,7 +91,23 @@ export default function Crimeresult() {
                   </td>
                   <td className="result-mean">{data.mean}</td>
                 </tr>
-              ))}
+              ))} */}
+              {data !== null ? (
+                data.map((data, num) => (
+                  <tr className="result-row" key={`table_row_${num}`}>
+                    <td className="result-word">
+                      <Link
+                        to={`/crime/detail?category=${category}&word=${data.word}&mean=${data.mean}`}
+                      >
+                        <div className="result-word-link">{data.word}</div>
+                      </Link>
+                    </td>
+                    <td className="result-mean">{data.mean}</td>
+                  </tr>
+                ))
+              ) : (
+                <div>데이터 로딩중,,,</div>
+              )}
             </tbody>
           </table>
         </div>
