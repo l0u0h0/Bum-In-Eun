@@ -62,6 +62,9 @@ body,
 
 // tablet
 @media only screen and (min-width: 501px) and (max-width: 1000px) {
+  html {
+    font-size: 20pt;
+  }
   div.App {
     width: 100%;
   }
@@ -69,14 +72,17 @@ body,
     min-height: 8vh;
     div.header {
       margin-top: 1%;
+      .logo-area .logo {
+        height: 3.125rem;
+      }
     }
   }
   .body .main-body-first .swiper-area {
-    height: 27rem;
+    height: 22rem;
   }
   .body .main-body-first .tab-contents .contents .static-data-area {
-    width: 60%;
-    height: 17rem;
+    width: 80%;
+    height: 12rem;
     margin-top: 2%;
   }
   div.App-banner {
@@ -109,6 +115,9 @@ body,
   div.App-header {
     max-width: 390px;
     min-width: 320px;
+    .header .logo-area .logo {
+      height: 3.125rem;
+    }
   }
   div.App-banner {
     max-width: 390px;

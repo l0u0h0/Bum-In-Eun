@@ -36,12 +36,17 @@ const Chart: React.FC<ChartProps> = ({ datas }) => {
             y: 32,
           },
         ],
+        fill: false,
       },
     ],
   };
 
   const options = {
     responsive: true,
+    title: {
+      display: true,
+      text: "실시간 데이터 그래프 TEST.ver",
+    },
     tooltips: {
       mode: "point" as const,
       intersect: true,
