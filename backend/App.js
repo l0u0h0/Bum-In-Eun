@@ -8,6 +8,7 @@ const db = require("./models");
 const app = express();
 const mainRouter = require("./router/main");
 const testRouter = require("./router/test");
+const commentRouter = require("./router/comment");
 
 let corsOption = {
   origin: "http://localhost:3000",
@@ -30,6 +31,7 @@ db.sequelize
 
 app.use("/main", mainRouter);
 app.use("/test", testRouter);
+app.use("/comment", commentRouter);
 
 app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "public")));

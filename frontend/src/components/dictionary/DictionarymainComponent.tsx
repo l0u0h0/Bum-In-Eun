@@ -1,19 +1,34 @@
 // import
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Banner from "../../common/BannerComponent";
 import Header from "../../common/HeaderComponent";
+import { Datatype } from "../../common/types";
 
 // Main Area
-export default function DictionaryMain() {
-  const lists = [
-    { num: 1, word: "킹받네" },
-    { num: 2, word: "킹받네" },
-    { num: 3, word: "킹받네" },
-    { num: 4, word: "킹받네" },
-    { num: 5, word: "킹받네" },
-  ];
+export default function DictionaryMain({ datas, getDatas }) {
+  // const lists = [
+  //   { num: 1, word: "킹받네" },
+  //   { num: 2, word: "킹받네" },
+  //   { num: 3, word: "킹받네" },
+  //   { num: 4, word: "킹받네" },
+  //   { num: 5, word: "킹받네" },
+  // ];
+  const [lists, setLists] = useState([{ num: null, word: "" }]);
+  useEffect(() => {
+    if (datas !== null) {
+      setLists(
+        datas.map((data: Datatype, i) => ({
+          num: i + 1,
+          word: data.text,
+        }))
+      );
+    }
+  }, [datas]);
+  useEffect(() => {
+    getDatas();
+  }, [getDatas]);
   return (
     <div className="App-dictionarymain">
       <Header />

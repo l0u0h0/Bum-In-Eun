@@ -38,3 +38,16 @@ export interface DataListType {
   Text: string;
   Time: string;
 }
+
+/** comment data Type */
+export interface CommentsState {
+  data: CommentType[] | null;
+  loading: boolean;
+  error: Error | null;
+}
+
+export interface CommentType {
+  No: number | null;
+  Type: string;
+  Text: string;
+}

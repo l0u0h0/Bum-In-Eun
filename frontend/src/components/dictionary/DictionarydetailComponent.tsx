@@ -6,9 +6,8 @@ import Header from "../../common/HeaderComponent";
 // react-bootstrap
 import { InputGroup, Button, FormControl } from "react-bootstrap";
 
-interface dataState {
+interface dictionarydataState {
   idx: number;
-  word: string;
   mean: string | undefined;
   count: number;
 }
@@ -19,46 +18,41 @@ export default function Dictionarydetail() {
   const word = location.get("word");
   // const [ref, setRef] = useState<HTMLInputElement>({ value: "" });
   const ref = useRef<HTMLInputElement>(null);
-  const [data, setData] = useState<dataState[]>([
-    { idx: 0, word: "", mean: "", count: 0 },
+  const [data, setData] = useState<dictionarydataState[]>([
+    { idx: 0, mean: "", count: 0 },
   ]);
   useEffect(() => {
     // example data
     setData([
       {
         idx: 0,
-        word: `${word}`,
         mean: `이 단어의 첫 번째 의미입니다.`,
         count: 5,
       },
       {
         idx: 1,
-        word: `${word}`,
         mean: `이 단어의 두 번째 의미입니다.`,
         count: 4,
       },
       {
         idx: 2,
-        word: `${word}`,
         mean: `이 단어의 세 번째 의미입니다.`,
         count: 3,
       },
       {
         idx: 3,
-        word: `${word}`,
         mean: `이 단어의 네 번째 의미입니다.`,
         count: 2,
       },
       {
         idx: 4,
-        word: `${word}`,
         mean: `이 단어의 다섯 번째 의미입니다.`,
         count: 1,
       },
     ]);
-  }, [word]);
+  }, []);
 
-  const count = (datas) => {
+  const count = (datas: dictionarydataState) => {
     let copy = [...data];
     copy[datas.idx] = { ...copy[datas.idx], count: datas.count + 1 };
     setData(copy);
@@ -69,11 +63,14 @@ export default function Dictionarydetail() {
     const refResult: string | undefined = ref.current?.value.toString();
     copy.push({
       idx: data.length,
-      word: data[0].word,
       mean: refResult,
       count: 0,
     });
-    setData(copy);
+    setData(
+      copy.sort(function (a, b) {
+        return b.count - a.count;
+      })
+    );
   };
   return (
     <div className="App-dictionarydetail">
@@ -84,8 +81,8 @@ export default function Dictionarydetail() {
         <div className="detail-body">
           <table className="mean-table">
             <tbody>
-              {data.map((data, num) => (
-                <tr className="mean-row" key={`table_row_${num}`}>
+              {data.map((data) => (
+                <tr className="mean-row" key={`table_row_${data.idx}`}>
                   <td className="mean-comment">{data.mean}</td>
                   <td className="mean-count">
                     <button

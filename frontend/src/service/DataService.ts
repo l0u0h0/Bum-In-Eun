@@ -21,6 +21,4 @@ export default class DataService {
     const response = await axios.get(`${API_URL}/test/GET_DATAS`);
     return response.data;
   }
-
-  // public static async
 }
