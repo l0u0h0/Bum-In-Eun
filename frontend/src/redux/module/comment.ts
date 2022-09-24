@@ -1,6 +1,6 @@
 // import
 import CommentService from "../../service/CommentService";
-import { createActions, handleActions } from "redux-actions";
+import { createActions, handleActions, Action } from "redux-actions";
 import { call, put, takeEvery } from "redux-saga/effects";
 // type import
 import { CommentsState, CommentType } from "../../common/types";
@@ -67,11 +67,12 @@ function* getCommentsSaga() {
 }
 
 // example getDataListSaga
-function* addCommentsSaga() {
+function* addCommentsSaga(action: Action<CommentType>) {
   try {
     yield put(pending());
     const addcomment: CommentType = yield call(
-      CommentService.addComments(action.payload)
+      CommentService.addComments,
+      action.payload
     );
     yield put(success(addcomment));
   } catch (error: any) {

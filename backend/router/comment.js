@@ -50,4 +50,11 @@ router.get("/GET_DATAS", async (req, res) => {
     console.error(err);
   }
 });
+
+router.post("/test/:tests", async (req, res) => {
+  // console.log(req.params.tests);
+  // console.log(req);
+  console.log(req);
+  res.send("test");
+});
 module.exports = router;
