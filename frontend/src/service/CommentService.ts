@@ -16,7 +16,7 @@ export default class CommentService {
     return response.data;
   }
 
-  public static async addComments(): Promise<CommentType> {
+  public static async addComments(comment: CommentType): Promise<CommentType> {
     const response = await axios.post(`${API_URL}/comment`);
     return response.data;
   }

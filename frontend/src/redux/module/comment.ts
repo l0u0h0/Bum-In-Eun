@@ -70,7 +70,9 @@ function* getCommentsSaga() {
 function* addCommentsSaga() {
   try {
     yield put(pending());
-    const addcomment: CommentType[] = yield call(CommentService.addComments);
+    const addcomment: CommentType = yield call(
+      CommentService.addComments(action.payload)
+    );
     yield put(success(addcomment));
   } catch (error: any) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
