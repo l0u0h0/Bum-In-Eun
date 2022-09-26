@@ -24,7 +24,7 @@ export const { pending, success, fail } = createActions(
 );
 
 // Actions create
-const reducer = handleActions<CommentsState, CommentType[]>(
+const reducer = handleActions<CommentsState, CommentType>(
   {
     PENDING: (state, action) => ({
       ...state,

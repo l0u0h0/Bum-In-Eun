@@ -14,7 +14,7 @@ interface dictionarydataState {
 }
 
 interface DictionarydetailProps {
-  comments: CommentType[] | null;
+  comments: CommentType | null;
   getComments: (arg: string) => void;
 }
 
@@ -65,11 +65,12 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
     //   },
     // ]);
     if (comments !== null) {
+      console.log(comments);
       setData(
-        comments.map((comment: CommentType, i) => ({
+        comments[0].comments.map((data, i) => ({
           idx: i,
-          mean: comment.comments.Text,
-          count: comment.comments.No,
+          mean: data.Text,
+          count: data.No,
         }))
       );
     }

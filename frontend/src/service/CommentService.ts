@@ -15,6 +15,7 @@ const API_URL =
 export default class CommentService {
   public static async getComments(word: string): Promise<CommentType> {
     const response = await axios.get(`${API_URL}/GET_COMMENTS/${word}`);
+    console.log(response.data);
     return response.data;
   }
 

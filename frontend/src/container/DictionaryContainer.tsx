@@ -17,7 +17,7 @@ const DictionaryContainer = () => {
   const datas = useSelector<RootState, Datatype[] | null>(
     (state) => state.datas.data
   );
-  const comments = useSelector<RootState, CommentType[] | null>(
+  const comments = useSelector<RootState, CommentType | null>(
     (state) => state.comments.comments
   );
   const dispatch = useDispatch();
