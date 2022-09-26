@@ -31,7 +31,7 @@ router.get("/", async (req, res) => {
 //   }
 // });
 
-router.get("/GET_DATAS", async (req, res) => {
+router.get("/GET_COMMENTS/:word", async (req, res) => {
   try {
     const origindata = await data.findAll({
       attributes: ["id", "text"],
@@ -42,7 +42,7 @@ router.get("/GET_DATAS", async (req, res) => {
         },
       ],
       where: {
-        text: "고구마무스",
+        text: `${req.params.word}`,
       },
     });
     res.status(200).json(origindata);
@@ -51,7 +51,7 @@ router.get("/GET_DATAS", async (req, res) => {
   }
 });
 
-router.post("/test/:tests", async (req, res) => {
+router.post("/ADD_COMMENT", async (req, res) => {
   // console.log(req.params.tests);
   // console.log(req);
   console.log(req);

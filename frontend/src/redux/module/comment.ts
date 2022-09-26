@@ -1,7 +1,7 @@
 // import
 import CommentService from "../../service/CommentService";
 import { createActions, handleActions, Action } from "redux-actions";
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put, select, takeEvery } from "redux-saga/effects";
 // type import
 import { CommentsState, CommentType } from "../../common/types";
 
@@ -10,7 +10,7 @@ const prefix = "bumineun/comment";
 
 // initialState
 const initialState: CommentsState = {
-  data: null,
+  comments: null,
   loading: false,
   error: null,
 };
@@ -32,7 +32,7 @@ const reducer = handleActions<CommentsState, CommentType[]>(
       error: null,
     }),
     SUCCESS: (state, action) => ({
-      data: action.payload,
+      comments: action.payload,
       loading: false,
       error: null,
     }),
@@ -48,33 +48,40 @@ const reducer = handleActions<CommentsState, CommentType[]>(
 
 export default reducer;
 
-// Data Actions create
+// Comments Actions create
 export const { getComments, addComments } = createActions(
   "GET_COMMENTS",
-  "ADD_COMMENTS",
+  "ADD_COMMENT",
   { prefix }
 );
 
-// example getDatasaga
-function* getCommentsSaga() {
+// example getCommentsaga
+function* getCommentsSaga(action: Action<string>) {
   try {
+    const word = action.payload;
     yield put(pending());
-    const comments: CommentType[] = yield call(CommentService.getComments);
+    const comments: CommentType[] = yield call(
+      CommentService.getComments,
+      word
+    );
     yield put(success(comments));
   } catch (error: any) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
   }
 }
 
-// example getDataListSaga
+// example addCommentSaga
 function* addCommentsSaga(action: Action<CommentType>) {
   try {
     yield put(pending());
-    const addcomment: CommentType = yield call(
+    const comment: CommentType = yield call(
       CommentService.addComments,
       action.payload
     );
-    yield put(success(addcomment));
+    const comments: CommentType[] = yield select(
+      (state) => state.comments.comments
+    );
+    yield put(success([...comments, comment]));
   } catch (error: any) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
   }
@@ -83,5 +90,5 @@ function* addCommentsSaga(action: Action<CommentType>) {
 // saga create
 export function* commentsSaga() {
   yield takeEvery(`${prefix}/GET_COMMENTS`, getCommentsSaga);
-  yield takeEvery(`${prefix}/ADD_COMMENTS`, addCommentsSaga);
+  yield takeEvery(`${prefix}/ADD_COMMENT`, addCommentsSaga);
 }

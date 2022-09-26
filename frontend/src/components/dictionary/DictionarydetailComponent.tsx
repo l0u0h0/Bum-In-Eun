@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import Header from "../../common/HeaderComponent";
 // react-bootstrap
 import { InputGroup, Button, FormControl } from "react-bootstrap";
+import { CommentType } from "../../common/types";
 
 interface dictionarydataState {
   idx: number;
@@ -12,8 +13,16 @@ interface dictionarydataState {
   count: number;
 }
 
+interface DictionarydetailProps {
+  comments: CommentType[] | null;
+  getComments: (arg: string) => void;
+}
+
 // Detail Area
-export default function Dictionarydetail() {
+const Dictionarydetail: React.FC<DictionarydetailProps> = ({
+  comments,
+  getComments,
+}) => {
   const location = new URLSearchParams(useLocation().search);
   const word = location.get("word");
   // const [ref, setRef] = useState<HTMLInputElement>({ value: "" });
@@ -22,42 +31,56 @@ export default function Dictionarydetail() {
     { idx: 0, mean: "", count: 0 },
   ]);
   useEffect(() => {
+    if (word !== null) {
+      getComments(word);
+    }
+  }, [getComments, word]);
+  useEffect(() => {
     // example data
-    setData([
-      {
-        idx: 0,
-        mean: `이 단어의 첫 번째 의미입니다.`,
-        count: 5,
-      },
-      {
-        idx: 1,
-        mean: `이 단어의 두 번째 의미입니다.`,
-        count: 4,
-      },
-      {
-        idx: 2,
-        mean: `이 단어의 세 번째 의미입니다.`,
-        count: 3,
-      },
-      {
-        idx: 3,
-        mean: `이 단어의 네 번째 의미입니다.`,
-        count: 2,
-      },
-      {
-        idx: 4,
-        mean: `이 단어의 다섯 번째 의미입니다.`,
-        count: 1,
-      },
-    ]);
-  }, []);
+    // setData([
+    //   {
+    //     idx: 0,
+    //     mean: `이 단어의 첫 번째 의미입니다.`,
+    //     count: 5,
+    //   },
+    //   {
+    //     idx: 1,
+    //     mean: `이 단어의 두 번째 의미입니다.`,
+    //     count: 4,
+    //   },
+    //   {
+    //     idx: 2,
+    //     mean: `이 단어의 세 번째 의미입니다.`,
+    //     count: 3,
+    //   },
+    //   {
+    //     idx: 3,
+    //     mean: `이 단어의 네 번째 의미입니다.`,
+    //     count: 2,
+    //   },
+    //   {
+    //     idx: 4,
+    //     mean: `이 단어의 다섯 번째 의미입니다.`,
+    //     count: 1,
+    //   },
+    // ]);
+    if (comments !== null) {
+      setData(
+        comments.map((comment: CommentType, i) => ({
+          idx: i,
+          mean: comment.comments.Text,
+          count: comment.comments.No,
+        }))
+      );
+    }
+  }, [comments]);
 
   const count = (datas: dictionarydataState) => {
     let copy = [...data];
     copy[datas.idx] = { ...copy[datas.idx], count: datas.count + 1 };
     setData(copy);
   };
-
+  /** example add func */
   const add = () => {
     let copy = [...data];
     const refResult: string | undefined = ref.current?.value.toString();
@@ -72,6 +95,9 @@ export default function Dictionarydetail() {
       })
     );
   };
+  // const testadd = () => {
+  //
+  // }
   return (
     <div className="App-dictionarydetail">
       <Header />
@@ -123,4 +149,6 @@ export default function Dictionarydetail() {
       </Card>
     </div>
   );
-}
+};
+
+export default Dictionarydetail;

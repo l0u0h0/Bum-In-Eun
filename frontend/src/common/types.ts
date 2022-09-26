@@ -5,6 +5,7 @@ import { AnyAction, Reducer } from "redux";
 /** Root Type */
 export interface RootState {
   datas: DatasState;
+  comments: CommentsState;
   router: Reducer<RouterState, AnyAction>;
 }
 
@@ -41,13 +42,13 @@ export interface DataListType {
 
 /** comment data Type */
 export interface CommentsState {
-  data: CommentType[] | null;
+  comments: CommentType[] | null;
   loading: boolean;
   error: Error | null;
 }
 
 export interface CommentType {
-  No: number | null;
+  No: number;
   Type: string;
   Text: string;
 }
