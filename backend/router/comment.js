@@ -4,34 +4,34 @@ const moment = require("moment");
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  try {
-    const getcomment = await comment.findOne({
-      attribute: ["Text", "No"],
-      where: { Type: "title" },
-    });
-    res.status(200).json(getcomment);
-  } catch (err) {
-    console.error(err);
-  }
-});
+// router.get("/", async (req, res) => {
+//   try {
+//     const getcomment = await comment.findOne({
+//       attribute: ["Text", "No"],
+//       where: { Type: "title" },
+//     });
+//     res.status(200).json(getcomment);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// });
 
-router.get("/:text", async (req, res) => {
-  const dt = moment();
-  const Now = `${dt.format("YYYY-MM-DD HH:mm")}`;
-  try {
-    const addWord = await comment.create({
-      Type: "고구마무스",
-      Text: `${req.params.text}`,
-      Time: Now,
-      No: 0,
-    });
-    console.log(req.params.text);
-    res.status(200).json(addWord);
-  } catch (err) {
-    console.error(err);
-  }
-});
+// router.get("/:text", async (req, res) => {
+//   const dt = moment();
+//   const Now = `${dt.format("YYYY-MM-DD HH:mm")}`;
+//   try {
+//     const addWord = await comment.create({
+//       Type: "고구마무스",
+//       Text: `${req.params.text}`,
+//       Time: Now,
+//       No: 0,
+//     });
+//     console.log(req.params.text);
+//     res.status(200).json(addWord);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// });
 
 router.get("/GET_COMMENTS/:word", async (req, res) => {
   try {
@@ -54,9 +54,13 @@ router.get("/GET_COMMENTS/:word", async (req, res) => {
 });
 
 router.post("/ADD_COMMENT", async (req, res) => {
+  try {
+    await console.log(req.body);
+    res.send(req.body);
+  } catch (err) {
+    console.log(err);
+  }
   // console.log(req.params.tests);
   // console.log(req);
-  console.log(req.body);
-  res.send("test");
 });
 module.exports = router;

@@ -52,3 +52,9 @@ export interface CommentType {
   text: string;
   comment: [{ No: number; Text: string | undefined }];
 }
+
+export interface CommentAddType {
+  id: number;
+  text: string;
+  comment: string | undefined;
+}

@@ -3,11 +3,16 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { CommentType, Datatype, RootState } from "../common/types";
+import {
+  CommentAddType,
+  CommentType,
+  Datatype,
+  RootState,
+} from "../common/types";
 import { getDatas as getDataSagaStart } from "../redux/module/data";
 import {
   getComments as getCommentsSagastart,
-  addComments as addCommentSagaStart,
+  addComment as addCommentSagaStart,
 } from "../redux/module/comment";
 // import component
 import Dictionarydetail from "../components/dictionary/DictionarydetailComponent";
@@ -35,7 +40,7 @@ const DictionaryContainer = () => {
     [dispatch]
   );
   const addComment = useCallback(
-    (comment: CommentType) => {
+    (comment: CommentAddType) => {
       dispatch(addCommentSagaStart(comment));
     },
     [dispatch]

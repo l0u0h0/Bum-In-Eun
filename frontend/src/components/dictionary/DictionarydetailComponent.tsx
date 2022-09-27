@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import Header from "../../common/HeaderComponent";
 // react-bootstrap
 import { InputGroup, Button, FormControl } from "react-bootstrap";
-import { CommentType } from "../../common/types";
+import { CommentAddType, CommentType } from "../../common/types";
 
 interface dictionarydataState {
   idx: number;
@@ -16,7 +16,7 @@ interface dictionarydataState {
 interface DictionarydetailProps {
   comments: CommentType | null;
   getComments: (arg: string) => void;
-  addComment: (arg: CommentType) => void;
+  addComment: (arg: CommentAddType) => void;
 }
 
 // Detail Area
@@ -65,15 +65,15 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
     let copy = [...data];
     const refResult: string | undefined = ref.current?.value.toString();
     if (comments !== null) {
+      console.log({
+        id: comments[0].id,
+        text: comments[0].text,
+        comment: refResult,
+      });
       addComment({
-        id: comments.id,
-        text: comments.text,
-        comment: [
-          {
-            No: 0,
-            Text: refResult,
-          },
-        ],
+        id: comments[0].id,
+        text: comments[0].text,
+        comment: refResult,
       });
     }
     copy.push({

@@ -3,7 +3,7 @@ import CommentService from "../../service/CommentService";
 import { createActions, handleActions, Action } from "redux-actions";
 import { call, put, select, takeEvery } from "redux-saga/effects";
 // type import
-import { CommentsState, CommentType } from "../../common/types";
+import { CommentAddType, CommentsState, CommentType } from "../../common/types";
 
 // prefix
 const prefix = "bumineun/comment";
@@ -49,7 +49,7 @@ const reducer = handleActions<CommentsState, CommentType>(
 export default reducer;
 
 // Comments Actions create
-export const { getComments, addComments } = createActions(
+export const { getComments, addComment } = createActions(
   "GET_COMMENTS",
   "ADD_COMMENT",
   { prefix }
@@ -68,17 +68,41 @@ function* getCommentsSaga(action: Action<string>) {
 }
 
 // example addCommentSaga
-function* addCommentsSaga(action: Action<CommentType>) {
+function* addCommentSaga(action: Action<CommentAddType>) {
   try {
+    console.log("add_saga_start");
     yield put(pending());
-    const comment: CommentType = yield call(
-      CommentService.addComments,
-      action.payload
-    );
+    console.log(action.payload);
+    const text = action.payload;
+    const comment: CommentType = yield call(CommentService.addComment, text);
     const comments: CommentType = yield select(
       (state) => state.comments.comments
     );
-    yield put(success(comments[0].comment.push(comment)));
+    const data = comments[0].comments;
+    console.log([
+      ...data,
+      {
+        No: 0,
+        Text: comment.comment,
+      },
+    ]);
+    // console.log(
+    //   comments[0].comments.push({
+    //     No: 0,
+    //     Text: comment.comment,
+    //   })
+    // );
+    // yield put(success(comment));
+    yield put(
+      success([
+        ...data,
+        {
+          No: 0,
+          Text: comment.comment,
+        },
+      ])
+    );
+    console.log("success_after");
   } catch (error: any) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
   }
@@ -87,5 +111,5 @@ function* addCommentsSaga(action: Action<CommentType>) {
 // saga create
 export function* commentsSaga() {
   yield takeEvery(`${prefix}/GET_COMMENTS`, getCommentsSaga);
-  yield takeEvery(`${prefix}/ADD_COMMENT`, addCommentsSaga);
+  yield takeEvery(`${prefix}/ADD_COMMENT`, addCommentSaga);
 }

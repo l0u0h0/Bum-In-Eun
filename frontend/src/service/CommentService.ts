@@ -1,7 +1,7 @@
 // import axios
 import axios from "axios";
 // import type
-import { CommentType } from "../common/types";
+import { CommentAddType, CommentType } from "../common/types";
 
 /** setting API_URL
  *  -> develop : localhost:3306
@@ -15,11 +15,12 @@ const API_URL =
 export default class CommentService {
   public static async getComments(word: string): Promise<CommentType> {
     const response = await axios.get(`${API_URL}/GET_COMMENTS/${word}`);
-    console.log(response.data);
     return response.data;
   }
 
-  public static async addComments(comment: CommentType): Promise<CommentType> {
+  public static async addComment(
+    comment: CommentAddType
+  ): Promise<CommentAddType> {
     const response = await axios.post(`${API_URL}/ADD_COMMENT`, comment);
     return response.data;
   }
