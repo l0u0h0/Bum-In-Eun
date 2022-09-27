@@ -70,39 +70,22 @@ function* getCommentsSaga(action: Action<string>) {
 // example addCommentSaga
 function* addCommentSaga(action: Action<CommentAddType>) {
   try {
-    console.log("add_saga_start");
     yield put(pending());
-    console.log(action.payload);
     const text = action.payload;
     const comment: CommentType = yield call(CommentService.addComment, text);
     const comments: CommentType = yield select(
       (state) => state.comments.comments
     );
-    const data = comments[0].comments;
-    console.log([
+    let data = comments[0].comments;
+    data = [
       ...data,
       {
         No: 0,
         Text: comment.comment,
       },
-    ]);
-    // console.log(
-    //   comments[0].comments.push({
-    //     No: 0,
-    //     Text: comment.comment,
-    //   })
-    // );
-    // yield put(success(comment));
-    yield put(
-      success([
-        ...data,
-        {
-          No: 0,
-          Text: comment.comment,
-        },
-      ])
-    );
-    console.log("success_after");
+    ];
+    comments[0].comments = data;
+    yield put(success(comments));
   } catch (error: any) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
   }

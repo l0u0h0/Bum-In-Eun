@@ -20,41 +20,6 @@ export default function Crimeresult({ datas, getList }) {
     } else if (type === "gendercrime") {
       setCategory("성범죄");
     }
-    // example data
-    // setData([
-    //   {
-    //     word: `${category}`,
-    //     mean: `이 단어는 ${category} 첫 번째 단어입니다.`,
-    //   },
-    //   {
-    //     word: `${category}`,
-    //     mean: `이 단어는 ${category} 두 번째 단어입니다.`,
-    //   },
-    //   {
-    //     word: `${category}`,
-    //     mean: `이 단어는 ${category} 세 번째 단어입니다.`,
-    //   },
-    //   {
-    //     word: `${category}`,
-    //     mean: `이 단어는 ${category} 네 번째 단어입니다.`,
-    //   },
-    //   {
-    //     word: `${category}`,
-    //     mean: `이 단어는 ${category} 다섯 번째 단어입니다.`,
-    //   },
-    //   {
-    //     word: `${category}`,
-    //     mean: `이 단어는 ${category} 여섯 번째 단어입니다.`,
-    //   },
-    //   {
-    //     word: `${category}`,
-    //     mean: `이 단어는 ${category} 일곱 번째 단어입니다.`,
-    //   },
-    //   {
-    //     word: `${category}`,
-    //     mean: `이 단어는 ${category} 여덟 번째 단어입니다.`,
-    //   },
-    // ]);
     if (datas !== null) {
       setData(
         datas.map(({ Type, Text }) => ({
@@ -76,22 +41,6 @@ export default function Crimeresult({ datas, getList }) {
         <div className="result-body">
           <table className="result-table">
             <tbody>
-              {/* {data.map((data, num) => (
-                <tr className="result-row" key={`table_row_${num}`}>
-                  <td className="result-word">
-                    <Link
-                      to={`/crime/detail?category=${category}&word=${
-                        data.word + (num + 1)
-                      }&mean=${data.mean}`}
-                    >
-                      <div className="result-word-link">
-                        {data.word + (num + 1)}
-                      </div>
-                    </Link>
-                  </td>
-                  <td className="result-mean">{data.mean}</td>
-                </tr>
-              ))} */}
               {data !== null ? (
                 data.map((data, num) => (
                   <tr className="result-row" key={`table_row_${num}`}>

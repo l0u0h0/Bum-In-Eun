@@ -58,7 +58,6 @@ const MainComponent: React.FC<Mainprops> = ({
       </div>
       <div className="body">
         <Body2 />
-        {/* <Body2Example /> */}
       </div>
       <Banner />
     </div>
@@ -125,7 +124,6 @@ const Body1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
 
 // Tab Fragment
 const Tab1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
-  // const list = [1, 2, 3, 4, 5];
   const [now, setNow] = useState("");
   useEffect(() => {
     const dt = moment();
@@ -146,16 +144,6 @@ const Tab1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
       <div className="table-area-first">
         <table>
           <tbody>
-            {/* {list.map((num) => (
-              <tr key={`table_row_${num}`}>
-                <th className="data-rank">{num}.</th>
-                <td className="data-word">
-                  {datas !== null ? datas[3].Text : "null"}
-                </td>
-                <td className="data-state">-</td>
-                <td className="data-num">120,862</td>
-              </tr>
-            ))} */}
             {datas ? (
               datas.map((data: Datatype) => (
                 <tr key={`table_row_${data.id}`}>
@@ -180,7 +168,6 @@ const Tab1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
 
 const Tab2: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
   let navigate = useNavigate();
-  // const list = [1, 2, 3, 4, 5];
   function LinkClick() {
     navigate("/dictionary");
   }
@@ -197,14 +184,6 @@ const Tab2: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
       <div className="table-area-second">
         <table>
           <tbody>
-            {/* {list.map((num) => (
-              <tr key={`table_row_${num}`}>
-                <th className="data-rank">{num}.</th>
-                <td className="data-word">킹받네</td>
-                <td className="data-state">-</td>
-                <td className="data-num">120,862</td>
-              </tr>
-            ))} */}
             {datas !== null ? (
               datas.map((data: Datatype) => (
                 <tr key={`table_row_${data.id}`}>
@@ -237,7 +216,6 @@ function Tab3({ datas }) {
   return (
     <div key="main_Tab3" className="contents">
       <div className="static-data-area" id="static-data-area">
-        {/* <img src={static_img} alt="staticimg" className="static-img" /> */}
         <Chart datas={datas} />
       </div>
       <div className="link-area">
@@ -332,58 +310,5 @@ const News = ({ news }) => {
     </>
   );
 };
-
-// api 라이센스 문제로 이미지로 잠시 대체
-// function Body2Example() {
-//   const [examplelist, setExamplelist] = useState([]);
-//   useEffect(() => {
-//     const result = [
-//       {
-//         img: newsimg_1,
-//         _id: "newsimg_1",
-//         alt: "ex_img_1",
-//       },
-//       {
-//         img: newsimg_2,
-//         _id: "newsimg_2",
-//         alt: "ex_img_2",
-//       },
-//       {
-//         img: newsimg_3,
-//         _id: "newsimg_3",
-//         alt: "ex_img_3",
-//       },
-//       {
-//         img: newsimg_4,
-//         _id: "newsimg_4",
-//         alt: "ex_img_4",
-//       },
-//     ];
-//     setExamplelist(result);
-//   }, []);
-
-//   return (
-//     <div className="main-body-second">
-//       <h2>범죄 관련 뉴스</h2>
-//       <div className="news-area">
-//         {examplelist.map((img) => (
-//           <Example key={img._id} list={img} />
-//         ))}
-//       </div>
-//       <Link to="/crime">
-//         <button className="btn btn--link">범죄 관련 은어 확인</button>
-//       </Link>
-//     </div>
-//   );
-// }
-
-// const Example = ({ list }) => {
-//   const { img, alt } = list;
-//   return (
-//     <div>
-//       <img src={img} alt={alt} />
-//     </div>
-//   );
-// };
 
 export default MainComponent;

@@ -27,7 +27,6 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
 }) => {
   const location = new URLSearchParams(useLocation().search);
   const word = location.get("word");
-  // const [ref, setRef] = useState<HTMLInputElement>({ value: "" });
   const ref = useRef<HTMLInputElement>(null);
   const [data, setData] = useState<dictionarydataState[]>([
     { idx: 0, mean: "", count: 0 },
@@ -44,7 +43,6 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
   }, [getComments, word]);
   useEffect(() => {
     if (comments !== null) {
-      console.log(comments);
       setData(
         comments[0].comments.map((data, i) => ({
           idx: i,
@@ -54,22 +52,19 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
       );
     }
   }, [comments]);
-
+  if (comments === null) {
+    return <div>,,,데이터 로딩중</div>;
+  }
   const count = (datas: dictionarydataState) => {
     let copy = [...data];
     copy[datas.idx] = { ...copy[datas.idx], count: datas.count + 1 };
     setData(copy);
   };
-  /** example add func */
+  /** add func */
   const add = () => {
     let copy = [...data];
     const refResult: string | undefined = ref.current?.value.toString();
     if (comments !== null) {
-      console.log({
-        id: comments[0].id,
-        text: comments[0].text,
-        comment: refResult,
-      });
       addComment({
         id: comments[0].id,
         text: comments[0].text,
@@ -87,9 +82,6 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
       })
     );
   };
-  // const testadd = () => {
-  //
-  // }
   return (
     <div className="App-dictionarydetail">
       <Header />

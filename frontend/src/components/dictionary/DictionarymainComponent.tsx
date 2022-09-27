@@ -8,13 +8,6 @@ import { Datatype } from "../../common/types";
 
 // Main Area
 export default function DictionaryMain({ datas, getDatas }) {
-  // const lists = [
-  //   { num: 1, word: "킹받네" },
-  //   { num: 2, word: "킹받네" },
-  //   { num: 3, word: "킹받네" },
-  //   { num: 4, word: "킹받네" },
-  //   { num: 5, word: "킹받네" },
-  // ];
   const [lists, setLists] = useState([{ num: null, word: "" }]);
   useEffect(() => {
     if (datas !== null) {
