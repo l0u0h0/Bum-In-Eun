@@ -60,10 +60,7 @@ function* getCommentsSaga(action: Action<string>) {
   try {
     const word = action.payload;
     yield put(pending());
-    const comments: CommentType[] = yield call(
-      CommentService.getComments,
-      word
-    );
+    const comments: CommentType = yield call(CommentService.getComments, word);
     yield put(success(comments));
   } catch (error: any) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
@@ -78,10 +75,10 @@ function* addCommentsSaga(action: Action<CommentType>) {
       CommentService.addComments,
       action.payload
     );
-    const comments: CommentType[] = yield select(
+    const comments: CommentType = yield select(
       (state) => state.comments.comments
     );
-    yield put(success([...comments, comment]));
+    yield put(success(comments[0].comment.push(comment)));
   } catch (error: any) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
   }

@@ -56,7 +56,7 @@ router.get("/GET_COMMENTS/:word", async (req, res) => {
 router.post("/ADD_COMMENT", async (req, res) => {
   // console.log(req.params.tests);
   // console.log(req);
-  console.log(req);
+  console.log(req.body);
   res.send("test");
 });
 module.exports = router;

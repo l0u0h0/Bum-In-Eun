@@ -16,12 +16,14 @@ interface dictionarydataState {
 interface DictionarydetailProps {
   comments: CommentType | null;
   getComments: (arg: string) => void;
+  addComment: (arg: CommentType) => void;
 }
 
 // Detail Area
 const Dictionarydetail: React.FC<DictionarydetailProps> = ({
   comments,
   getComments,
+  addComment,
 }) => {
   const location = new URLSearchParams(useLocation().search);
   const word = location.get("word");
@@ -41,34 +43,6 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
     }
   }, [getComments, word]);
   useEffect(() => {
-    // example data
-    // setData([
-    //   {
-    //     idx: 0,
-    //     mean: `이 단어의 첫 번째 의미입니다.`,
-    //     count: 5,
-    //   },
-    //   {
-    //     idx: 1,
-    //     mean: `이 단어의 두 번째 의미입니다.`,
-    //     count: 4,
-    //   },
-    //   {
-    //     idx: 2,
-    //     mean: `이 단어의 세 번째 의미입니다.`,
-    //     count: 3,
-    //   },
-    //   {
-    //     idx: 3,
-    //     mean: `이 단어의 네 번째 의미입니다.`,
-    //     count: 2,
-    //   },
-    //   {
-    //     idx: 4,
-    //     mean: `이 단어의 다섯 번째 의미입니다.`,
-    //     count: 1,
-    //   },
-    // ]);
     if (comments !== null) {
       console.log(comments);
       setData(
@@ -90,6 +64,18 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
   const add = () => {
     let copy = [...data];
     const refResult: string | undefined = ref.current?.value.toString();
+    if (comments !== null) {
+      addComment({
+        id: comments.id,
+        text: comments.text,
+        comment: [
+          {
+            No: 0,
+            Text: refResult,
+          },
+        ],
+      });
+    }
     copy.push({
       idx: data.length,
       mean: refResult,

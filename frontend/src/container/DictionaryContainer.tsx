@@ -5,7 +5,10 @@ import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { CommentType, Datatype, RootState } from "../common/types";
 import { getDatas as getDataSagaStart } from "../redux/module/data";
-import { getComments as getCommentsSagastart } from "../redux/module/comment";
+import {
+  getComments as getCommentsSagastart,
+  addComments as addCommentSagaStart,
+} from "../redux/module/comment";
 // import component
 import Dictionarydetail from "../components/dictionary/DictionarydetailComponent";
 import DictionaryMain from "../components/dictionary/DictionarymainComponent";
@@ -31,13 +34,25 @@ const DictionaryContainer = () => {
     },
     [dispatch]
   );
+  const addComment = useCallback(
+    (comment: CommentType) => {
+      dispatch(addCommentSagaStart(comment));
+    },
+    [dispatch]
+  );
   useEffect(() => {
     setPathName(path);
   }, [path]);
   if (pathName === "/dictionary") {
     return <DictionaryMain datas={datas} getDatas={getDatas} />;
   } else if (pathName === "/dictionary/detail") {
-    return <Dictionarydetail comments={comments} getComments={getComments} />;
+    return (
+      <Dictionarydetail
+        comments={comments}
+        getComments={getComments}
+        addComment={addComment}
+      />
+    );
   } else {
     return <DictionaryMain datas={datas} getDatas={getDatas} />;
   }
