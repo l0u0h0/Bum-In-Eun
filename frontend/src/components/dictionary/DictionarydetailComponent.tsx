@@ -5,6 +5,8 @@ import { useLocation } from "react-router-dom";
 import Header from "../../common/HeaderComponent";
 // react-bootstrap
 import { InputGroup, Button, FormControl } from "react-bootstrap";
+import Modal from "react-bootstrap/Modal";
+// Type
 import { CommentAddType, CommentType } from "../../common/types";
 
 interface dictionarydataState {
@@ -31,6 +33,7 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
   const [data, setData] = useState<dictionarydataState[]>([
     { idx: 0, mean: "", count: 0 },
   ]);
+  const [nullText, setNullText] = useState(false);
   useEffect(() => {
     return () => {
       console.log("unin");
@@ -64,6 +67,10 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
   const add = () => {
     let copy = [...data];
     const refResult: string | undefined = ref.current?.value.toString();
+    if (refResult === "") {
+      setNullText(true);
+      return;
+    }
     if (comments !== null) {
       addComment({
         id: comments[0].id,
@@ -127,6 +134,10 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
                 onClick={add}
                 value="등록"
               />
+              <MyVerticallyCenteredModal
+                show={nullText}
+                onHide={() => setNullText(false)}
+              />
             </InputGroup>
           </div>
         </div>
@@ -134,5 +145,27 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
     </div>
   );
 };
+
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">등록 오류</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h4>단어의 뜻 등록에서 오류 발생!</h4>
+        <p>등록하실 단어의 뜻을 작성해주신 후 등록을 진행해주시기 바랍니다!</p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
 
 export default Dictionarydetail;
