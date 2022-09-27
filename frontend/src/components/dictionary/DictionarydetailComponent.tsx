@@ -31,6 +31,11 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
     { idx: 0, mean: "", count: 0 },
   ]);
   useEffect(() => {
+    return () => {
+      console.log("unin");
+    };
+  }, []);
+  useEffect(() => {
     if (word !== null) {
       getComments(word);
     }
