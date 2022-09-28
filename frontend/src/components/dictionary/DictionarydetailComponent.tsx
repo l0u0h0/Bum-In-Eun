@@ -20,7 +20,7 @@ interface dictionarydataState {
 }
 
 interface DictionarydetailProps {
-  comments: CommentType | null;
+  comments: CommentType[] | null;
   getComments: (arg: string) => void;
   addComment: (arg: CommentAddType) => void;
   increaseCount: (arg: CountIncreaseType) => void;
@@ -56,7 +56,7 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
   useEffect(() => {
     if (comments !== null && word !== null) {
       setData(
-        comments[0].comments.map((data, i) => ({
+        comments.map((data, i) => ({
           idx: i,
           mean: data.Text,
           count: data.No,
@@ -89,10 +89,9 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
       setNullText(true);
       return;
     }
-    if (comments !== null) {
+    if (comments !== null && word !== null) {
       addComment({
-        id: comments[0].id,
-        text: comments[0].text,
+        text: word,
         comment: refResult,
       });
     }

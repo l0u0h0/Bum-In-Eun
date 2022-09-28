@@ -29,7 +29,7 @@ export const { pending, success, fail } = createActions(
 );
 
 // Actions create
-const reducer = handleActions<CommentsState, CommentType>(
+const reducer = handleActions<CommentsState, CommentType[]>(
   {
     PENDING: (state, action) => ({
       ...state,
@@ -66,7 +66,10 @@ function* getCommentsSaga(action: Action<string>) {
   try {
     const word = action.payload;
     yield put(pending());
-    const comments: CommentType = yield call(CommentService.getComments, word);
+    const comments: CommentType[] = yield call(
+      CommentService.getComments,
+      word
+    );
     yield put(success(comments));
   } catch (error: any) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
@@ -79,19 +82,12 @@ function* addCommentSaga(action: Action<CommentAddType>) {
     yield put(pending());
     const text = action.payload;
     const comment: CommentType = yield call(CommentService.addComment, text);
-    const comments: CommentType = yield select(
+    const comments: CommentType[] = yield select(
       (state) => state.comments.comments
     );
-    let data = comments[0].comments;
-    data = [
-      ...data,
-      {
-        No: 0,
-        Text: comment.comment,
-      },
-    ];
-    comments[0].comments = data;
-    yield put(success(comments));
+    let data = comments;
+    data = [...data, comment];
+    yield put(success(data));
   } catch (error: any) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
   }
@@ -106,7 +102,10 @@ function* increaseCountSaga(action: Action<CountIncreaseType>) {
     if (data.type !== null) {
       word = data.type;
     }
-    const comments: CommentType = yield call(CommentService.getComments, word);
+    const comments: CommentType[] = yield call(
+      CommentService.getComments,
+      word
+    );
     yield put(success(comments));
   } catch (error: any) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));

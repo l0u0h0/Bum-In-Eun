@@ -35,22 +35,12 @@ const router = express.Router();
 
 router.get("/GET_COMMENTS/:word", async (req, res) => {
   try {
-    const origindata = await data.findAll({
-      attributes: ["id", "text"],
-      include: [
-        {
-          model: comment,
-          attributes: ["No", "Text"], // select할 컬럼 선택
-          order: [
-            ["No", "desc"], // 정렬할 컬럼명과 오름차순/내림차순 구분
-          ],
-        },
-      ],
-      where: {
-        text: `${req.params.word}`,
-      },
+    const getcomment = await comment.findAll({
+      attributes: ["Type", "Text", "No"],
+      order: [["No", "desc"]],
+      where: { Type: `${req.params.word}` },
     });
-    res.status(200).json(origindata);
+    res.status(200).json(getcomment);
   } catch (err) {
     console.error(err);
   }

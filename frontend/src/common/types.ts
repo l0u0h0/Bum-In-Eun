@@ -42,19 +42,18 @@ export interface DataListType {
 
 /** comment data Type */
 export interface CommentsState {
-  comments: CommentType | null;
+  comments: CommentType[] | null;
   loading: boolean;
   error: Error | null;
 }
 
 export interface CommentType {
-  id: number;
-  text: string;
-  comment: [{ No: number; Text: string | undefined }];
+  No: number;
+  Text: string | undefined;
+  Type: string;
 }
 
 export interface CommentAddType {
-  id: number;
   text: string;
   comment: string | undefined;
 }
