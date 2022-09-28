@@ -2,24 +2,12 @@
 import React, { useState, useRef } from "react";
 import Banner from "../common/BannerComponent";
 import Header from "../common/HeaderComponent";
+import { SearchState } from "../common/types";
 // img import
 import static_img from "../image/img_6.png";
 // react-bootstrap
 import { InputGroup, Button, FormControl } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
-interface SearchState {
-  data: string | null;
-  originData: string | undefined;
-  test: {
-    crime: {
-      word: string;
-      category: string;
-    };
-    word: [any, any];
-    static: string;
-  };
-}
 
 // Search main Component
 export default function SearchComponent() {

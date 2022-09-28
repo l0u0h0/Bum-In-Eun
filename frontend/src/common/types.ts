@@ -63,3 +63,40 @@ export interface CountIncreaseType {
   text: string | undefined;
   count: number;
 }
+
+export interface Mainprops {
+  datas: Datatype[] | null;
+  loading: boolean;
+  error: Error | null;
+  getDatas: () => void;
+}
+
+export interface SearchState {
+  data: string | null;
+  originData: string | undefined;
+  test: {
+    crime: {
+      word: string;
+      category: string;
+    };
+    word: [any, any];
+    static: string;
+  };
+}
+
+export interface dictionarydataState {
+  idx: number;
+  mean: string | undefined;
+  count: number;
+}
+
+export interface ChartProps {
+  datas: Datatype[] | null;
+}
+
+export interface DictionarydetailProps {
+  comments: CommentType[] | null;
+  getComments: (arg: string) => void;
+  addComment: (arg: CommentAddType) => void;
+  increaseCount: (arg: CountIncreaseType) => void;
+}

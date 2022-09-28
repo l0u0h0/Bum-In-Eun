@@ -61,7 +61,7 @@ export const { getComments, addComment, increaseCount } = createActions(
   { prefix }
 );
 
-// example getCommentsaga
+// getCommentsaga
 function* getCommentsSaga(action: Action<string>) {
   try {
     const word = action.payload;
@@ -76,7 +76,7 @@ function* getCommentsSaga(action: Action<string>) {
   }
 }
 
-// example addCommentSaga
+// addCommentSaga
 function* addCommentSaga(action: Action<CommentAddType>) {
   try {
     yield put(pending());
@@ -93,6 +93,7 @@ function* addCommentSaga(action: Action<CommentAddType>) {
   }
 }
 
+// increaseCountSaga
 function* increaseCountSaga(action: Action<CountIncreaseType>) {
   try {
     const data = action.payload;

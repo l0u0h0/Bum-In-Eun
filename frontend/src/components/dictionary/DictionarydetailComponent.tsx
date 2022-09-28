@@ -7,24 +7,7 @@ import Header from "../../common/HeaderComponent";
 import { InputGroup, Button, FormControl } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 // Type
-import {
-  CommentAddType,
-  CommentType,
-  CountIncreaseType,
-} from "../../common/types";
-
-interface dictionarydataState {
-  idx: number;
-  mean: string | undefined;
-  count: number;
-}
-
-interface DictionarydetailProps {
-  comments: CommentType[] | null;
-  getComments: (arg: string) => void;
-  addComment: (arg: CommentAddType) => void;
-  increaseCount: (arg: CountIncreaseType) => void;
-}
+import { DictionarydetailProps, dictionarydataState } from "../../common/types";
 
 // Detail Area
 const Dictionarydetail: React.FC<DictionarydetailProps> = ({

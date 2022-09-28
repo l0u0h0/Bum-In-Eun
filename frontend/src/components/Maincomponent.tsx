@@ -14,7 +14,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 // axios import
 import axios from "axios";
-import { Datatype } from "../common/types";
+import { Datatype, Mainprops } from "../common/types";
 
 // Chart import
 import Chart from "./chartCompo/ChartComponent";
@@ -27,13 +27,6 @@ import {
 } from "chart.js";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
-
-interface Mainprops {
-  datas: Datatype[] | null;
-  loading: boolean;
-  error: Error | null;
-  getDatas: () => void;
-}
 
 // Main Area
 const MainComponent: React.FC<Mainprops> = ({
