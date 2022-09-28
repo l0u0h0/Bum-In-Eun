@@ -54,13 +54,18 @@ router.get("/GET_COMMENTS/:word", async (req, res) => {
 });
 
 router.post("/ADD_COMMENT", async (req, res) => {
+  const dt = moment();
+  const Now = `${dt.format("YYYY-MM-DD HH:mm")}`;
   try {
-    await console.log(req.body);
-    res.send(req.body);
+    const addComment = await comment.create({
+      Type: `${req.body.text}`,
+      Text: `${req.body.comment}`,
+      Time: Now,
+      No: 0,
+    });
+    res.status(200).json(addComment);
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
-  // console.log(req.params.tests);
-  // console.log(req);
 });
 module.exports = router;

@@ -155,14 +155,16 @@ function MyVerticallyCenteredModal(props) {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">등록 오류</Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">Error!</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <h4>단어의 뜻 등록에서 오류 발생!</h4>
         <p>등록하실 단어의 뜻을 작성해주신 후 등록을 진행해주시기 바랍니다!</p>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button variant="outline-secondary" onClick={props.onHide}>
+          Close
+        </Button>
       </Modal.Footer>
     </Modal>
   );
