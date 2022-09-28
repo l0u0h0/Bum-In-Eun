@@ -8,6 +8,7 @@ const Chart: React.FC<ChartProps> = ({ datas }) => {
   if (datas === null) {
     return <div>데이터 로딩중,,,</div>;
   }
+
   const data = {
     datasets: [
       {

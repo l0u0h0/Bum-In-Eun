@@ -20,11 +20,13 @@ const MainContainer = () => {
   const error = useSelector<RootState, Error | null>(
     (state) => state.datas.error
   );
+
   const dispatch = useDispatch();
 
   const getDatas = useCallback(() => {
     dispatch(getDataSagaStart());
   }, [dispatch]);
+
   return (
     <MainComponent
       datas={datas}

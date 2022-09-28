@@ -10,6 +10,7 @@ export default function Crimeresult({ datas, getList }) {
   const type = location.get("category");
   const [category, setCategory] = useState("");
   const [data, setData] = useState([{ word: "", mean: "" }]);
+
   useEffect(() => {
     if (type === "gambling") {
       setCategory("도박");
@@ -29,9 +30,11 @@ export default function Crimeresult({ datas, getList }) {
       );
     }
   }, [type, datas]);
+
   useEffect(() => {
     getList();
   }, [getList]);
+
   return (
     <div className="App-crimeresult">
       <Header />

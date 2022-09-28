@@ -33,7 +33,7 @@ export default function SearchComponent() {
       static: static_img,
     },
   });
-  // const [ref, setRef] = useState(null);
+
   const ref = useRef(null);
 
   return (
@@ -83,6 +83,7 @@ export default function SearchComponent() {
 // Search result Component
 function Searchresult(search) {
   const data = search.data.test;
+
   return (
     <div className="search-result">
       <Link

@@ -12,6 +12,7 @@ export default function Crimedetail() {
   const category = location.get("category");
   const word = location.get("word");
   const mean = location.get("mean");
+
   return (
     <div className="App-crimedetail">
       <Header />

@@ -40,18 +40,21 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
     { idx: 0, mean: "", count: 0 },
   ]);
   const [nullText, setNullText] = useState(false);
+
   useEffect(() => {
     return () => {
       console.log("unin");
     };
   }, []);
+
   useEffect(() => {
     if (word !== null) {
       getComments(word);
     }
   }, [getComments, word]);
+
   useEffect(() => {
-    if (comments !== null) {
+    if (comments !== null && word !== null) {
       setData(
         comments[0].comments.map((data, i) => ({
           idx: i,
@@ -60,16 +63,24 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
         }))
       );
     }
-  }, [comments]);
+  }, [comments, word]);
+
   if (comments === null) {
     return <div>,,,데이터 로딩중</div>;
   }
-  // const count = (datas: dictionarydataState) => {
-  //   let copy = [...data];
-  //   copy[datas.idx] = { ...copy[datas.idx], count: datas.count + 1 };
-  //   increaseCount({ type: word, text: datas.mean });
-  //   setData(copy);
-  // };
+
+  /** increase count func */
+  const count = (datas: dictionarydataState) => {
+    let value = {
+      type: word,
+      text: datas.mean,
+      count: datas.count,
+    };
+    if (word !== null && datas.mean !== undefined) {
+      increaseCount(value);
+    }
+  };
+
   /** add func */
   const add = () => {
     let copy = [...data];
@@ -96,6 +107,7 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
       })
     );
   };
+
   return (
     <div className="App-dictionarydetail">
       <Header />
@@ -105,21 +117,24 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
         <div className="detail-body">
           <table className="mean-table">
             <tbody>
-              {data.map((data) => (
-                <tr className="mean-row" key={`table_row_${data.idx}`}>
-                  <td className="mean-comment">{data.mean}</td>
-                  <td className="mean-count">
-                    <button
-                      onClick={() => {
-                        // count(data);
-                        increaseCount({ type: word, text: data.mean });
-                      }}
-                    >
-                      {data.count}
-                    </button>
-                  </td>
-                </tr>
-              ))}
+              {word !== null && data !== null ? (
+                data.map((datarow) => (
+                  <tr className="mean-row" key={`table_row_${datarow.idx}`}>
+                    <td className="mean-comment">{datarow.mean}</td>
+                    <td className="mean-count">
+                      <button
+                        onClick={() => {
+                          count(datarow);
+                        }}
+                      >
+                        {datarow.count}
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <div>데이터 로딩중,,,,</div>
+              )}
             </tbody>
           </table>
           <hr className="table-add-between" />

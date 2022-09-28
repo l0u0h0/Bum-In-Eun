@@ -19,13 +19,16 @@ const CrimeContainer = () => {
   const datas = useSelector<RootState, DataListType[] | null>(
     (state) => state.datas.data
   );
+
   const dispatch = useDispatch();
   const getList = useCallback(() => {
     dispatch(getListDatasSaga());
   }, [dispatch]);
+
   useEffect(() => {
     setPathName(path);
   }, [path]);
+
   if (pathName === "/crime") {
     return <Crimemain />;
   } else if (pathName === "/crime/result") {

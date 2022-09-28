@@ -57,7 +57,7 @@ export default reducer;
 export const { getComments, addComment, increaseCount } = createActions(
   "GET_COMMENTS",
   "ADD_COMMENT",
-  "INCR_COUNT",
+  "INCREASE_COUNT",
   { prefix }
 );
 
@@ -100,11 +100,13 @@ function* addCommentSaga(action: Action<CommentAddType>) {
 function* increaseCountSaga(action: Action<CountIncreaseType>) {
   try {
     const data = action.payload;
+    let word = "";
     yield put(pending());
-    const comments: CommentType = yield call(
-      CommentService.increaseCount,
-      data
-    );
+    yield call(CommentService.increaseCount, data);
+    if (data.type !== null) {
+      word = data.type;
+    }
+    const comments: CommentType = yield call(CommentService.getComments, word);
     yield put(success(comments));
   } catch (error: any) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
@@ -115,5 +117,5 @@ function* increaseCountSaga(action: Action<CountIncreaseType>) {
 export function* commentsSaga() {
   yield takeEvery(`${prefix}/GET_COMMENTS`, getCommentsSaga);
   yield takeEvery(`${prefix}/ADD_COMMENT`, addCommentSaga);
-  yield takeEvery(`${prefix}/INCR_COUNT`, increaseCountSaga);
+  yield takeEvery(`${prefix}/INCREASE_COUNT`, increaseCountSaga);
 }

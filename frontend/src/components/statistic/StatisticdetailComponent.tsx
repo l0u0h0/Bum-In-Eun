@@ -10,6 +10,7 @@ import ex_img from "../../image/img_6.png";
 export default function Statisticdetail() {
   const location = new URLSearchParams(useLocation().search);
   const word = location.get("word");
+
   return (
     <div className="App-staticdetail">
       <Header />

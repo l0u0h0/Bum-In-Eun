@@ -9,6 +9,7 @@ import { Datatype } from "../../common/types";
 // Main Area
 export default function DictionaryMain({ datas, getDatas }) {
   const [lists, setLists] = useState([{ num: null, word: "" }]);
+
   useEffect(() => {
     if (datas !== null) {
       setLists(
@@ -19,9 +20,11 @@ export default function DictionaryMain({ datas, getDatas }) {
       );
     }
   }, [datas]);
+
   useEffect(() => {
     getDatas();
   }, [getDatas]);
+
   return (
     <div className="App-dictionarymain">
       <Header />

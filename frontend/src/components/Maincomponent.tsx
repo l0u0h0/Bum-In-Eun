@@ -45,6 +45,7 @@ const MainComponent: React.FC<Mainprops> = ({
   useEffect(() => {
     getDatas();
   }, [getDatas]);
+
   return (
     <div className="App-main">
       <Header />
@@ -67,6 +68,7 @@ const MainComponent: React.FC<Mainprops> = ({
 // Tab Area
 const Body1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
+
   return (
     <div className="main-body-first">
       <hr />
@@ -125,6 +127,7 @@ const Body1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
 // Tab Fragment
 const Tab1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
   const [now, setNow] = useState("");
+
   useEffect(() => {
     const dt = moment();
     setNow(
@@ -134,11 +137,13 @@ const Tab1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
     );
     getDatas();
   }, [now, getDatas]);
+
   if (datas === null) {
     return <div>데이터 로딩중,,,</div>;
   } else {
     if (datas.length > 5) return <div>데이터 로딩중,,,</div>;
   }
+
   return (
     <div key="main_Tab1" className="contents">
       <div className="table-area-first">
@@ -168,17 +173,21 @@ const Tab1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
 
 const Tab2: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
   let navigate = useNavigate();
+
   function LinkClick() {
     navigate("/dictionary");
   }
+
   useEffect(() => {
     getDatas();
   }, [getDatas]);
+
   if (datas === null) {
     return <div>데이터 로딩중,,,</div>;
   } else {
     if (datas.length > 5) return <div>데이터 로딩중,,,</div>;
   }
+
   return (
     <div key="main_Tab2" className="contents">
       <div className="table-area-second">
@@ -210,9 +219,11 @@ const Tab2: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
 
 function Tab3({ datas }) {
   let navigate = useNavigate();
+
   function LinkClick() {
     navigate("/statistic");
   }
+
   return (
     <div key="main_Tab3" className="contents">
       <div className="static-data-area" id="static-data-area">
@@ -259,12 +270,14 @@ function Body2() {
     };
     newsApi();
   }, []);
+
   if (loading) {
     return <div>로딩중입니다</div>;
   }
   if (!newslist) {
     return null;
   }
+
   return (
     <div className="main-body-second">
       <h2>범죄 관련 뉴스</h2>
@@ -282,6 +295,7 @@ function Body2() {
 
 const News = ({ news }) => {
   const { title, excerpt, link, media } = news;
+
   return (
     <>
       {media && (

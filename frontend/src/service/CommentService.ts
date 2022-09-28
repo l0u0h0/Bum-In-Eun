@@ -30,9 +30,9 @@ export default class CommentService {
   }
 
   public static async increaseCount(
-    data: CountIncreaseType
+    value: CountIncreaseType
   ): Promise<CommentType> {
-    const response = await axios.post(`${API_URL}/INCR_COUNT`, data);
+    const response = await axios.post(`${API_URL}/INCR_COUNT`, value);
     return response.data;
   }
 }

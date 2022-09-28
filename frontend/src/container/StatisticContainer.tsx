@@ -10,9 +10,11 @@ import Statisticmain from "../components/statistic/StatisticmainComponent";
 const StatisticContainer = () => {
   const path = useLocation().pathname;
   const [pathName, setPathName] = useState("");
+
   useEffect(() => {
     setPathName(path);
   }, [path]);
+
   if (pathName === "/statistic") {
     return <Statisticmain />;
   } else if (pathName === "/statistic/detail") {

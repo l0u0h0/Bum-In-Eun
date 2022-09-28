@@ -14,7 +14,7 @@ import { getDatas as getDataSagaStart } from "../redux/module/data";
 import {
   getComments as getCommentsSagastart,
   addComment as addCommentSagaStart,
-  increaseCount as increaseCountSaggStart,
+  increaseCount as increaseCountSagaStart,
 } from "../redux/module/comment";
 // import component
 import Dictionarydetail from "../components/dictionary/DictionarydetailComponent";
@@ -30,6 +30,7 @@ const DictionaryContainer = () => {
   const comments = useSelector<RootState, CommentType | null>(
     (state) => state.comments.comments
   );
+
   const dispatch = useDispatch();
 
   const getDatas = useCallback(() => {
@@ -49,13 +50,15 @@ const DictionaryContainer = () => {
   );
   const increaseCount = useCallback(
     (data: CountIncreaseType) => {
-      dispatch(increaseCountSaggStart(data));
+      dispatch(increaseCountSagaStart(data));
     },
     [dispatch]
   );
+
   useEffect(() => {
     setPathName(path);
   }, [path]);
+
   if (pathName === "/dictionary") {
     return <DictionaryMain datas={datas} getDatas={getDatas} />;
   } else if (pathName === "/dictionary/detail") {
