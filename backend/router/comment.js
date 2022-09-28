@@ -68,4 +68,35 @@ router.post("/ADD_COMMENT", async (req, res) => {
     console.error(err);
   }
 });
+
+router.get("/INCR_COUNT/:word", async (req, res) => {
+  try {
+    await comment.update(
+      {
+        No: No++,
+      },
+      {
+        where: {
+          Text: `${req.params.word}`,
+        },
+      }
+    );
+    const data = await data.findAll({
+      attributes: ["id", "text"],
+      include: [
+        {
+          model: comment,
+          attributes: ["No", "Text"], // select할 컬럼 선택
+        },
+      ],
+      where: {
+        text: `${req.params.word}`,
+      },
+    });
+    console.log(data);
+    res.status(200).json(data);
+  } catch (err) {
+    console.error(err);
+  }
+});
 module.exports = router;

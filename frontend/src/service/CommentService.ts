@@ -1,7 +1,11 @@
 // import axios
 import axios from "axios";
 // import type
-import { CommentAddType, CommentType } from "../common/types";
+import {
+  CommentAddType,
+  CommentType,
+  CountIncreaseType,
+} from "../common/types";
 
 /** setting API_URL
  *  -> develop : localhost:3306
@@ -22,6 +26,13 @@ export default class CommentService {
     comment: CommentAddType
   ): Promise<CommentAddType> {
     const response = await axios.post(`${API_URL}/ADD_COMMENT`, comment);
+    return response.data;
+  }
+
+  public static async increaseCount(
+    data: CountIncreaseType
+  ): Promise<CommentType> {
+    const response = await axios.post(`${API_URL}/INCR_COUNT`, data);
     return response.data;
   }
 }

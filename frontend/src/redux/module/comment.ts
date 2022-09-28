@@ -3,7 +3,12 @@ import CommentService from "../../service/CommentService";
 import { createActions, handleActions, Action } from "redux-actions";
 import { call, put, select, takeEvery } from "redux-saga/effects";
 // type import
-import { CommentAddType, CommentsState, CommentType } from "../../common/types";
+import {
+  CommentAddType,
+  CommentsState,
+  CommentType,
+  CountIncreaseType,
+} from "../../common/types";
 
 // prefix
 const prefix = "bumineun/comment";
@@ -49,9 +54,10 @@ const reducer = handleActions<CommentsState, CommentType>(
 export default reducer;
 
 // Comments Actions create
-export const { getComments, addComment } = createActions(
+export const { getComments, addComment, increaseCount } = createActions(
   "GET_COMMENTS",
   "ADD_COMMENT",
+  "INCR_COUNT",
   { prefix }
 );
 
@@ -91,8 +97,23 @@ function* addCommentSaga(action: Action<CommentAddType>) {
   }
 }
 
+function* increaseCountSaga(action: Action<CountIncreaseType>) {
+  try {
+    const data = action.payload;
+    yield put(pending());
+    const comments: CommentType = yield call(
+      CommentService.increaseCount,
+      data
+    );
+    yield put(success(comments));
+  } catch (error: any) {
+    yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
+  }
+}
+
 // saga create
 export function* commentsSaga() {
   yield takeEvery(`${prefix}/GET_COMMENTS`, getCommentsSaga);
   yield takeEvery(`${prefix}/ADD_COMMENT`, addCommentSaga);
+  yield takeEvery(`${prefix}/INCR_COUNT`, increaseCountSaga);
 }

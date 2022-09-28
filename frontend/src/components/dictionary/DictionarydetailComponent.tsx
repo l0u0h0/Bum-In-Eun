@@ -7,7 +7,11 @@ import Header from "../../common/HeaderComponent";
 import { InputGroup, Button, FormControl } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 // Type
-import { CommentAddType, CommentType } from "../../common/types";
+import {
+  CommentAddType,
+  CommentType,
+  CountIncreaseType,
+} from "../../common/types";
 
 interface dictionarydataState {
   idx: number;
@@ -19,6 +23,7 @@ interface DictionarydetailProps {
   comments: CommentType | null;
   getComments: (arg: string) => void;
   addComment: (arg: CommentAddType) => void;
+  increaseCount: (arg: CountIncreaseType) => void;
 }
 
 // Detail Area
@@ -26,6 +31,7 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
   comments,
   getComments,
   addComment,
+  increaseCount,
 }) => {
   const location = new URLSearchParams(useLocation().search);
   const word = location.get("word");
@@ -58,11 +64,12 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
   if (comments === null) {
     return <div>,,,데이터 로딩중</div>;
   }
-  const count = (datas: dictionarydataState) => {
-    let copy = [...data];
-    copy[datas.idx] = { ...copy[datas.idx], count: datas.count + 1 };
-    setData(copy);
-  };
+  // const count = (datas: dictionarydataState) => {
+  //   let copy = [...data];
+  //   copy[datas.idx] = { ...copy[datas.idx], count: datas.count + 1 };
+  //   increaseCount({ type: word, text: datas.mean });
+  //   setData(copy);
+  // };
   /** add func */
   const add = () => {
     let copy = [...data];
@@ -104,7 +111,8 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
                   <td className="mean-count">
                     <button
                       onClick={() => {
-                        count(data);
+                        // count(data);
+                        increaseCount({ type: word, text: data.mean });
                       }}
                     >
                       {data.count}

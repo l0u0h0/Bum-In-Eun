@@ -58,3 +58,8 @@ export interface CommentAddType {
   text: string;
   comment: string | undefined;
 }
+
+export interface CountIncreaseType {
+  type: string | null;
+  text: string | undefined;
+}

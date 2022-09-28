@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import {
   CommentAddType,
   CommentType,
+  CountIncreaseType,
   Datatype,
   RootState,
 } from "../common/types";
@@ -13,6 +14,7 @@ import { getDatas as getDataSagaStart } from "../redux/module/data";
 import {
   getComments as getCommentsSagastart,
   addComment as addCommentSagaStart,
+  increaseCount as increaseCountSaggStart,
 } from "../redux/module/comment";
 // import component
 import Dictionarydetail from "../components/dictionary/DictionarydetailComponent";
@@ -45,6 +47,12 @@ const DictionaryContainer = () => {
     },
     [dispatch]
   );
+  const increaseCount = useCallback(
+    (data: CountIncreaseType) => {
+      dispatch(increaseCountSaggStart(data));
+    },
+    [dispatch]
+  );
   useEffect(() => {
     setPathName(path);
   }, [path]);
@@ -56,6 +64,7 @@ const DictionaryContainer = () => {
         comments={comments}
         getComments={getComments}
         addComment={addComment}
+        increaseCount={increaseCount}
       />
     );
   } else {
