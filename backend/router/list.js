@@ -1,5 +1,5 @@
 const express = require("express");
-const { data, comment } = require("../models");
+const { data, comment, final_df } = require("../models");
 const moment = require("moment");
 const { fn, col } = require("sequelize");
 
@@ -30,12 +30,14 @@ router.get("/GET_DATAS", async (req, res) => {
 
 router.get("/DATA_SETTING", async (req, res) => {
   try {
-    const test = await comment.findAll({
-      group: ["Type"],
-      attributes: ["Type", [fn("count", "Type"), "count"]],
-      where: {
-        Type: "tests",
-      },
+    const test = await final_df.findAll({
+      group: ["tokenized_twitter"],
+      attributes: [
+        "tokenized_twitter",
+        [fn("count", "tokenized_twitter"), "count"],
+      ],
+      order: [["count", "desc"]],
+      limit: 30,
     });
     res.send(test);
   } catch (err) {

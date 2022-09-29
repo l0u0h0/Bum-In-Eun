@@ -10,6 +10,7 @@ const app = express();
 const mainRouter = require("./router/main");
 const testRouter = require("./router/test");
 const commentRouter = require("./router/comment");
+const listRouter = require("./router/list");
 
 // cors sett
 let corsOption = {
@@ -39,6 +40,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/main", mainRouter);
 app.use("/test", testRouter);
 app.use("/comment", commentRouter);
+app.use("/list", listRouter);
 app.listen(app.get("port"), () => {
   console.log(app.get("port"), "번 포트에서 대기 중");
 });
