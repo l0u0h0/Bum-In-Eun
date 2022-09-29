@@ -1,7 +1,7 @@
 const express = require("express");
 const { data, comment, final_df } = require("../models");
 const moment = require("moment");
-const { fn, col } = require("sequelize");
+const { fn, col, Op, literal } = require("sequelize");
 
 const router = express.Router();
 
@@ -38,6 +38,12 @@ router.get("/DATA_SETTING", async (req, res) => {
       ],
       order: [["count", "desc"]],
       limit: 30,
+      where: {
+        // [Op.gt]: {
+        //   [Op.all]: literal("LEN(N'tokenized_twitter') > 1"),
+        // },
+        [Op.is]: literal("len(tokenized_twitter) > 1"),
+      },
     });
     res.send(test);
   } catch (err) {
