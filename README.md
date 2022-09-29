@@ -14,15 +14,16 @@
 
 ---
 
-> using `React`
+> using `React`&`typescript`
 
-    Front & Back (2022.06.20~)
+    Front & Back (2022.07 ~)
 
 ---
 
 > 사용 라이브러리
 >
-> > `swiper`, `sass`, `react-bootstrap`, `react-router-dom.v6`, `axios`, `redux`, `typescript`,
+> > `swiper`, `sass`, `react-bootstrap`, `react-router-dom.v6`, `axios`, `redux`, `typescript`, `chart.js`
+
 > > `express`, `sequelize`, `mssql_server`
 
 ---

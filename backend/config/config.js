@@ -1,7 +1,4 @@
 require("dotenv").config();
-// import dotenv from "dotenv";
-
-// dotenv.config();
 
 const development = {
   dialect: "mssql",
@@ -11,7 +8,7 @@ const development = {
   database: process.env.DB_DATABASE,
   dialectOptions: {
     options: {
-      encrypt: false, // 오류 발생시 추가 한 부분!
+      encrypt: false,
     },
   },
 };
@@ -24,7 +21,7 @@ const production = {
   database: process.env.DB_DATABASE,
   dialectOptions: {
     options: {
-      encrypt: false, // 오류 발생시 추가 한 부분!
+      encrypt: false,
     },
   },
 };
@@ -37,7 +34,7 @@ const test = {
   database: process.env.DB_DATABASE,
   dialectOptions: {
     options: {
-      encrypt: false, // 오류 발생시 추가 한 부분!
+      encrypt: false,
     },
   },
 };

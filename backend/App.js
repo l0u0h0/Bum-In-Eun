@@ -1,15 +1,17 @@
+// import
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const morgan = require("morgan");
 const db = require("./models");
-// const { sequelize } = require("./models");
 
 const app = express();
+
 const mainRouter = require("./router/main");
 const testRouter = require("./router/test");
 const commentRouter = require("./router/comment");
 
+// cors sett
 let corsOption = {
   origin: "http://localhost:3000",
   credentials: true,
