@@ -64,11 +64,35 @@ export interface CountIncreaseType {
   count: number;
 }
 
+/** Components props Type */
 export interface Mainprops {
   datas: Datatype[] | null;
   loading: boolean;
   error: Error | null;
   getDatas: () => void;
+}
+
+export interface ChartProps {
+  datas: Datatype[] | null;
+}
+
+export interface DictionarydetailProps {
+  comments: CommentType[] | null;
+  getComments: (arg: string) => void;
+  addComment: (arg: CommentAddType) => void;
+  increaseCount: (arg: CountIncreaseType) => void;
+}
+
+export interface ModalPropsType {
+  show: boolean;
+  onHide: () => void;
+}
+
+/** Component State Data Type */
+export interface dictionarydataState {
+  idx: number;
+  mean: string | undefined;
+  count: number;
 }
 
 export interface SearchState {
@@ -82,21 +106,4 @@ export interface SearchState {
     word: [any, any];
     static: string;
   };
-}
-
-export interface dictionarydataState {
-  idx: number;
-  mean: string | undefined;
-  count: number;
-}
-
-export interface ChartProps {
-  datas: Datatype[] | null;
-}
-
-export interface DictionarydetailProps {
-  comments: CommentType[] | null;
-  getComments: (arg: string) => void;
-  addComment: (arg: CommentAddType) => void;
-  increaseCount: (arg: CountIncreaseType) => void;
 }

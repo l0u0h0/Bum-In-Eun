@@ -7,7 +7,11 @@ import Header from "../../common/HeaderComponent";
 import { InputGroup, Button, FormControl } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 // Type
-import { DictionarydetailProps, dictionarydataState } from "../../common/types";
+import {
+  DictionarydetailProps,
+  dictionarydataState,
+  ModalPropsType,
+} from "../../common/types";
 
 // Detail Area
 const Dictionarydetail: React.FC<DictionarydetailProps> = ({
@@ -23,12 +27,6 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
     { idx: 0, mean: "", count: 0 },
   ]);
   const [nullText, setNullText] = useState(false);
-
-  useEffect(() => {
-    return () => {
-      console.log("unin");
-    };
-  }, []);
 
   useEffect(() => {
     if (word !== null) {
@@ -151,7 +149,8 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
   );
 };
 
-function MyVerticallyCenteredModal(props) {
+/** Null Error Modal Components */
+const MyVerticallyCenteredModal: React.FC<ModalPropsType> = (props) => {
   return (
     <Modal
       {...props}
@@ -164,7 +163,8 @@ function MyVerticallyCenteredModal(props) {
       </Modal.Header>
       <Modal.Body>
         <h4>단어의 뜻 등록에서 오류 발생!</h4>
-        <p>등록하실 단어의 뜻을 작성해주신 후 등록을 진행해주시기 바랍니다!</p>
+        <p> 등록하실 단어의 뜻을 작성되지 않았거나 잘못된 작성입니다. </p>
+        <p> 다시 확인해주신 후 등록을 진행해주시기 바랍니다! </p>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="outline-secondary" onClick={props.onHide}>
@@ -173,6 +173,6 @@ function MyVerticallyCenteredModal(props) {
       </Modal.Footer>
     </Modal>
   );
-}
+};
 
 export default Dictionarydetail;
