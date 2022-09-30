@@ -16,8 +16,8 @@ export default class DataService {
     return response.data;
   }
 
-  public static async getListDatas(): Promise<DataListType[]> {
-    const response = await axios.get(`${API_URL}/test/GET_DATAS`);
+  public static async getListDatas(type: string): Promise<DataListType[]> {
+    const response = await axios.get(`${API_URL}/crime/GET_DATAS/${type}`);
     return response.data;
   }
 }

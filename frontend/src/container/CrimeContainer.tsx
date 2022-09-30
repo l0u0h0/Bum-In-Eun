@@ -21,9 +21,12 @@ const CrimeContainer = () => {
   );
 
   const dispatch = useDispatch();
-  const getList = useCallback(() => {
-    dispatch(getListDatasSaga());
-  }, [dispatch]);
+  const getList = useCallback(
+    (type: string) => {
+      dispatch(getListDatasSaga(type));
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     setPathName(path);

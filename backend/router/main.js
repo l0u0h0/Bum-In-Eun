@@ -25,7 +25,6 @@ router.get("/GET_DATAS", async (req, res) => {
       order: [["count", "desc"]],
       limit: 5,
     });
-    console.log(getdatas);
     res.status(200).json(getdatas);
   } catch (err) {
     console.error(err);

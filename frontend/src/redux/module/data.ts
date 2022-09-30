@@ -1,6 +1,6 @@
 // import
 import DataService from "../../service/DataService";
-import { createActions, handleActions } from "redux-actions";
+import { Action, createActions, handleActions } from "redux-actions";
 import { call, put, takeEvery } from "redux-saga/effects";
 // type import
 import { DataListType, DatasState, Datatype } from "../../common/types";
@@ -67,10 +67,14 @@ function* getDataSaga() {
 }
 
 // example getDataListSaga
-function* getDataListSaga() {
+function* getDataListSaga(action: Action<string>) {
   try {
+    const type = action.payload;
     yield put(pending());
-    const datasList: DataListType[] = yield call(DataService.getListDatas);
+    const datasList: DataListType[] = yield call(
+      DataService.getListDatas,
+      type
+    );
     yield put(success(datasList));
   } catch (error: any) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));

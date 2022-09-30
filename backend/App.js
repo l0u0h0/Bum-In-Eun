@@ -8,7 +8,7 @@ const db = require("./models");
 const app = express();
 
 const mainRouter = require("./router/main");
-const testRouter = require("./router/test");
+const crimeRouter = require("./router/crime");
 const commentRouter = require("./router/comment");
 const listRouter = require("./router/list");
 
@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/main", mainRouter);
-app.use("/test", testRouter);
+app.use("/crime", crimeRouter);
 app.use("/comment", commentRouter);
 app.use("/list", listRouter);
 app.listen(app.get("port"), () => {

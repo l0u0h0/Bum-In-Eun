@@ -23,17 +23,19 @@ export default function Crimeresult({ datas, getList }) {
     }
     if (datas !== null) {
       setData(
-        datas.map(({ Type, Text }) => ({
-          word: Type,
-          mean: Text,
+        datas.map(({ Text, Mean }) => ({
+          word: Text,
+          mean: Mean,
         }))
       );
     }
   }, [type, datas]);
 
   useEffect(() => {
-    getList();
-  }, [getList]);
+    if (type !== null) {
+      getList(type);
+    }
+  }, [getList, type]);
 
   return (
     <div className="App-crimeresult">

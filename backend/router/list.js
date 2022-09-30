@@ -76,10 +76,8 @@ router.use(getDatas);
 router.get("/", async (req, res) => {
   const dt = moment();
   const Now = `${dt.format("YYYY-MM-DD HH:mm")}`;
-  console.log(req.lists);
   try {
     req.lists.map((list) => {
-      console.log(list.count);
       data.create({
         text: list.tokenized_twitter,
         time: Now,

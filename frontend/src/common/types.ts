@@ -32,12 +32,14 @@ export interface Datatype {
   No: string;
   Type: string;
   Text: string;
+  Mean: string;
   Time: string;
 }
 export interface DataListType {
   No: string;
   Type: string;
   Text: string;
+  Mean: string;
   Time: string;
 }
 
