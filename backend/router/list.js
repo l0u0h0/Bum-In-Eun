@@ -12,8 +12,6 @@ const getDatas = async (req, res, next) => {
       attributes: [
         "tokenized_twitter",
         [fn("count", "tokenized_twitter"), "count"],
-        "d_year",
-        "month",
       ],
       order: [["count", "desc"]],
       limit: 30,
@@ -66,7 +64,7 @@ const getDatas = async (req, res, next) => {
         },
       },
     });
-    req.lists(list);
+    req.lists = list;
     next();
   } catch (err) {
     next(err.message);
@@ -78,14 +76,16 @@ router.use(getDatas);
 router.get("/", async (req, res) => {
   const dt = moment();
   const Now = `${dt.format("YYYY-MM-DD HH:mm")}`;
+  console.log(req.lists);
   try {
-    await req.lists.map((list) => {
+    req.lists.map((list) => {
+      console.log(list.count);
       data.create({
         text: list.tokenized_twitter,
         time: Now,
-        count: list.count,
-        year: list.d_year,
-        date: list.month,
+        count: list.dataValues.count,
+        year: dt.format("YYYY"),
+        date: `${dt.format("MM")}`,
       });
     });
 
