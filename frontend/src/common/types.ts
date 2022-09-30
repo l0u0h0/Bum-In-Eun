@@ -23,11 +23,12 @@ export interface DataListState {
 
 /** example data type */
 export interface Datatype {
-  // No: string;
-  // Text: string;
   id: number;
   text: string;
   time: string;
+  count: number;
+  year: number;
+  date: number;
   No: string;
   Type: string;
   Text: string;

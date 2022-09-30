@@ -143,12 +143,12 @@ const Tab1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
         <table>
           <tbody>
             {datas ? (
-              datas.map((data: Datatype) => (
-                <tr key={`table_row_${data.id}`}>
-                  <th className="data-rank">{data.id}.</th>
+              datas.map((data: Datatype, i) => (
+                <tr key={`table_row_${i}`}>
+                  <th className="data-rank">{i + 1}.</th>
                   <td className="data-word">{data.text}</td>
                   <td className="data-state">-</td>
-                  <td className="data-num">120,862</td>
+                  <td className="data-num">{data.count}</td>
                 </tr>
               ))
             ) : (
@@ -187,12 +187,12 @@ const Tab2: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
         <table>
           <tbody>
             {datas !== null ? (
-              datas.map((data: Datatype) => (
-                <tr key={`table_row_${data.id}`}>
-                  <th className="data-rank">{data.id}.</th>
+              datas.map((data: Datatype, i) => (
+                <tr key={`table_row_${i}`}>
+                  <th className="data-rank">{i + 1}.</th>
                   <td className="data-word">{data.text}</td>
                   <td className="data-state">-</td>
-                  <td className="data-num">120,862</td>
+                  <td className="data-num">{data.count}</td>
                 </tr>
               ))
             ) : (

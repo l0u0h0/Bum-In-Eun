@@ -21,25 +21,14 @@ router.get("/", async (req, res) => {
 
 router.get("/GET_DATAS", async (req, res) => {
   try {
-    const getdatas = await data.findAll();
+    const getdatas = await data.findAll({
+      order: [["count", "desc"]],
+      limit: 5,
+    });
+    console.log(getdatas);
     res.status(200).json(getdatas);
   } catch (err) {
     console.error(err);
-  }
-});
-
-router.get("/DATA_SETTING", async (req, res) => {
-  try {
-    const test = await comment.findAll({
-      group: ["Type"],
-      attributes: ["Type", [fn("count", "Type"), "count"]],
-      where: {
-        Type: "tests",
-      },
-    });
-    res.send(test);
-  } catch (err) {
-    res.send(err.message);
   }
 });
 

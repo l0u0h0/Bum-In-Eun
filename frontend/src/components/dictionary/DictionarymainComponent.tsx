@@ -25,6 +25,10 @@ export default function DictionaryMain({ datas, getDatas }) {
     getDatas();
   }, [getDatas]);
 
+  if (datas === null) {
+    return <div>데이터 로딩중,,,</div>;
+  }
+
   return (
     <div className="App-dictionarymain">
       <Header />
@@ -33,16 +37,22 @@ export default function DictionaryMain({ datas, getDatas }) {
           <h3 className="table-title">조회가 많았던 키워드</h3>
           <table className="table-content">
             <tbody>
-              {lists.map((list) => (
-                <tr key={`table_row_${list.num}`}>
-                  <th className="data-rank">{list.num}.</th>
-                  <td className="data-word">
-                    <Link to={`/dictionary/detail?word=${list.word}`}>
-                      <div className="data-word-link">{list.word}</div>
-                    </Link>
-                  </td>
+              {datas !== null ? (
+                lists.map((list) => (
+                  <tr key={`table_row_${list.num}`}>
+                    <th className="data-rank">{list.num}.</th>
+                    <td className="data-word">
+                      <Link to={`/dictionary/detail?word=${list.word}`}>
+                        <div className="data-word-link">{list.word}</div>
+                      </Link>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td>데이터 로딩중,,,</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </Card>
@@ -50,16 +60,22 @@ export default function DictionaryMain({ datas, getDatas }) {
           <h3 className="table-title">추천이 많았던 키워드</h3>
           <table className="table-content">
             <tbody>
-              {lists.map((list) => (
-                <tr key={`table_row_${list.num}`}>
-                  <th className="data-rank">{list.num}.</th>
-                  <td className="data-word">
-                    <Link to={`/dictionary/detail?word=${list.word}`}>
-                      <div className="data-word-link">{list.word}</div>
-                    </Link>
-                  </td>
+              {datas !== null ? (
+                lists.map((list) => (
+                  <tr key={`table_row_${list.num}`}>
+                    <th className="data-rank">{list.num}.</th>
+                    <td className="data-word">
+                      <Link to={`/dictionary/detail?word=${list.word}`}>
+                        <div className="data-word-link">{list.word}</div>
+                      </Link>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td>데이터 로딩중,,,</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </Card>

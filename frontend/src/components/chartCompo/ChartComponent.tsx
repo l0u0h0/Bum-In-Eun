@@ -15,29 +15,31 @@ const Chart: React.FC<ChartProps> = ({ datas }) => {
         data: [
           {
             x: datas[0].text,
-            y: 15,
+            y: datas[0].count,
           },
           {
             x: datas[1].text,
-            y: 23,
+            y: datas[1].count,
           },
           {
             x: datas[2].text,
-            y: 11,
+            y: datas[2].count,
           },
           {
             x: datas[3].text,
-            y: 4,
+            y: datas[3].count,
           },
           {
             x: datas[4].text,
-            y: 32,
+            y: datas[4].count,
           },
         ],
         fill: false,
       },
     ],
   };
+  let max_num: number = datas[0].count + 20;
+  let min_num: number = datas[4].count - 10;
 
   const options = {
     responsive: true,
@@ -60,8 +62,8 @@ const Chart: React.FC<ChartProps> = ({ datas }) => {
         },
       },
       y: {
-        min: 0,
-        max: 50,
+        min: min_num < 0 ? 0 : min_num,
+        max: max_num,
       },
     },
   };
