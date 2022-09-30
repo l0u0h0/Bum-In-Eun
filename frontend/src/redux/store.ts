@@ -8,6 +8,7 @@ import { createBrowserHistory } from "history";
 import rootSaga from "./module/rootSaga";
 import datas from "./module/data";
 import comments from "./module/comment";
+import search from "./module/search";
 
 // history setting
 const { createReduxHistory, routerMiddleware, routerReducer } =
@@ -25,6 +26,7 @@ export const store = createStore(
     //... reducer 작성
     datas,
     comments,
+    search,
   }),
   composeWithDevTools(applyMiddleware(sagaMiddleware, routerMiddleware))
 );

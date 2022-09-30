@@ -6,6 +6,7 @@ import { AnyAction, Reducer } from "redux";
 export interface RootState {
   datas: DatasState;
   comments: CommentsState;
+  search: SearchState;
   router: Reducer<RouterState, AnyAction>;
 }
 
@@ -67,6 +68,26 @@ export interface CountIncreaseType {
   count: number;
 }
 
+/** Search Type */
+export interface SearchState {
+  search: SearchType | null;
+  loading: boolean;
+  error: Error | null;
+}
+
+export interface SearchType {
+  dict: {
+    mean: string[] | null;
+  } | null;
+  crime: {
+    mean: string;
+    category: string;
+  } | null;
+  static: {
+    datas: Datatype[] | null;
+  } | null;
+}
+
 /** Components props Type */
 export interface Mainprops {
   datas: Datatype[] | null;
@@ -98,15 +119,19 @@ export interface dictionarydataState {
   count: number;
 }
 
-export interface SearchState {
+export interface SearchDataState {
   data: string | null;
   originData: string | undefined;
-  test: {
+  result: {
+    dict: {
+      mean: string[] | null;
+    } | null;
     crime: {
-      word: string;
+      mean: string;
       category: string;
-    };
-    word: [any, any];
-    static: string;
+    } | null;
+    static: {
+      datas: Datatype[] | null;
+    } | null;
   };
 }

@@ -20,4 +20,9 @@ export default class DataService {
     const response = await axios.get(`${API_URL}/crime/GET_DATAS/${type}`);
     return response.data;
   }
+
+  public static async searchData(word: string): Promise<Datatype> {
+    const response = await axios.get(`${API_URL}/search/${word}`);
+    return response.data;
+  }
 }
