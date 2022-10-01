@@ -17,8 +17,11 @@ export default function SearchComponent({ datas, searchData }) {
     data: "검색어를 입력해주세요.",
     originData: "",
     result: {
-      crime: { mean: "한마디로 좋은 손님", category: "도박" },
-      dict: { mean: ["1. 개구리의 함북 방언", "2. 한마디로 좋은 손님"] },
+      crime: { text: "", mean: "한마디로 좋은 손님", category: "도박" },
+      dict: {
+        text: "",
+        mean: ["1. 개구리의 함북 방언", "2. 한마디로 좋은 손님"],
+      },
       static: null,
     },
   });

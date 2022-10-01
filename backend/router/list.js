@@ -77,17 +77,24 @@ router.get("/", async (req, res) => {
   const dt = moment();
   const Now = `${dt.format("YYYY-MM-DD HH:mm")}`;
   try {
-    req.lists.map((list) => {
-      data.create({
-        text: list.tokenized_twitter,
-        time: Now,
-        count: list.dataValues.count,
-        year: dt.format("YYYY"),
-        date: `${dt.format("MM")}`,
-      });
+    const [obj, result] = await req.lists.map((list) => {
+      data.upsert(
+        {
+          text: list.tokenized_twitter,
+          time: Now,
+          count: list.dataValues.count,
+          year: dt.format("YYYY"),
+          date: `${dt.format("MM")}`,
+        },
+        {
+          where: {
+            text: list.tokenized_twitter,
+          },
+        }
+      );
     });
 
-    res.status(200).send("complete");
+    res.status(200).send(result);
   } catch (err) {
     console.error(err);
   }

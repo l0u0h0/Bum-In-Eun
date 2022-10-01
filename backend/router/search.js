@@ -1,7 +1,5 @@
 const express = require("express");
 const { data, crime, comment } = require("../models");
-const moment = require("moment");
-const { fn, col, Op, literal } = require("sequelize");
 
 const router = express.Router();
 

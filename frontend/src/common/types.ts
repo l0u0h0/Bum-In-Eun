@@ -78,13 +78,15 @@ export interface SearchState {
 export interface SearchType {
   dict: {
     mean: string[] | null;
+    text: string;
   } | null;
   crime: {
+    text: string;
     mean: string;
     category: string;
   } | null;
   static: {
-    datas: Datatype[] | null;
+    datas: Datatype | null;
   } | null;
 }
 
@@ -124,14 +126,16 @@ export interface SearchDataState {
   originData: string | undefined;
   result: {
     dict: {
+      text: string;
       mean: string[] | null;
     } | null;
     crime: {
+      text: string;
       mean: string;
       category: string;
     } | null;
     static: {
-      datas: Datatype[] | null;
+      datas: Datatype | null;
     } | null;
   };
 }
