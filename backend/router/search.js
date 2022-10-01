@@ -13,6 +13,7 @@ router.param("word", async (req, res, next, value) => {
         {
           model: comment,
           attributes: ["Type", "Text"],
+          limit: 2,
         },
       ],
       where: {
@@ -29,27 +30,35 @@ router.param("word", async (req, res, next, value) => {
 
 router.get("/:word", async (req, res) => {
   try {
+    const _ogWord = req.word;
     const crimes = await crime.findOne({
       attributes: ["Type", "Mean"],
       where: {
-        Text: `${req.word}`,
+        Text: `${_ogWord}`,
       },
     });
-    const result = {
-      dict: req.dict,
-      crime: crimes,
-    };
+    const dict = req.dict[0];
     const searchResult = {
       dict: {
-        mean: req.dict.comments.map((data) => data.Text),
+        text: dict !== undefined ? _ogWord : "NoData",
+        mean:
+          dict !== undefined
+            ? dict.comments[0] !== undefined
+              ? dict.comments.map((data) => data.Text)
+              : "NoData"
+            : "NoData",
       },
-      crime: {
-        mean: crimes.Mean,
-        category: crimes.Type,
-      },
+      crime:
+        crimes !== null
+          ? {
+              text: _ogWord,
+              mean: crimes.Mean,
+              category: crimes.Type,
+            }
+          : null,
       static: {
-        text: req.dict.text,
-        count: req.dict.count,
+        text: dict !== undefined ? dict.text : "NoData",
+        count: dict !== undefined ? dict.count : 0,
       },
     };
     res.status(200).send(searchResult);
