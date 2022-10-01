@@ -49,10 +49,9 @@ const reducer = handleActions<DatasState, Datatype[]>(
 export default reducer;
 
 // Data Actions create
-export const { getDatas, getListDatas, searchData } = createActions(
+export const { getDatas, getListDatas } = createActions(
   "GET_DATAS",
   "GET_LIST_DATAS",
-  "SEARCH_DATA",
   { prefix }
 );
 
@@ -82,20 +81,8 @@ function* getDataListSaga(action: Action<string>) {
   }
 }
 
-function* searchDataSaga(action: Action<string>) {
-  try {
-    const word = action.payload;
-    yield put(pending());
-    const searchResult: Datatype = yield call(DataService.searchData, word);
-    yield put(success(searchResult));
-  } catch (error: any) {
-    yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
-  }
-}
-
 // saga create
 export function* datasSaga() {
   yield takeEvery(`${prefix}/GET_DATAS`, getDataSaga);
   yield takeEvery(`${prefix}/GET_LIST_DATAS`, getDataListSaga);
-  yield takeEvery(`${prefix}/SEARCH_DATA`, searchDataSaga);
 }

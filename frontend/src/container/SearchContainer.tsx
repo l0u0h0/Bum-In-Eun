@@ -5,7 +5,7 @@ import { RootState, SearchType } from "../common/types";
 
 // Component import
 import SearchComponent from "../components/SearchComponent";
-import { searchData as searchDataSagaStart } from "../redux/module/data";
+import { searchData as searchDataSagaStart } from "../redux/module/search";
 
 // Container Component
 const SearchContainer = () => {

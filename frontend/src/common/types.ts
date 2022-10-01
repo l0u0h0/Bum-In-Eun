@@ -110,6 +110,7 @@ export interface DictionarydetailProps {
 }
 
 export interface ModalPropsType {
+  error: Error | null;
   show: boolean;
   onHide: () => void;
 }
@@ -122,9 +123,9 @@ export interface dictionarydataState {
 }
 
 export interface SearchDataState {
-  data: string | null;
+  word: string | null;
   originData: string | undefined;
-  result: {
+  data: {
     dict: {
       text: string;
       mean: string[] | null;
@@ -135,7 +136,7 @@ export interface SearchDataState {
       category: string;
     } | null;
     static: {
-      datas: Datatype | null;
+      datas: Datatype[] | null;
     } | null;
   };
 }

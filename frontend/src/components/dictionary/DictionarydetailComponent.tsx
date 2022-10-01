@@ -140,6 +140,7 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
               <MyVerticallyCenteredModal
                 show={nullText}
                 onHide={() => setNullText(false)}
+                error={null}
               />
             </InputGroup>
           </div>
@@ -150,7 +151,7 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
 };
 
 /** Null Error Modal Components */
-const MyVerticallyCenteredModal: React.FC<ModalPropsType> = (props) => {
+const MyVerticallyCenteredModal: React.FC<ModalPropsType> = (props, error) => {
   return (
     <Modal
       {...props}
