@@ -12,6 +12,7 @@ const crimeRouter = require("./router/crime");
 const commentRouter = require("./router/comment");
 const listRouter = require("./router/list");
 const searchRouter = require("./router/search");
+const timeRouter = require("./router/time");
 
 // cors sett
 let corsOption = {
@@ -43,6 +44,7 @@ app.use("/crime", crimeRouter);
 app.use("/comment", commentRouter);
 app.use("/list", listRouter);
 app.use("/search", searchRouter);
+app.use("/time", timeRouter);
 
 app.listen(app.get("port"), () => {
   console.log(app.get("port"), "번 포트에서 대기 중");
