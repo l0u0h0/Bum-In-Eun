@@ -1,5 +1,5 @@
 // import
-import React, { useState, useRef, Ref, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Banner from "../common/BannerComponent";
 import Header from "../common/HeaderComponent";
 import { ModalPropsType, SearchDataState } from "../common/types";
@@ -58,7 +58,7 @@ export default function SearchComponent({ datas, searchData }) {
   function Searchstate() {
     const word = inputRef.current?.value;
     if (word !== "") {
-      searchData(inputRef.current?.value);
+      searchData(word);
     } else {
       setNullText(true);
     }
@@ -69,7 +69,6 @@ export default function SearchComponent({ datas, searchData }) {
 function Searchresult({ searchData }) {
   const [search, setSearch] = useState<SearchDataState>({
     word: "검색어를 입력해주세요.",
-    originData: "",
     data: {
       crime: { text: "", mean: "한마디로 좋은 손님", category: "도박" },
       dict: {
@@ -80,75 +79,74 @@ function Searchresult({ searchData }) {
     },
   });
   useEffect(() => {
+    console.log(searchData);
     if (searchData !== null) {
       setSearch({
-        word: searchData.crime.text,
-        originData: searchData.crime.text,
+        word:
+          searchData.crime !== null
+            ? searchData.crime.text
+            : searchData.dict.text,
         data: searchData,
       });
     }
   }, [searchData]);
-  if (search !== null) {
-    return (
-      <div className="search-result">
-        {search.data.crime !== null ? (
-          <Link
-            to={`/crime/detail?category=${search.data.crime?.category}&word=${search.word}&mean=${search.data.crime?.mean}`}
-          >
-            <div className="result-crime">
-              <h2>범죄 사전</h2>
-              <p>카테고리 - {search.data.crime?.category}</p>
-              <p>{search.data.crime?.mean}</p>
-            </div>
-          </Link>
-        ) : (
-          <Link to={`/crime}`}>
-            <div className="result-crime">
-              <h2>범죄 사전</h2>
-              <p>범죄 사전에 등록되지 않은 단어입니다.</p>
-              <p>클릭 시 범죄 사전 페이지로 이동합니다.</p>
-            </div>
-          </Link>
-        )}
-        {search.data.dict?.text !== "NoData" ? (
-          <Link to={`/dictionary/detail?word=${search.word}`}>
-            <div className="result-word">
-              <h2>은어 사전</h2>
-              {search.data.dict?.mean &&
-                search.data.dict?.mean.map((text, i) => (
-                  <p key={`mean_${i}`}>{text}</p>
-                ))}
-            </div>
-          </Link>
-        ) : (
-          <Link to={`/dictionary`}>
-            <div className="result-word">
-              <h2>은어 사전</h2>
-              <p>아직 은어 사전에 등록되지 않은 단어입니다.</p>
-              <p>클릭 시 은어 사전 페이지로 이동합니다.</p>
-            </div>
-          </Link>
-        )}
-
-        <Link to={`/statistic/detail?word=${search.word}`}>
-          <div className="result-static">
-            <h2>통계 추세</h2>
-            {search.data.dict?.text !== "NoData" ? (
-              <Chart
-                datas={
-                  search.data.static !== null ? search.data.static.datas : null
-                }
-              />
-            ) : (
-              <p>통계가 집계되지 않았습니다.</p>
-            )}
+  return (
+    <div className="search-result">
+      {search.data.crime !== null ? (
+        <Link
+          to={`/crime/detail?category=${search.data.crime?.category}&word=${search.word}&mean=${search.data.crime?.mean}`}
+        >
+          <div className="result-crime">
+            <h2>범죄 사전</h2>
+            <p>카테고리 - {search.data.crime?.category}</p>
+            <p>{search.data.crime?.mean}</p>
           </div>
         </Link>
-      </div>
-    );
-  } else {
-    return <div>Sorry</div>;
-  }
+      ) : (
+        <Link to={`/crime}`}>
+          <div className="result-crime">
+            <h2>범죄 사전</h2>
+            <p>범죄 사전에 등록되지 않은 단어입니다.</p>
+            <p>클릭 시 범죄 사전 페이지로 이동합니다.</p>
+          </div>
+        </Link>
+      )}
+      {search.data.dict?.text !== "NoData" ? (
+        <Link to={`/dictionary/detail?word=${search.word}`}>
+          <div className="result-word">
+            <h2>은어 사전</h2>
+            {search.data.dict?.mean &&
+              search.data.dict?.mean.map((text, i) => (
+                <p key={`mean_${i}`}>{text}</p>
+              ))}
+          </div>
+        </Link>
+      ) : (
+        <Link to={`/dictionary`}>
+          <div className="result-word">
+            <h2>은어 사전</h2>
+            <p>아직 은어 사전에 등록되지 않은 단어입니다.</p>
+            <p>클릭 시 은어 사전 페이지로 이동합니다.</p>
+          </div>
+        </Link>
+      )}
+
+      <Link to={`/statistic/detail?word=${search.word}`}>
+        <div className="result-static">
+          <h2>통계 추세</h2>
+          {search.data.dict?.text !== "NoData" ? (
+            <Chart
+              datas={
+                search.data.static !== null ? search.data.static.datas : null
+              }
+            />
+          ) : (
+            <p>통계가 집계되지 않았습니다.</p>
+          )}
+        </div>
+      </Link>
+    </div>
+  );
 }
 
 /** Null Error Modal Components */

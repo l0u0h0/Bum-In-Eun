@@ -124,7 +124,6 @@ export interface dictionarydataState {
 
 export interface SearchDataState {
   word: string | null;
-  originData: string | undefined;
   data: {
     dict: {
       text: string;

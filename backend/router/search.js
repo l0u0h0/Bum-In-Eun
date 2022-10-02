@@ -55,8 +55,10 @@ router.get("/:word", async (req, res) => {
             }
           : null,
       static: {
-        text: dict !== undefined ? dict.text : "NoData",
-        count: dict !== undefined ? dict.count : 0,
+        datas: {
+          text: dict !== undefined ? dict.text : "NoData",
+          count: dict !== undefined ? dict.count : 0,
+        },
       },
     };
     res.status(200).send(searchResult);
