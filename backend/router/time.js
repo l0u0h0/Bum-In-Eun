@@ -78,6 +78,7 @@ router.get("/", async (req, res) => {
     const [obj, result] = await req.lists.map((list) => {
       time.upsert(
         {
+          type: `${list.tokenized_twitter}_${list.dataValues.d_year}_${list.dataValues.month}`,
           text: list.tokenized_twitter,
           count: list.dataValues.count,
           year: list.dataValues.d_year,
@@ -85,6 +86,7 @@ router.get("/", async (req, res) => {
         },
         {
           where: {
+            type: `${list.tokenized_twitter}_${list.dataValues.d_year}_${list.dataValues.month}`,
             text: list.tokenized_twitter,
             count: list.dataValues.count,
             year: list.dataValues.d_year,
@@ -97,6 +99,14 @@ router.get("/", async (req, res) => {
     res.status(200).send(result);
   } catch (err) {
     console.error(err);
+  }
+});
+
+router.get("/testing", async (req, res) => {
+  try {
+    res.send("testing");
+  } catch (err) {
+    console.error(err.message);
   }
 });
 

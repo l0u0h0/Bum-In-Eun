@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   time.init(
     {
-      id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
+      id: { type: DataTypes.INTEGER, autoIncrement: true, allowNull: false },
+      type: { type: DataTypes.STRING, primaryKey: true },
       text: DataTypes.STRING,
       count: DataTypes.INTEGER,
       year: DataTypes.FLOAT,
