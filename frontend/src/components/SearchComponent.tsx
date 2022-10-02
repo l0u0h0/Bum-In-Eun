@@ -2,29 +2,22 @@
 import React, { useState, useRef, Ref, useEffect } from "react";
 import Banner from "../common/BannerComponent";
 import Header from "../common/HeaderComponent";
-import { SearchDataState } from "../common/types";
+import { ModalPropsType, SearchDataState } from "../common/types";
 // img import
 // import static_img from "../image/img_6.png";
 // react-bootstrap
 import { InputGroup, Button, FormControl } from "react-bootstrap";
+import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
 import Chart from "./chartCompo/ChartComponent";
 
 // Search main Component
 export default function SearchComponent({ datas, searchData }) {
-  const [searchstate, setSearchstate] = useState(0);
-  // const [search, setSearch] = useState<SearchDataState>({
-  //   data: "검색어를 입력해주세요.",
-  //   originData: "",
-  //   result: {
-  //     crime: { text: "", mean: "한마디로 좋은 손님", category: "도박" },
-  //     dict: {
-  //       text: "",
-  //       mean: ["1. 개구리의 함북 방언", "2. 한마디로 좋은 손님"],
-  //     },
-  //     static: null,
-  //   },
-  // });
+  const [searchstate, setSearchstate] = useState(false);
+  const [nullText, setNullText] = useState(false);
+  useEffect(() => {
+    if (datas !== null) setSearchstate(true);
+  }, [datas]);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -45,38 +38,35 @@ export default function SearchComponent({ datas, searchData }) {
           <FormControl
             aria-label="Example text with button addon"
             aria-describedby="search-addon"
-            // placeholder={search.originData}
             placeholder="검색어를 입력해주세요."
             className="search-text"
             ref={inputRef}
             type="input"
           />
         </InputGroup>
-        {searchstate === 1 && <Searchresult test={datas} />}
+        {searchstate && <Searchresult searchData={datas} />}
+        <MyVerticallyCenteredModal
+          show={nullText}
+          onHide={() => setNullText(false)}
+          error={null}
+        />
       </div>
       <Banner />
     </div>
   );
 
   function Searchstate() {
-    if (searchstate === 1) {
-      setSearchstate(0);
-    }
-    if (searchstate === 0) {
+    const word = inputRef.current?.value;
+    if (word !== "") {
       searchData(inputRef.current?.value);
-      const test = inputRef.current?.value.toString();
-      // setSearch({
-      //   data: test !== undefined ? test : null,
-      //   originData: search.data?.toString(),
-      //   result: datas,
-      // });
-      setSearchstate(1);
+    } else {
+      setNullText(true);
     }
   }
 }
 
 // Search result Component
-function Searchresult({ test }) {
+function Searchresult({ searchData }) {
   const [search, setSearch] = useState<SearchDataState>({
     word: "검색어를 입력해주세요.",
     originData: "",
@@ -90,15 +80,14 @@ function Searchresult({ test }) {
     },
   });
   useEffect(() => {
-    if (test !== null) {
-      console.log(test);
+    if (searchData !== null) {
       setSearch({
-        word: test.crime.text,
-        originData: test.crime.text,
-        data: test,
+        word: searchData.crime.text,
+        originData: searchData.crime.text,
+        data: searchData,
       });
     }
-  }, [test]);
+  }, [searchData]);
   if (search !== null) {
     return (
       <div className="search-result">
@@ -161,3 +150,28 @@ function Searchresult({ test }) {
     return <div>Sorry</div>;
   }
 }
+
+/** Null Error Modal Components */
+const MyVerticallyCenteredModal: React.FC<ModalPropsType> = (props) => {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">Error!</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h4>검색</h4>
+        <p> 검색어 입력을 확인해주시기 바랍니다. </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="outline-secondary" onClick={props.onHide}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+};
