@@ -7,6 +7,7 @@ export interface RootState {
   datas: DatasState;
   comments: CommentsState;
   search: SearchState;
+  time: TimeState;
   router: Reducer<RouterState, AnyAction>;
 }
 
@@ -88,6 +89,20 @@ export interface SearchType {
   static: {
     datas: Datatype | null;
   } | null;
+}
+
+/** Time State */
+export interface TimeState {
+  time: TimeType[] | null;
+  loading: boolean;
+  error: Error | null;
+}
+
+export interface TimeType {
+  text: string;
+  year: number;
+  month: number;
+  count: number;
 }
 
 /** Components props Type */

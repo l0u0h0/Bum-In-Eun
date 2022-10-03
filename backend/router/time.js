@@ -4,7 +4,15 @@ const { fn, col, Op, literal } = require("sequelize");
 
 const router = express.Router();
 
-router.get("/testing", async (req, res) => {
+router.get("/GET_DATA", async (req, res) => {
+  try {
+    res.send("testing");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+router.get("/GET_DATA2", async (req, res) => {
   try {
     res.send("testing");
   } catch (err) {

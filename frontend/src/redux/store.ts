@@ -9,6 +9,7 @@ import rootSaga from "./module/rootSaga";
 import datas from "./module/data";
 import comments from "./module/comment";
 import search from "./module/search";
+import timedata from "./module/timedata";
 
 // history setting
 const { createReduxHistory, routerMiddleware, routerReducer } =
@@ -27,6 +28,7 @@ export const store = createStore(
     datas,
     comments,
     search,
+    timedata,
   }),
   composeWithDevTools(applyMiddleware(sagaMiddleware, routerMiddleware))
 );

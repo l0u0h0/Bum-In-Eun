@@ -1,9 +1,9 @@
 // import
-import DataService from "../../service/DataService";
 import { Action, createActions, handleActions } from "redux-actions";
 import { call, put, takeEvery } from "redux-saga/effects";
 // type import
 import { SearchState, SearchType } from "../../common/types";
+import SearchService from "../../service/SearchService";
 
 // prefix
 const prefix = "bumineun/search";
@@ -55,7 +55,7 @@ function* searchDataSaga(action: Action<string>) {
   try {
     const word = action.payload;
     yield put(pending());
-    const searchResult: SearchType = yield call(DataService.searchData, word);
+    const searchResult: SearchType = yield call(SearchService.searchData, word);
     yield put(success(searchResult));
   } catch (error: any) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
