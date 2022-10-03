@@ -47,26 +47,37 @@ router.get("/GET_LIST_DATA/:word", async (req, res) => {
     const check = NowMonth.map((now) => ({
       check: monthCheck(now, req.result, NowMonth[4]),
     }));
-
-    const middle = req.result.map((e, i) => ({
-      text: e.text,
-      month: NowMonth[i],
-      count: check[i].check !== null ? req.result[check[i].check].count : 0,
-    }));
+    let NullCheck = 0;
+    check.map((e) => {
+      e.check !== null ? NullCheck++ : 0;
+    });
 
     let result = [{}, {}, {}, {}, {}];
 
-    /** DB 추출 값이 5개가 안되면 0인 값 추가 */
-    if (middle.length < 6) {
-      result = result.map((e, i) =>
-        middle[i] === undefined
-          ? { text: req.word, month: NowMonth[i], count: 0 }
-          : middle[i]
-      );
-    } else {
-      result = result.map((e, i) => {
-        middle[i];
-      });
+    if (NullCheck > 0) {
+      req.result.map((e) => console.log(e.count, e.month));
+      console.log(check);
+      const middle = NowMonth.map((e, i) => ({
+        text: req.result[0].text,
+        month: NowMonth[i],
+        count: check[i].check !== null ? req.result[check[i].check].count : 0,
+      }));
+      console.log(middle);
+
+      /** DB 추출 값이 5개가 안되면 0인 값 추가 */
+      if (middle.length < 6) {
+        result = result.map((e, i) =>
+          middle[i] === undefined
+            ? { text: req.word, month: NowMonth[i], count: 0 }
+            : middle[i]
+        );
+      } else {
+        result = result.map((e, i) => {
+          middle[i];
+        });
+      }
+    } else if (NullCheck === 0) {
+      result = [{ err: "NoData" }];
     }
 
     res.status(200).json(result);
