@@ -14,7 +14,10 @@ router.param("word", async (req, res, next, value) => {
     const getdata = await time.findAll({
       attributes: ["text", "count", "year", "month"],
       order: [["month", "desc"]],
-      where: { text: `${value}`, month: { [Op.lte]: Month } },
+      where: {
+        text: `${value}`,
+        month: { [Op.lte]: Month, [Op.gte]: Month - 4 },
+      },
     });
     req.word = value;
     req.result = getdata;
@@ -26,12 +29,13 @@ router.param("word", async (req, res, next, value) => {
 
 const monthCheck = (time, arr, min) => {
   let timeresult = false;
-  arr.map((now) => {
-    now.month === time && now.month >= min ? (timeresult = true) : 0;
+  let result = null;
+  arr.map((now, i) => {
+    now.month === time && now.month >= min
+      ? ((timeresult = true), (result = i))
+      : 0;
   });
-  console.log(timeresult);
-  console.log(time, min);
-  return timeresult;
+  return timeresult, result;
 };
 
 router.get("/GET_LIST_DATA/:word", async (req, res) => {
@@ -43,27 +47,29 @@ router.get("/GET_LIST_DATA/:word", async (req, res) => {
     const check = NowMonth.map((now) => ({
       check: monthCheck(now, req.result, NowMonth[4]),
     }));
+
     const middle = req.result.map((e, i) => ({
       text: e.text,
       month: NowMonth[i],
-      count: check[i].check ? e.count : 0,
+      count: check[i].check !== null ? req.result[check[i].check].count : 0,
     }));
-    let result = [5];
-    console.log(middle.length);
-    console.log(middle[4]);
+
+    let result = [{}, {}, {}, {}, {}];
+
+    /** DB 추출 값이 5개가 안되면 0인 값 추가 */
     if (middle.length < 6) {
-      result.map((e, i) => {
-        middle[i] !== undefined
-          ? middle
-          : { text: middle[0].text, month: NowMonth[i], count: 0 };
-      });
+      result = result.map((e, i) =>
+        middle[i] === undefined
+          ? { text: req.word, month: NowMonth[i], count: 0 }
+          : middle[i]
+      );
     } else {
-      result.map((e, i) => {
+      result = result.map((e, i) => {
         middle[i];
       });
     }
 
-    res.send(result);
+    res.status(200).json(result);
   } catch (err) {
     console.error(err.message);
   }
