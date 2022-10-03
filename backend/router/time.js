@@ -1,10 +1,56 @@
 const express = require("express");
 const { time, final_df } = require("../models");
+const moment = require("moment");
 const { fn, col, Op, literal } = require("sequelize");
+const { count } = require("console");
 
 const router = express.Router();
 
-router.get("/GET_DATA", async (req, res) => {
+router.param("word", async (req, res, next, value) => {
+  const dt = moment();
+  const Year = parseInt(dt.format("YY"));
+  const Month = parseInt(dt.format("MM"));
+  try {
+    const getdata = await time.findAll({
+      attributes: ["text", "count", "year", "month"],
+      order: [["month", "desc"]],
+      where: { text: `${value}`, month: { [Op.lte]: Month } },
+    });
+    req.word = value;
+    req.result = getdata;
+    next();
+  } catch (err) {
+    next(err.message);
+  }
+});
+
+const countResult = (time, arr) => {
+  let timeresult = false;
+  arr.map((now) => {
+    now === time ? (timeresult = true) : 0;
+  });
+  return timeresult;
+};
+
+router.get("/GET_LIST_DATA/:word", async (req, res) => {
+  const dt = moment();
+  const Year = parseInt(dt.format("YY"));
+  const Month = parseInt(dt.format("MM"));
+  const NowMonth = [Month, Month - 1, Month - 2, Month - 3, Month - 4];
+  try {
+    const result = req.result.map((data, i) => ({
+      month: data.month === NowMonth[i] ? data.month : NowMonth[i],
+      // count: countResult(data.month, NowMonth) ? data.count : 0,
+      count: data.month === NowMonth[i] ? data.count : 0,
+    }));
+
+    res.send(result);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+router.get("/GET_DATA1", async (req, res) => {
   try {
     res.send("testing");
   } catch (err) {

@@ -12,12 +12,17 @@ const API_URL =
 // create DataService class
 export default class TimedataService {
   public static async getData_1(): Promise<TimeType[]> {
-    const response = await axios.get(`${API_URL}/GETDATA1`);
+    const response = await axios.get(`${API_URL}/GET_DATA1`);
     return response.data;
   }
 
   public static async getData_2(): Promise<TimeType[]> {
-    const response = await axios.get(`${API_URL}/GETDATA2`);
+    const response = await axios.get(`${API_URL}/GET_DATA2`);
+    return response.data;
+  }
+
+  public static async getListData(word: string): Promise<TimeType[]> {
+    const response = await axios.get(`${API_URL}/GET_LIST_DATA/${word}`);
     return response.data;
   }
 }
