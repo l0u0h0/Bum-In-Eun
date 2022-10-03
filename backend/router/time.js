@@ -24,11 +24,13 @@ router.param("word", async (req, res, next, value) => {
   }
 });
 
-const countResult = (time, arr) => {
+const monthCheck = (time, arr, min) => {
   let timeresult = false;
   arr.map((now) => {
-    now === time ? (timeresult = true) : 0;
+    now.month === time && now.month >= min ? (timeresult = true) : 0;
   });
+  console.log(timeresult);
+  console.log(time, min);
   return timeresult;
 };
 
@@ -38,11 +40,28 @@ router.get("/GET_LIST_DATA/:word", async (req, res) => {
   const Month = parseInt(dt.format("MM"));
   const NowMonth = [Month, Month - 1, Month - 2, Month - 3, Month - 4];
   try {
-    const result = req.result.map((data, i) => ({
-      month: data.month === NowMonth[i] ? data.month : NowMonth[i],
-      // count: countResult(data.month, NowMonth) ? data.count : 0,
-      count: data.month === NowMonth[i] ? data.count : 0,
+    const check = NowMonth.map((now) => ({
+      check: monthCheck(now, req.result, NowMonth[4]),
     }));
+    const middle = req.result.map((e, i) => ({
+      text: e.text,
+      month: NowMonth[i],
+      count: check[i].check ? e.count : 0,
+    }));
+    let result = [5];
+    console.log(middle.length);
+    console.log(middle[4]);
+    if (middle.length < 6) {
+      result.map((e, i) => {
+        middle[i] !== undefined
+          ? middle
+          : { text: middle[0].text, month: NowMonth[i], count: 0 };
+      });
+    } else {
+      result.map((e, i) => {
+        middle[i];
+      });
+    }
 
     res.send(result);
   } catch (err) {
