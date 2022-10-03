@@ -4,6 +4,14 @@ const { fn, col, Op, literal } = require("sequelize");
 
 const router = express.Router();
 
+router.get("/testing", async (req, res) => {
+  try {
+    res.send("testing");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 const getDatas = async (req, res, next) => {
   try {
     const list = await final_df.findAll({
@@ -99,14 +107,6 @@ router.get("/", async (req, res) => {
     res.status(200).send(result);
   } catch (err) {
     console.error(err);
-  }
-});
-
-router.get("/testing", async (req, res) => {
-  try {
-    res.send("testing");
-  } catch (err) {
-    console.error(err.message);
   }
 });
 
