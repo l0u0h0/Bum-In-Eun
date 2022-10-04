@@ -79,41 +79,37 @@ router.get("/GET_LIST_DATA/:word", async (req, res) => {
   }
 });
 
-router.get("/GET_DATA1", async (req, res) => {
+router.get("/GET_DATAS", async (req, res) => {
   const dt = moment();
   const Year = parseInt(dt.format("YY"));
   const Month = parseInt(dt.format("MM"));
   try {
-    const getdata = await time.findAll({
+    const getdata1 = await time.findAll({
       group: ["text"],
       attributes: ["text", [literal("sum([count])"), "total"]],
       order: [["total", "desc"]],
+      limit: 5,
       where: {
         month: { [Op.between]: [Month - 3, Month] },
       },
     });
 
-    res.status(200).json(getdata);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
-router.get("/GET_DATA2", async (req, res) => {
-  const dt = moment();
-  const Year = parseInt(dt.format("YY"));
-  const Month = parseInt(dt.format("MM"));
-  try {
-    const getdata = await time.findAll({
+    const getdata2 = await time.findAll({
       group: ["text"],
       attributes: ["text", [literal("sum([count])"), "total"]],
       order: [["total", "desc"]],
+      limit: 5,
       where: {
         month: { [Op.between]: [Month - 7, Month] },
       },
     });
 
-    res.status(200).json(getdata);
+    const result = {
+      datas1: getdata1,
+      datas2: getdata2,
+    };
+
+    res.status(200).json(result);
   } catch (err) {
     console.error(err.message);
   }

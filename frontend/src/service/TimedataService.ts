@@ -11,13 +11,8 @@ const API_URL =
 
 // create DataService class
 export default class TimedataService {
-  public static async getData_1(): Promise<TimeType[]> {
-    const response = await axios.get(`${API_URL}/GET_DATA1`);
-    return response.data;
-  }
-
-  public static async getData_2(): Promise<TimeType[]> {
-    const response = await axios.get(`${API_URL}/GET_DATA2`);
+  public static async getDatas(): Promise<TimeType> {
+    const response = await axios.get(`${API_URL}/GET_DATAS`);
     return response.data;
   }
 

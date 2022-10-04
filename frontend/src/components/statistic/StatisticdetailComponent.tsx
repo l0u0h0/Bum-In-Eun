@@ -1,5 +1,5 @@
 // import
-import React from "react";
+import React, { useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import Header from "../../common/HeaderComponent";
@@ -7,9 +7,19 @@ import Header from "../../common/HeaderComponent";
 import ex_img from "../../image/img_6.png";
 
 // Detail Area
-export default function Statisticdetail() {
+export default function Statisticdetail({
+  datas,
+  mean,
+  getListData,
+  getComments,
+}) {
   const location = new URLSearchParams(useLocation().search);
   const word = location.get("word");
+
+  useEffect(() => {
+    getListData(word);
+    getComments(word);
+  }, [getListData, getComments, word]);
 
   return (
     <div className="App-staticdetail">

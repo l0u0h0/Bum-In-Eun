@@ -12,7 +12,7 @@ import {
 } from "../common/types";
 import { getDatas as getDataSagaStart } from "../redux/module/data";
 import {
-  getComments as getCommentsSagastart,
+  getComments as getCommentsSagaStart,
   addComment as addCommentSagaStart,
   increaseCount as increaseCountSagaStart,
 } from "../redux/module/comment";
@@ -38,7 +38,7 @@ const DictionaryContainer = () => {
   }, [dispatch]);
   const getComments = useCallback(
     (word: string | null) => {
-      dispatch(getCommentsSagastart(word));
+      dispatch(getCommentsSagaStart(word));
     },
     [dispatch]
   );

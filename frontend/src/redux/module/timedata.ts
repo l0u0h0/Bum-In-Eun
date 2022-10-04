@@ -49,27 +49,16 @@ const reducer = handleActions<TimeState, TimeType[]>(
 export default reducer;
 
 // Data Actions create
-export const { getData_1, getData_2, getListData } = createActions(
-  "GET_DATA_1",
-  "GET_DATA_2",
+export const { getDatas, getListData } = createActions(
+  "GET_DATAS",
   "GET_LIST_DATA",
   { prefix }
 );
 
-function* getData_1Saga() {
+function* getDatasSaga() {
   try {
     yield put(pending());
-    const result: TimeType[] = yield call(TimedataService.getData_1);
-    yield put(success(result));
-  } catch (error: any) {
-    yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
-  }
-}
-
-function* getData_2Saga() {
-  try {
-    yield put(pending());
-    const result: TimeType[] = yield call(TimedataService.getData_2);
+    const result: TimeType = yield call(TimedataService.getDatas);
     yield put(success(result));
   } catch (error: any) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
@@ -89,7 +78,6 @@ function* getListDataSaga(action: Action<string>) {
 
 // saga create
 export function* timedataSaga() {
-  yield takeEvery(`${prefix}/GET_DATA_1`, getData_1Saga);
-  yield takeEvery(`${prefix}/GET_DATA_2`, getData_2Saga);
+  yield takeEvery(`${prefix}/GET_DATAS`, getDatasSaga);
   yield takeEvery(`${prefix}/GET_LIST_DATA`, getListDataSaga);
 }
