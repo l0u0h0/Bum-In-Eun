@@ -7,16 +7,12 @@ const { count } = require("console");
 const router = express.Router();
 
 router.param("word", async (req, res, next, value) => {
-  const dt = moment();
-  const Year = parseInt(dt.format("YY"));
-  const Month = parseInt(dt.format("MM"));
   try {
     const getdata = await time.findAll({
       attributes: ["text", "count", "year", "month"],
       order: [["month", "desc"]],
       where: {
         text: `${value}`,
-        month: { [Op.lte]: Month, [Op.gte]: Month - 4 },
       },
     });
     req.word = value;
@@ -55,14 +51,11 @@ router.get("/GET_LIST_DATA/:word", async (req, res) => {
     let result = [{}, {}, {}, {}, {}];
 
     if (NullCheck > 0) {
-      req.result.map((e) => console.log(e.count, e.month));
-      console.log(check);
       const middle = NowMonth.map((e, i) => ({
         text: req.result[0].text,
         month: NowMonth[i],
         count: check[i].check !== null ? req.result[check[i].check].count : 0,
       }));
-      console.log(middle);
 
       /** DB 추출 값이 5개가 안되면 0인 값 추가 */
       if (middle.length < 6) {
@@ -87,16 +80,40 @@ router.get("/GET_LIST_DATA/:word", async (req, res) => {
 });
 
 router.get("/GET_DATA1", async (req, res) => {
+  const dt = moment();
+  const Year = parseInt(dt.format("YY"));
+  const Month = parseInt(dt.format("MM"));
   try {
-    res.send("testing");
+    const getdata = await time.findAll({
+      group: ["text"],
+      attributes: ["text", [literal("sum([count])"), "total"]],
+      order: [["total", "desc"]],
+      where: {
+        month: { [Op.between]: [Month - 3, Month] },
+      },
+    });
+
+    res.status(200).json(getdata);
   } catch (err) {
     console.error(err.message);
   }
 });
 
 router.get("/GET_DATA2", async (req, res) => {
+  const dt = moment();
+  const Year = parseInt(dt.format("YY"));
+  const Month = parseInt(dt.format("MM"));
   try {
-    res.send("testing");
+    const getdata = await time.findAll({
+      group: ["text"],
+      attributes: ["text", [literal("sum([count])"), "total"]],
+      order: [["total", "desc"]],
+      where: {
+        month: { [Op.between]: [Month - 7, Month] },
+      },
+    });
+
+    res.status(200).json(getdata);
   } catch (err) {
     console.error(err.message);
   }
