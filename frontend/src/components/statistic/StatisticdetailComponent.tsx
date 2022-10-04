@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import Header from "../../common/HeaderComponent";
+import { Link } from "react-router-dom";
 // ex_img
 import ex_img from "../../image/img_6.png";
 
@@ -31,7 +32,11 @@ export default function Statisticdetail({
           <h2 className="detail-title">통계</h2>
           <hr className="title-body-between" />
           <div className="detail-body">
-            <h3>{word}</h3>
+            <Link to={`/dictionary/detail?word=${word}`}>
+              <div className="static-word-link">
+                <h3>{word}</h3>
+              </div>
+            </Link>
             <div className="mean-table">
               {mean.length !== 0 ? (
                 mean.map((list, i) => {

@@ -87,6 +87,15 @@
     .detail-body {
       display: block;
       justify-content: center;
+      a {
+        color: black;
+        text-decoration: none;
+      }
+      .static-word-link:hover {
+        color: #003333;
+        transform: scale(1.2);
+        transition: all 1s;
+      }
       .mean-table {
         p {
           margin-left: 10%;
