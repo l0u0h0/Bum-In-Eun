@@ -21,24 +21,37 @@ export default function Statisticdetail({
     getComments(word);
   }, [getListData, getComments, word]);
 
-  return (
-    <div className="App-staticdetail">
-      <Header />
-      <Card body className="staticdetail-body">
-        <h2 className="detail-title">통계</h2>
-        <hr className="title-body-between" />
-        <div className="detail-body">
-          <h3>{word}</h3>
-          <div className="mean-table">
-            <p> - 키워드에 대한 정의 1</p>
-            <p> - 키워드에 대한 정의 2</p>
+  if (datas === null || mean === null) {
+    return <div>데이터 로딩중,,</div>;
+  } else {
+    return (
+      <div className="App-staticdetail">
+        <Header />
+        <Card body className="staticdetail-body">
+          <h2 className="detail-title">통계</h2>
+          <hr className="title-body-between" />
+          <div className="detail-body">
+            <h3>{word}</h3>
+            <div className="mean-table">
+              {mean.length !== 0 ? (
+                mean.map((list, i) => {
+                  if (i > 2) {
+                    return null;
+                  } else {
+                    return <p> - {list.Text}</p>;
+                  }
+                })
+              ) : (
+                <p>아직 등록된 의미가 없습니다.</p>
+              )}
+            </div>
+            <div className="static-area">
+              <h4>키워드 언급량 추이</h4>
+              <img src={ex_img} alt={datas} />
+            </div>
           </div>
-          <div className="static-area">
-            <h4>키워드 언급량 추이</h4>
-            <img src={ex_img} alt="example_image" />
-          </div>
-        </div>
-      </Card>
-    </div>
-  );
+        </Card>
+      </div>
+    );
+  }
 }

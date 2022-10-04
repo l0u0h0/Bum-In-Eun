@@ -38,9 +38,12 @@ const StatisticContainer = () => {
     dispatch(getDatasSagaStart());
   }, [dispatch]);
 
-  const getListData = useCallback(() => {
-    dispatch(getListDataSagaStart());
-  }, [dispatch]);
+  const getListData = useCallback(
+    (word: string | null) => {
+      dispatch(getListDataSagaStart(word));
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     setPathName(path);
