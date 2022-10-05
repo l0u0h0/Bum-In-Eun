@@ -142,6 +142,7 @@ export interface Mainprops {
 export interface SearchProps {
   datas: SearchType | null;
   time: GraphType[] | null;
+  loading: boolean;
   searchData: (arg: string) => void;
   getListData: (arg: string) => void;
 }

@@ -14,6 +14,10 @@ const SearchContainer = () => {
     (state) => state.search.search
   );
 
+  const loading = useSelector<RootState, boolean>(
+    (state) => state.search.loading
+  );
+
   const graph = useSelector<RootState, GraphType[] | null>(
     (state) => state.graphdata.graph
   );
@@ -38,6 +42,7 @@ const SearchContainer = () => {
     <SearchComponent
       datas={datas}
       time={graph}
+      loading={loading}
       searchData={searchData}
       getListData={getListData}
     />

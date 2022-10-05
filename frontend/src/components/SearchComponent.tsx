@@ -15,6 +15,7 @@ import Modal from "react-bootstrap/Modal";
 const SearchComponent: React.FC<SearchProps> = ({
   datas,
   time,
+  loading,
   searchData,
   getListData,
 }) => {
@@ -50,7 +51,13 @@ const SearchComponent: React.FC<SearchProps> = ({
             type="input"
           />
         </InputGroup>
-        {searchstate && <Searchresult searchData={datas} staticdata={time} />}
+        {searchstate && (
+          <Searchresult
+            searchData={datas}
+            staticdata={time}
+            loading={loading}
+          />
+        )}
         <MyVerticallyCenteredModal
           show={nullText}
           onHide={() => setNullText(false)}
@@ -73,7 +80,7 @@ const SearchComponent: React.FC<SearchProps> = ({
 };
 
 // Search result Component
-function Searchresult({ searchData, staticdata }) {
+function Searchresult({ searchData, staticdata, loading }) {
   const [search, setSearch] = useState<SearchDataState>({
     word: "검색어를 입력해주세요.",
     data: {
@@ -85,8 +92,8 @@ function Searchresult({ searchData, staticdata }) {
       static: null,
     },
   });
+  const [checkDict, setCheckDict] = useState(false);
   useEffect(() => {
-    console.log(searchData);
     if (searchData !== null) {
       setSearch({
         word:
@@ -95,14 +102,11 @@ function Searchresult({ searchData, staticdata }) {
             : searchData.dict.text,
         data: searchData,
       });
+      searchData.dict.mean !== "NoData"
+        ? setCheckDict(true)
+        : setCheckDict(false);
     }
   }, [searchData, staticdata]);
-  console.log(search.data.dict?.mean);
-
-  let checkDict = false;
-  if (searchData !== null) {
-    checkDict = searchData.dict.mean !== "NoData" ? true : false;
-  }
 
   return (
     <div className="search-result">
@@ -117,7 +121,7 @@ function Searchresult({ searchData, staticdata }) {
           </div>
         </Link>
       ) : (
-        <Link to={`/crime}`}>
+        <Link to={`/crime`}>
           <div className="result-crime">
             <h2>범죄 사전</h2>
             <p>범죄 사전에 등록되지 않은 단어입니다.</p>
@@ -125,12 +129,12 @@ function Searchresult({ searchData, staticdata }) {
           </div>
         </Link>
       )}
-      {checkDict ? (
+      {checkDict && search.data.dict !== null && loading !== true ? (
         <Link to={`/dictionary/detail?word=${search.word}`}>
           <div className="result-word">
             <h2>은어 사전</h2>
-            {search.data.dict?.mean &&
-              search.data.dict?.mean.map((text, i) => (
+            {search.data.dict.mean &&
+              search.data.dict.mean.map((text, i) => (
                 <p key={`mean_${i}`}>{text}</p>
               ))}
           </div>

@@ -7,6 +7,10 @@ const { count } = require("console");
 const router = express.Router();
 
 router.param("word", async (req, res, next, value) => {
+  const dt = moment();
+  const Year = parseInt(dt.format("YY"));
+  const Month = parseInt(dt.format("MM"));
+  const NowMonth = [Month, Month - 1, Month - 2, Month - 3, Month - 4];
   try {
     const getdata = await time.findAll({
       attributes: ["text", "count", "year", "month"],
@@ -16,7 +20,18 @@ router.param("word", async (req, res, next, value) => {
       },
     });
     req.word = value;
-    req.result = getdata;
+    if (getdata.length === 0) {
+      console.log("NoData");
+      req.result = NowMonth.map((e) => ({
+        text: value,
+        month: e,
+        count: 0,
+      }));
+    } else {
+      console.log("Yes");
+      req.result = getdata;
+    }
+
     next();
   } catch (err) {
     next(err.message);
