@@ -9,12 +9,18 @@ import { ModalPropsType, SearchDataState } from "../common/types";
 import { InputGroup, Button, FormControl } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
-import Chart from "./chartCompo/ChartComponent";
+import ChartDetail from "./chartCompo/ChartDetailComponent";
 
 // Search main Component
-export default function SearchComponent({ datas, searchData }) {
+export default function SearchComponent({
+  datas,
+  time,
+  searchData,
+  getListData,
+}) {
   const [searchstate, setSearchstate] = useState(false);
   const [nullText, setNullText] = useState(false);
+
   useEffect(() => {
     if (datas !== null) setSearchstate(true);
   }, [datas]);
@@ -44,7 +50,7 @@ export default function SearchComponent({ datas, searchData }) {
             type="input"
           />
         </InputGroup>
-        {searchstate && <Searchresult searchData={datas} />}
+        {searchstate && <Searchresult searchData={datas} staticdata={time} />}
         <MyVerticallyCenteredModal
           show={nullText}
           onHide={() => setNullText(false)}
@@ -58,6 +64,7 @@ export default function SearchComponent({ datas, searchData }) {
   function Searchstate() {
     const word = inputRef.current?.value;
     if (word !== "") {
+      getListData(word);
       searchData(word);
     } else {
       setNullText(true);
@@ -66,7 +73,7 @@ export default function SearchComponent({ datas, searchData }) {
 }
 
 // Search result Component
-function Searchresult({ searchData }) {
+function Searchresult({ searchData, staticdata }) {
   const [search, setSearch] = useState<SearchDataState>({
     word: "검색어를 입력해주세요.",
     data: {
@@ -89,7 +96,14 @@ function Searchresult({ searchData }) {
         data: searchData,
       });
     }
-  }, [searchData]);
+  }, [searchData, staticdata]);
+  console.log(search.data.dict?.mean);
+
+  let checkDict = false;
+  if (searchData !== null) {
+    checkDict = searchData.dict.mean !== "NoData" ? true : false;
+  }
+
   return (
     <div className="search-result">
       {search.data.crime !== null ? (
@@ -111,7 +125,7 @@ function Searchresult({ searchData }) {
           </div>
         </Link>
       )}
-      {search.data.dict?.text !== "NoData" ? (
+      {checkDict ? (
         <Link to={`/dictionary/detail?word=${search.word}`}>
           <div className="result-word">
             <h2>은어 사전</h2>
@@ -134,14 +148,10 @@ function Searchresult({ searchData }) {
       <Link to={`/statistic/detail?word=${search.word}`}>
         <div className="result-static">
           <h2>통계 추세</h2>
-          {search.data.dict?.text !== "NoData" ? (
-            <Chart
-              datas={
-                search.data.static !== null ? search.data.static.datas : null
-              }
-            />
-          ) : (
+          {staticdata[0].err ? (
             <p>통계가 집계되지 않았습니다.</p>
+          ) : (
+            <ChartDetail datas={staticdata} />
           )}
         </div>
       </Link>

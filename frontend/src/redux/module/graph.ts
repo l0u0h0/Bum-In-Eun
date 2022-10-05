@@ -2,15 +2,15 @@
 import { Action, createActions, handleActions } from "redux-actions";
 import { call, put, takeEvery } from "redux-saga/effects";
 // type import
-import { TimeState, TimeType } from "../../common/types";
-import TimedataService from "../../service/TimedataService";
+import { GraphState, GraphType } from "../../common/types";
+import GraphService from "../../service/GraphService";
 
 // prefix
-const prefix = "bumineun/time";
+const prefix = "bumineun/graph";
 
 // initialState
-const initialState: TimeState = {
-  time: null,
+const initialState: GraphState = {
+  graph: null,
   loading: false,
   error: null,
 };
@@ -24,7 +24,7 @@ export const { pending, success, fail } = createActions(
 );
 
 // Actions create
-const reducer = handleActions<TimeState, TimeType[]>(
+const reducer = handleActions<GraphState, GraphType[]>(
   {
     PENDING: (state, action) => ({
       ...state,
@@ -32,7 +32,7 @@ const reducer = handleActions<TimeState, TimeType[]>(
       error: null,
     }),
     SUCCESS: (state, action) => ({
-      time: action.payload,
+      graph: action.payload,
       loading: false,
       error: null,
     }),
@@ -49,16 +49,15 @@ const reducer = handleActions<TimeState, TimeType[]>(
 export default reducer;
 
 // Data Actions create
-export const { getDatas, getListData } = createActions(
-  "GET_DATAS",
-  "GET_LIST_DATA",
-  { prefix }
-);
+export const { getDatas, getListData } = createActions("GET_LIST_DATA", {
+  prefix,
+});
 
-function* getDatasSaga() {
+function* getListDataSaga(action: Action<string>) {
   try {
+    const word = action.payload;
     yield put(pending());
-    const result: TimeType = yield call(TimedataService.getDatas);
+    const result: GraphType[] = yield call(GraphService.getListData, word);
     yield put(success(result));
   } catch (error: any) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
@@ -66,6 +65,6 @@ function* getDatasSaga() {
 }
 
 // saga create
-export function* timedataSaga() {
-  yield takeEvery(`${prefix}/GET_DATAS`, getDatasSaga);
+export function* graphSaga() {
+  yield takeEvery(`${prefix}/GET_LIST_DATA`, getListDataSaga);
 }

@@ -8,6 +8,7 @@ export interface RootState {
   comments: CommentsState;
   search: SearchState;
   timedata: TimeState;
+  graphdata: GraphState;
   router: Reducer<RouterState, AnyAction>;
 }
 
@@ -99,10 +100,6 @@ export interface TimeState {
 }
 
 export interface TimeType {
-  text: string;
-  year: number;
-  month: number;
-  count: number;
   datas1:
     | [
         {
@@ -121,6 +118,21 @@ export interface TimeType {
     | null;
 }
 
+/** Graph State */
+export interface GraphState {
+  graph: GraphType[] | null;
+  loading: boolean;
+  error: Error | null;
+}
+
+export interface GraphType {
+  text: string;
+  year: number;
+  month: number;
+  count: number;
+  err: string | null;
+}
+
 /** Components props Type */
 export interface Mainprops {
   datas: Datatype[] | null;
@@ -131,6 +143,10 @@ export interface Mainprops {
 
 export interface ChartProps {
   datas: Datatype[] | null;
+}
+
+export interface ChartDetailProps {
+  datas: GraphType[] | null;
 }
 
 export interface DictionarydetailProps {
@@ -165,8 +181,6 @@ export interface SearchDataState {
       mean: string;
       category: string;
     } | null;
-    static: {
-      datas: Datatype[] | null;
-    } | null;
+    static: TimeType[] | null;
   };
 }

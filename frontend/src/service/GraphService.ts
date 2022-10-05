@@ -10,9 +10,9 @@ const API_URL =
   process.env.NODE_ENV === "production" ? "???" : "http://localhost:3306/time";
 
 // create DataService class
-export default class TimedataService {
-  public static async getDatas(): Promise<TimeType> {
-    const response = await axios.get(`${API_URL}/GET_DATAS`);
+export default class GraphService {
+  public static async getListData(word: string): Promise<TimeType[]> {
+    const response = await axios.get(`${API_URL}/GET_LIST_DATA/${word}`);
     return response.data;
   }
 }

@@ -248,7 +248,7 @@ function Body2() {
         page_size: "4",
       },
       headers: {
-        "x-api-key": "CiOSrlmjIYfW-7KivPgTc6j0DDOn9WcLZBZNwayT1TI",
+        "x-api-key": "IgiTs2CNifPgwa1HPCiAakDtu_0yCO__Zb0BJfPMOFA",
       },
     };
     const newsApi = async () => {
