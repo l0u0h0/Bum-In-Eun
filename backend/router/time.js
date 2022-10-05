@@ -70,7 +70,11 @@ router.get("/GET_LIST_DATA/:word", async (req, res) => {
         });
       }
     } else if (NullCheck === 0) {
-      result = [{ err: "NoData" }];
+      result = NowMonth.map((e, i) => ({
+        text: req.result[0].text,
+        month: e,
+        count: 0,
+      }));
     }
 
     res.status(200).json(result);

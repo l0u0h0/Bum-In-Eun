@@ -6,7 +6,7 @@ import { call, put, takeEvery } from "redux-saga/effects";
 import { DataListType, DatasState, Datatype } from "../../common/types";
 
 // prefix
-const prefix = "bumineun/test";
+const prefix = "bumineun/main";
 
 // initialState
 const initialState: DatasState = {

@@ -74,3 +74,11 @@
 > - back
 >   - nodejs, express로 api 서버 구축
 >   - sequelize로 mssql-server와 연동
+
+> 2022.10
+>
+> - front
+>   - `ChartJS`로 그래프 구현
+>   - 러딕스로 데이터 받아와 뿌려주기
+> - back
+>   - 데이터베이스서버에서 데이터 받아와 데이터 가공해 프론트 서버로 넘겨주기 구현

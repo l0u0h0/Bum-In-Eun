@@ -6,12 +6,14 @@ import { ChartProps } from "../../common/types";
 const Chart: React.FC<ChartProps> = ({ datas }) => {
   if (datas === null) {
     return <div>데이터 로딩중,,,</div>;
+  } else if (datas.length === 0) {
+    return <div>데이터 로딩중,,,</div>;
   }
 
   const data = {
     datasets: [
       {
-        label: "Test Statistic Chart",
+        label: "Main Statistic Chart",
         backgroundColor: "rgb(0, 51, 51)",
         borderColor: "rgb(0, 51, 51)",
         data: [
@@ -47,7 +49,7 @@ const Chart: React.FC<ChartProps> = ({ datas }) => {
     responsive: true,
     title: {
       display: true,
-      text: "실시간 데이터 그래프 TEST.ver",
+      text: "실시간 데이터 그래프",
     },
     tooltips: {
       mode: "point" as const,

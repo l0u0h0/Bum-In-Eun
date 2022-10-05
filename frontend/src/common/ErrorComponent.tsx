@@ -5,7 +5,7 @@ import { FallbackProps } from "react-error-boundary";
 /** Error Component */
 const Error: React.FC<FallbackProps> = ({ error }) => {
   if (error === undefined) {
-    return <div>UnKnown Error</div>;
+    return <div>UnKnown Error!</div>;
   }
   return <div>{error.message}</div>;
 };
