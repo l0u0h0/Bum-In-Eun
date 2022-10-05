@@ -1,12 +1,14 @@
-// import
+// import react
 import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+// import Component
 import Banner from "../../common/BannerComponent";
 import Header from "../../common/HeaderComponent";
+import { StatisticmainProps } from "../../common/types";
 
 // Main Area
-export default function Statisticmain({ datas, getDatas }) {
+const Statisticmain: React.FC<StatisticmainProps> = ({ datas, getDatas }) => {
   const [datastate, setDatastate] = useState(true);
   const [data, setData] = useState([{ rank: 0, word_1: "", word_2: "" }]);
   useEffect(() => {
@@ -17,33 +19,15 @@ export default function Statisticmain({ datas, getDatas }) {
     if (datas !== null) {
       datas.datas1 === undefined
         ? setDatastate(true)
-        : setData([
-            {
-              rank: 1,
-              word_1: `${datas.datas1[0].text}`,
-              word_2: `${datas.datas2[0].text}`,
-            },
-            {
-              rank: 2,
-              word_1: `${datas.datas1[1].text}`,
-              word_2: `${datas.datas2[1].text}`,
-            },
-            {
-              rank: 3,
-              word_1: `${datas.datas1[2].text}`,
-              word_2: `${datas.datas2[2].text}`,
-            },
-            {
-              rank: 4,
-              word_1: `${datas.datas1[3].text}`,
-              word_2: `${datas.datas2[3].text}`,
-            },
-            {
-              rank: 5,
-              word_1: `${datas.datas1[4].text}`,
-              word_2: `${datas.datas2[4].text}`,
-            },
-          ]);
+        : setData(
+            datas !== null
+              ? datas.datas1.map((data, i) => ({
+                  rank: i + 1,
+                  word_1: data.text,
+                  word_2: datas.datas2[i].text,
+                }))
+              : [{ rank: 0, word_1: "null", word_2: "null" }]
+          );
       setDatastate(false);
     }
   }, [datas]);
@@ -94,4 +78,6 @@ export default function Statisticmain({ datas, getDatas }) {
   } else {
     return <div>데이터 로딩중,,,</div>;
   }
-}
+};
+
+export default Statisticmain;

@@ -1,16 +1,15 @@
-// import
+// import react
 import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+// import moment
 import moment from "moment";
+// import Component
 import Banner from "../common/BannerComponent";
 import Header from "../common/HeaderComponent";
-// img import
-// import static_img from "../image/img_6.png";
 // Swiper import
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { FreeMode, Thumbs } from "swiper";
 import "swiper/css";
-// Router import
-import { Link, useNavigate } from "react-router-dom";
 
 // axios import
 import axios from "axios";
@@ -26,6 +25,7 @@ import {
   LineElement,
 } from "chart.js";
 
+// ChartJS init
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
 
 // Main Area

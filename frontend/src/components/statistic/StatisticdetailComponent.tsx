@@ -1,22 +1,19 @@
-// import
+// import react
 import React, { useEffect } from "react";
 import { Card } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+// import Component
 import Header from "../../common/HeaderComponent";
-
+import { StatisticdetailProps } from "../../common/types";
 import ChartDetail from "../chartCompo/ChartDetailComponent";
-import { Link } from "react-router-dom";
-// ex_img
-import ex_img from "../../image/img_6.png";
 
 // Detail Area
-export default function Statisticdetail({
-  datas,
+const Statisticdetail: React.FC<StatisticdetailProps> = ({
   mean,
   graph,
   getListData,
   getComments,
-}) {
+}) => {
   const location = new URLSearchParams(useLocation().search);
   const word = location.get("word");
 
@@ -25,7 +22,7 @@ export default function Statisticdetail({
     getComments(word);
   }, [getListData, getComments, word]);
 
-  if (datas === null || mean === null) {
+  if (graph === null || mean === null) {
     return <div>데이터 로딩중,,</div>;
   } else {
     return (
@@ -62,4 +59,6 @@ export default function Statisticdetail({
       </div>
     );
   }
-}
+};
+
+export default Statisticdetail;

@@ -21,7 +21,7 @@ const StatisticContainer = () => {
     (state) => state.comments.comments
   );
 
-  const time = useSelector<RootState, TimeType[] | null>(
+  const time = useSelector<RootState, TimeType | null>(
     (state) => state.timedata.time
   );
 
@@ -58,7 +58,6 @@ const StatisticContainer = () => {
   } else if (pathName === "/statistic/detail") {
     return (
       <Statisticdetail
-        datas={time}
         mean={comments}
         graph={graph}
         getListData={getListData}

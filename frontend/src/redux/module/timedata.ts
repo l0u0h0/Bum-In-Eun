@@ -24,7 +24,7 @@ export const { pending, success, fail } = createActions(
 );
 
 // Actions create
-const reducer = handleActions<TimeState, TimeType[]>(
+const reducer = handleActions<TimeState, TimeType>(
   {
     PENDING: (state, action) => ({
       ...state,

@@ -1,4 +1,6 @@
+// import Chartjs
 import { Line } from "react-chartjs-2";
+// import Type
 import { ChartDetailProps } from "../../common/types";
 
 const ChartDetail: React.FC<ChartDetailProps> = ({ datas }) => {

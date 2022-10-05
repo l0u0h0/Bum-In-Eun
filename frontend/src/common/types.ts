@@ -94,7 +94,7 @@ export interface SearchType {
 
 /** Time State */
 export interface TimeState {
-  time: TimeType[] | null;
+  time: TimeType | null;
   loading: boolean;
   error: Error | null;
 }
@@ -106,16 +106,14 @@ export interface TimeType {
           text: string;
           total: number;
         }
-      ]
-    | null;
+      ];
   datas2:
     | [
         {
           text: string;
           total: number;
         }
-      ]
-    | null;
+      ];
 }
 
 /** Graph State */
@@ -141,6 +139,13 @@ export interface Mainprops {
   getDatas: () => void;
 }
 
+export interface SearchProps {
+  datas: SearchType | null;
+  time: GraphType[] | null;
+  searchData: (arg: string) => void;
+  getListData: (arg: string) => void;
+}
+
 export interface ChartProps {
   datas: Datatype[] | null;
 }
@@ -149,11 +154,33 @@ export interface ChartDetailProps {
   datas: GraphType[] | null;
 }
 
+export interface DictionarymainProps {
+  datas: Datatype[] | null;
+  getDatas: () => void;
+}
+
 export interface DictionarydetailProps {
   comments: CommentType[] | null;
   getComments: (arg: string) => void;
   addComment: (arg: CommentAddType) => void;
   increaseCount: (arg: CountIncreaseType) => void;
+}
+
+export interface CrimeresultProps {
+  datas: DataListType[] | null;
+  getList: (arg: string) => void;
+}
+
+export interface StatisticmainProps {
+  datas: TimeType | null;
+  getDatas: () => void;
+}
+
+export interface StatisticdetailProps {
+  mean: CommentType[] | null;
+  graph: GraphType[] | null;
+  getListData: (arg: string | null) => void;
+  getComments: (arg: string | null) => void;
 }
 
 export interface ModalPropsType {

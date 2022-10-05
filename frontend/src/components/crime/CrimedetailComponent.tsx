@@ -1,7 +1,8 @@
-// import
+// import react
 import React from "react";
 import { Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
+// import Component
 import Header from "../../common/HeaderComponent";
 // ex_img
 import ex_img from "../../image/camera.png";

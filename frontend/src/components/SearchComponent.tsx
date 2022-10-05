@@ -1,23 +1,23 @@
 // import
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+// import Component
 import Banner from "../common/BannerComponent";
 import Header from "../common/HeaderComponent";
-import { ModalPropsType, SearchDataState } from "../common/types";
-// img import
-// import static_img from "../image/img_6.png";
+import ChartDetail from "./chartCompo/ChartDetailComponent";
+// import Type
+import { ModalPropsType, SearchDataState, SearchProps } from "../common/types";
 // react-bootstrap
 import { InputGroup, Button, FormControl } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
-import { Link } from "react-router-dom";
-import ChartDetail from "./chartCompo/ChartDetailComponent";
 
 // Search main Component
-export default function SearchComponent({
+const SearchComponent: React.FC<SearchProps> = ({
   datas,
   time,
   searchData,
   getListData,
-}) {
+}) => {
   const [searchstate, setSearchstate] = useState(false);
   const [nullText, setNullText] = useState(false);
 
@@ -62,7 +62,7 @@ export default function SearchComponent({
   );
 
   function Searchstate() {
-    const word = inputRef.current?.value;
+    const word: string = inputRef.current ? inputRef.current?.value : "";
     if (word !== "") {
       getListData(word);
       searchData(word);
@@ -70,7 +70,7 @@ export default function SearchComponent({
       setNullText(true);
     }
   }
-}
+};
 
 // Search result Component
 function Searchresult({ searchData, staticdata }) {
@@ -183,3 +183,5 @@ const MyVerticallyCenteredModal: React.FC<ModalPropsType> = (props) => {
     </Modal>
   );
 };
+
+export default SearchComponent;

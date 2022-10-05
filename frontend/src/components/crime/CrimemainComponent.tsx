@@ -1,6 +1,7 @@
-// import
+// import react
 import React from "react";
 import { Link } from "react-router-dom";
+// import Component
 import Header from "../../common/HeaderComponent";
 import Banner from "../../common/BannerComponent";
 

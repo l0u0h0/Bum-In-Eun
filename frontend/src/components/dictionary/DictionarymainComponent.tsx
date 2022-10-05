@@ -1,14 +1,16 @@
-// import
+// import react
 import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+// import Component
 import Banner from "../../common/BannerComponent";
 import Header from "../../common/HeaderComponent";
-import { Datatype } from "../../common/types";
+// import Type
+import { Datatype, DictionarymainProps } from "../../common/types";
 
 // Main Area
-export default function DictionaryMain({ datas, getDatas }) {
-  const [lists, setLists] = useState([{ num: null, word: "" }]);
+const DictionaryMain: React.FC<DictionarymainProps> = ({ datas, getDatas }) => {
+  const [lists, setLists] = useState([{ num: 0, word: "" }]);
 
   useEffect(() => {
     if (datas !== null) {
@@ -83,4 +85,6 @@ export default function DictionaryMain({ datas, getDatas }) {
       <Banner />
     </div>
   );
-}
+};
+
+export default DictionaryMain;

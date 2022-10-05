@@ -1,12 +1,13 @@
-// import
+// import react
 import React, { useState, useEffect, useRef } from "react";
 import { Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
+// import Component
 import Header from "../../common/HeaderComponent";
 // react-bootstrap
 import { InputGroup, Button, FormControl } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
-// Type
+// import Type
 import {
   DictionarydetailProps,
   dictionarydataState,

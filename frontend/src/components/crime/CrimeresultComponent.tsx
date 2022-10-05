@@ -1,11 +1,14 @@
-// import
+// import react
 import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
+// import Component
 import Header from "../../common/HeaderComponent";
+// import Type
+import { CrimeresultProps } from "../../common/types";
 
 // Result Area
-export default function Crimeresult({ datas, getList }) {
+const Crimeresult: React.FC<CrimeresultProps> = ({ datas, getList }) => {
   const location = new URLSearchParams(useLocation().search);
   const type = location.get("category");
   const [category, setCategory] = useState("");
@@ -68,4 +71,6 @@ export default function Crimeresult({ datas, getList }) {
       </Card>
     </div>
   );
-}
+};
+
+export default Crimeresult;
