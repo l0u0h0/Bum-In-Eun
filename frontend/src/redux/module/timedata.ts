@@ -1,5 +1,5 @@
 // import
-import { Action, createActions, handleActions } from "redux-actions";
+import { createActions, handleActions } from "redux-actions";
 import { call, put, takeEvery } from "redux-saga/effects";
 // type import
 import { TimeState, TimeType } from "../../common/types";

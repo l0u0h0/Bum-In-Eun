@@ -10,7 +10,7 @@ import datas from "./module/data";
 import comments from "./module/comment";
 import search from "./module/search";
 import timedata from "./module/timedata";
-import graph from "./module/graph";
+import graphdata from "./module/graph";
 
 // history setting
 const { createReduxHistory, routerMiddleware, routerReducer } =
@@ -30,7 +30,7 @@ export const store = createStore(
     comments,
     search,
     timedata,
-    graph,
+    graphdata,
   }),
   composeWithDevTools(applyMiddleware(sagaMiddleware, routerMiddleware))
 );
