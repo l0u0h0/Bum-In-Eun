@@ -3,9 +3,9 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { CommentType, RootState, TimeType } from "../common/types";
+import { CommentType, GraphType, RootState, TimeType } from "../common/types";
 import { getDatas as getDatasSagaStart } from "../redux/module/timedata";
-import { getListData as getListDataSagaStart } from "../redux/module/timedata";
+import { getListData as getListDataSagaStart } from "../redux/module/graph";
 import { getComments as getCommentsSagaStart } from "../redux/module/comment";
 
 // Component import
@@ -23,6 +23,10 @@ const StatisticContainer = () => {
 
   const time = useSelector<RootState, TimeType[] | null>(
     (state) => state.timedata.time
+  );
+
+  const graph = useSelector<RootState, GraphType[] | null>(
+    (state) => state.graphdata.graph
   );
 
   const dispatch = useDispatch();
@@ -56,6 +60,7 @@ const StatisticContainer = () => {
       <Statisticdetail
         datas={time}
         mean={comments}
+        graph={graph}
         getListData={getListData}
         getComments={getComments}
       />

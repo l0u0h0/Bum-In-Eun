@@ -49,7 +49,7 @@ const reducer = handleActions<GraphState, GraphType[]>(
 export default reducer;
 
 // Data Actions create
-export const { getDatas, getListData } = createActions("GET_LIST_DATA", {
+export const { getListData } = createActions("GET_LIST_DATA", {
   prefix,
 });
 

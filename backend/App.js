@@ -16,7 +16,7 @@ const timeRouter = require("./router/time");
 
 // cors sett
 let corsOption = {
-  origin: "http://localhost:3000",
+  origin: process.env.FRONT_URL,
   credentials: true,
 };
 

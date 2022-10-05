@@ -38,8 +38,22 @@ const ChartDetail: React.FC<ChartDetailProps> = ({ datas }) => {
       },
     ],
   };
-  let max_num: number = datas[0].count + datas[0].count / 10;
-  let min_num: number = datas[4].count - datas[0].count / 10;
+
+  let max_num: number = datas[0].count;
+  let min_num: number = datas[0].count;
+  datas.forEach((data) => {
+    if (max_num <= data.count) {
+      console.log(max_num);
+      max_num = data.count;
+    } else if (min_num >= data.count) {
+      console.log(min_num);
+      min_num = data.count;
+    }
+  });
+  max_num = max_num + max_num / 10;
+  min_num = min_num - min_num / 10;
+
+  console.log(max_num, min_num);
 
   const options = {
     responsive: true,

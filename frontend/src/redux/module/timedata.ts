@@ -49,11 +49,7 @@ const reducer = handleActions<TimeState, TimeType[]>(
 export default reducer;
 
 // Data Actions create
-export const { getDatas, getListData } = createActions(
-  "GET_DATAS",
-  "GET_LIST_DATA",
-  { prefix }
-);
+export const { getDatas } = createActions("GET_DATAS", { prefix });
 
 function* getDatasSaga() {
   try {

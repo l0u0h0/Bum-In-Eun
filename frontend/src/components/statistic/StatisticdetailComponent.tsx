@@ -3,6 +3,8 @@ import React, { useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import Header from "../../common/HeaderComponent";
+
+import ChartDetail from "../chartCompo/ChartDetailComponent";
 import { Link } from "react-router-dom";
 // ex_img
 import ex_img from "../../image/img_6.png";
@@ -11,6 +13,7 @@ import ex_img from "../../image/img_6.png";
 export default function Statisticdetail({
   datas,
   mean,
+  graph,
   getListData,
   getComments,
 }) {
@@ -52,7 +55,7 @@ export default function Statisticdetail({
             </div>
             <div className="static-area">
               <h4>키워드 언급량 추이</h4>
-              <img src={ex_img} alt={datas} />
+              <ChartDetail datas={graph} />
             </div>
           </div>
         </Card>
