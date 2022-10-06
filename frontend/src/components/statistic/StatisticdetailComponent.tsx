@@ -1,5 +1,6 @@
 // import react
-import React, { useEffect } from "react";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 // import Component
@@ -16,8 +17,13 @@ const Statisticdetail: React.FC<StatisticdetailProps> = ({
 }) => {
   const location = new URLSearchParams(useLocation().search);
   const word = location.get("word");
+  const [now, setNow] = useState("");
 
   useEffect(() => {
+    const dt = moment();
+    setNow(
+      `${dt.format("YYYY")}년 ${dt.format("MM")}월 ${dt.format("DD")}일 기준`
+    );
     getListData(word);
     getComments(word);
   }, [getListData, getComments, word]);
@@ -29,7 +35,7 @@ const Statisticdetail: React.FC<StatisticdetailProps> = ({
       <div className="App-staticdetail">
         <Header />
         <Card body className="staticdetail-body">
-          <h2 className="detail-title">통계</h2>
+          <h2 className="detail-title">단어 통계</h2>
           <hr className="title-body-between" />
           <div className="detail-body">
             <Link to={`/dictionary/detail?word=${word}`}>
@@ -53,6 +59,7 @@ const Statisticdetail: React.FC<StatisticdetailProps> = ({
             <div className="static-area">
               <h4>키워드 언급량 추이</h4>
               <ChartDetail datas={graph} />
+              <p> - {now}</p>
             </div>
           </div>
         </Card>
