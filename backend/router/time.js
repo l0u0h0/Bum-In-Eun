@@ -17,18 +17,18 @@ router.param("word", async (req, res, next, value) => {
       order: [["month", "desc"]],
       where: {
         text: `${value}`,
+        // year: Year,
       },
     });
+    console.log(Year);
     req.word = value;
     if (getdata.length === 0) {
-      console.log("NoData");
       req.result = NowMonth.map((e) => ({
         text: value,
         month: e,
         count: 0,
       }));
     } else {
-      console.log("Yes");
       req.result = getdata;
     }
 

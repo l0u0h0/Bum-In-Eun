@@ -77,6 +77,9 @@ const ChartDetail: React.FC<ChartDetailProps> = ({ datas }) => {
         },
       },
       y: {
+        gird: {
+          display: false,
+        },
         min: min_num < 0 ? 0 : min_num,
         max: max_num,
       },
