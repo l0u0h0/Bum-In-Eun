@@ -11,6 +11,8 @@ export default function Crimemain() {
     <div className="App-crimemain">
       <Header />
       <div className="crimemain-body">
+        <h3>범죄 사전</h3>
+        <hr />
         <div className="category-area">
           <Link to="/crime/result?category=gambling">
             <button className="btn btn--link category">도박</button>

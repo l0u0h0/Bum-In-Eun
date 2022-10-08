@@ -64,8 +64,8 @@ const Body1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
 
   return (
     <div className="main-body-first">
-      <hr />
       <h2>Today's</h2>
+      <hr />
       <div className="swiper-area">
         <Swiper
           className="tab-title"

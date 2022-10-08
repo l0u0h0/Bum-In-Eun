@@ -35,6 +35,8 @@ const DictionaryMain: React.FC<DictionarymainProps> = ({ datas, getDatas }) => {
     <div className="App-dictionarymain">
       <Header />
       <Card body className="dictionarymain-body">
+        <h3>은어 사전</h3>
+        <hr />
         <Card body className="first-table">
           <h3 className="table-title">조회가 많았던 키워드</h3>
           <table className="table-content">

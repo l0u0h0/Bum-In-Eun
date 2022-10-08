@@ -8,6 +8,17 @@
   .crimemain-body {
     width: 90%;
     margin: auto;
+    h3 {
+      margin-top: 3%;
+      font-size: 2rem;
+      text-align: center;
+      color: #003333;
+    }
+    hr {
+      margin-left: 5%;
+      margin-right: 5%;
+      height: 0.15rem;
+    }
     .category-area {
       margin: 5%;
       display: flex;
