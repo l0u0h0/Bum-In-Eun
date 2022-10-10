@@ -11,8 +11,8 @@ import {
  *  -> develop : localhost:3306
  */
 const API_URL =
-  process.env.NODE_ENV === "production"
-    ? "???"
+  process.env.NODE_ENV === "development"
+    ? "https://bumineunapi.herokuapp.com/comment"
     : "http://localhost:3306/comment";
 
 // create DataService class
