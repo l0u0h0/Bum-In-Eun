@@ -10,9 +10,7 @@ const API_URL =
   process.env.NODE_ENV === "development"
     ? "https://bumineunapi.herokuapp.com/"
     : "http://localhost:3306";
-
-console.log(API_URL);
-
+console.log(process.env.NODE_ENV);
 // create DataService class
 export default class DataService {
   public static async getDatas(): Promise<Datatype[]> {
