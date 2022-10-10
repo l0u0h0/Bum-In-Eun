@@ -7,7 +7,7 @@ import { Datatype, DataListType } from "../common/types";
  *  -> develop : localhost:3306
  */
 const API_URL =
-  process.env.NODE_ENV === "development"
+  process.env.NODE_ENV === "production"
     ? "https://bumineunapi.herokuapp.com/"
     : "http://localhost:3306";
 console.log(process.env.NODE_ENV);
