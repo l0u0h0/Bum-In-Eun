@@ -14,6 +14,7 @@ import "./css/Search.scss";
 import "./css/Crime.scss";
 import "./css/Dictionary.scss";
 import "./css/Statistic.scss";
+import "./css/Footer.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(

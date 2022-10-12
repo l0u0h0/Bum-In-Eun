@@ -24,6 +24,7 @@ import {
   PointElement,
   LineElement,
 } from "chart.js";
+import Footer from "../common/FooterComponent";
 
 // ChartJS init
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
@@ -54,6 +55,7 @@ const MainComponent: React.FC<Mainprops> = ({
         <Body2 />
       </div>
       <Banner />
+      <Footer />
     </div>
   );
 };
@@ -248,8 +250,9 @@ function Body2() {
         page_size: "4",
       },
       headers: {
-        // "x-api-key": "IgiTs2CNifPgwa1HPCiAakDtu_0yCO__Zb0BJfPMOFA",
-        "x-api-key": "AYl1j-zT4UEs5yA1JjPnj2JqB_H31uZM5IyRMWS_LvY",
+        // 허용된 요청 횟수 초과
+        "x-api-key": "IgiTs2CNifPgwa1HPCiAakDtu_0yCO__Zb0BJfPMOFA",
+        // "x-api-key": "AYl1j-zT4UEs5yA1JjPnj2JqB_H31uZM5IyRMWS_LvY",
       },
     };
     const newsApi = async () => {

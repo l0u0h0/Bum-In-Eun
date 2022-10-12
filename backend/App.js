@@ -16,8 +16,10 @@ const timeRouter = require("./router/time");
 
 // cors sett
 let corsOption = {
-  // origin: process.env.FRONT_URL,
-  origin: "https://bumineun.netlify.app",
+  origin:
+    process.env.ENV === "development"
+      ? "http://localhost:3000"
+      : process.env.FRONT_URL,
   credentials: true,
 };
 

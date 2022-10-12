@@ -9,8 +9,8 @@
 [bumineun_android](https://github.com/SNS-bumineun/SNSAnalysis)  
 <https://github.com/SNS-bumineun/SNSAnalysis>
 
-- 현재 배포 진행중
-  [bumineun_webApp](https://bumineun.netlify.app)
+- 현재 배포 진행중  
+  [bumineun_webApp](https://bumineun.netlify.app)  
   <https://bumineun.netlify.app>
 
 - `android` --> `WebApp`
