@@ -250,9 +250,10 @@ function Body2() {
         page_size: "4",
       },
       headers: {
-        // 허용된 요청 횟수 초과
-        // "x-api-key": "IgiTs2CNifPgwa1HPCiAakDtu_0yCO__Zb0BJfPMOFA",
-        "x-api-key": "AYl1j-zT4UEs5yA1JjPnj2JqB_H31uZM5IyRMWS_LvY",
+        "x-api-key":
+          process.env.NODE_ENV === "production"
+            ? "AYl1j-zT4UEs5yA1JjPnj2JqB_H31uZM5IyRMWS_LvY"
+            : "IgiTs2CNifPgwa1HPCiAakDtu_0yCO__Zb0BJfPMOFA",
       },
     };
     const newsApi = async () => {
