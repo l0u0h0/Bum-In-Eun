@@ -7,7 +7,7 @@ import Header from "../../common/HeaderComponent";
 // ex_img
 import ex_img from "../../image/camera.png";
 
-// Detail Area
+// Crime Detail Area
 export default function Crimedetail() {
   const location = new URLSearchParams(useLocation().search);
   const category = location.get("category");

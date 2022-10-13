@@ -3,6 +3,10 @@ import { Line } from "react-chartjs-2";
 // import Type
 import { ChartProps } from "../../common/types";
 
+/** Chart Main Component
+ *  실시간 데이터를 받는 그래프 컴포넌트
+ *  단어별로 그래프 출력
+ */
 const Chart: React.FC<ChartProps> = ({ datas }) => {
   if (datas === null) {
     return <div>데이터 로딩중,,,</div>;

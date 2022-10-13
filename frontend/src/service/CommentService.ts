@@ -7,15 +7,13 @@ import {
   CountIncreaseType,
 } from "../common/types";
 
-/** setting API_URL
- *  -> develop : localhost:3306
- */
+/** setting API_URL */
 const API_URL =
   process.env.NODE_ENV === "production"
     ? "https://bumineunapi.herokuapp.com/comment"
     : "http://localhost:3306/comment";
 
-// create DataService class
+// create CommentService class
 export default class CommentService {
   public static async getComments(word: string): Promise<CommentType> {
     const response = await axios.get(`${API_URL}/GET_COMMENTS/${word}`);

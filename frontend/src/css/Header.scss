@@ -1,4 +1,4 @@
-/* HEADER COMMON */
+// HEADER COMMON
 .App-header {
   width: 100%;
   max-height: 10%;
@@ -17,7 +17,7 @@
     align-items: center;
     .back-area {
       display: flex;
-      /* HEADER BACK BUTTON */
+      // HEADER BACK BUTTON
       .back {
         width: 3.125rem;
         height: 3.125rem;
@@ -26,7 +26,7 @@
     }
     .logo-area {
       display: flex;
-      /* HEADER LOGO IMG */
+      // HEADER LOGO IMG
       .logo {
         max-height: 3.75rem;
         min-height: 3.125rem;
@@ -34,7 +34,7 @@
     }
     .search-area {
       display: flex;
-      /* HEADER SEARCH BUTTON */
+      // HEADER SEARCH BUTTON
       .search {
         width: 2.5rem;
         height: 2.5rem;

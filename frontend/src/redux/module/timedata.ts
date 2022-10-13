@@ -48,9 +48,10 @@ const reducer = handleActions<TimeState, TimeType>(
 
 export default reducer;
 
-// Data Actions create
+// TimeData Actions create
 export const { getDatas } = createActions("GET_DATAS", { prefix });
 
+// TimeData getDataSaga create
 function* getDatasSaga() {
   try {
     yield put(pending());

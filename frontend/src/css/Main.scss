@@ -1,4 +1,4 @@
-/* MAIN COMMON */
+// MAIN COMMON
 div {
   box-sizing: border-box;
 }
@@ -30,7 +30,7 @@ div {
   margin-left: 1.25rem;
   margin-right: 1.25rem;
 
-  /* MAIN BODY FIRST */
+  // MAIN BODY FIRST
   .main-body-first {
     margin-top: 1.75rem;
     margin-bottom: 2.5rem;
@@ -45,7 +45,6 @@ div {
     .tab-title {
       height: 10%;
       margin-bottom: 0.625rem;
-      // box-sizing: border-box;
       .title {
         font-size: 1rem;
         text-align: center;
@@ -69,7 +68,7 @@ div {
       }
       .contents {
         text-align: center;
-        /* TAB FRAGMENT 1 */
+        // TAB FRAGMENT 1
         .table-area-first table {
           width: 90%;
           margin-left: 1.875rem;
@@ -98,7 +97,7 @@ div {
           text-align: end;
         }
 
-        /* TAB FRAGMENT 2 */
+        // TAB FRAGMENT 2
         .table-area-second table {
           width: 90%;
           margin-left: 1.875rem;
@@ -122,7 +121,7 @@ div {
           }
         }
 
-        /* TAB FRAGMENT 3 */
+        // TAB FRAGMENT 3
         .static-data-area {
           margin-left: auto;
           margin-right: auto;
@@ -135,7 +134,7 @@ div {
       }
     }
   }
-  /* MAIN BODY SECOND */
+  // MAIN BODY SECOND
   .main-body-second {
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
@@ -153,11 +152,11 @@ div {
       font-size: 1.2rem;
       color: rgb(99, 99, 99);
     }
-    /* MAIN BODY SECOND EXAMPLE */
+    /* MAIN BODY SECOND EXAMPLE NEWSAREA */
     // .news-area img {
     //   width: 100%;
     // }
-    /* MAIN BODY SECOND NEWSAREA */
+    // MAIN BODY SECOND NEWSAREA
     .news-area {
       margin-top: 1.25rem;
       .news-row {
@@ -186,7 +185,6 @@ div {
           display: flex;
           align-items: center;
           img {
-            // max-width: 9.375em;
             width: 100%;
           }
         }

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Header from "../../common/HeaderComponent";
 import Banner from "../../common/BannerComponent";
 
-// Main Area
+// Crime Main Area
 export default function Crimemain() {
   return (
     <div className="App-crimemain">

@@ -5,10 +5,11 @@ import { Card } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 // import Component
 import Header from "../../common/HeaderComponent";
-import { StatisticdetailProps } from "../../common/types";
 import ChartDetail from "../chartCompo/ChartDetailComponent";
+// import Type
+import { StatisticdetailProps } from "../../common/types";
 
-// Detail Area
+// Statistic Detail Area
 const Statisticdetail: React.FC<StatisticdetailProps> = ({
   mean,
   graph,

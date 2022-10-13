@@ -1,7 +1,7 @@
 // import
 import React from "react";
 
-// Banner Area
+// Footer Area
 export default function Footer() {
   const thisYear = new Date().getFullYear();
   return (
@@ -22,8 +22,6 @@ export default function Footer() {
         <div className="info">
           <span>백석대학교 컴퓨터공학부</span>
           <span>2022_2학기 캡스톤 디자인</span>
-          {/* <span>TEL : 041) 1234-5678 / FAX : 041) 5678-1234</span>
-          <span>개인정보 책임자 : 임최나엄정</span> */}
         </div>
         <p className="copyright">
           &copy; <span className="this-year">{thisYear}</span> Bum-In-Eun. All

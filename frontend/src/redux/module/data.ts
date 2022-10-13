@@ -55,7 +55,7 @@ export const { getDatas, getListDatas } = createActions(
   { prefix }
 );
 
-// example getDatasaga
+// getDatasaga
 function* getDataSaga() {
   try {
     yield put(pending());
@@ -66,7 +66,7 @@ function* getDataSaga() {
   }
 }
 
-// example getDataListSaga
+// getDataListSaga
 function* getDataListSaga(action: Action<string>) {
   try {
     const type = action.payload;

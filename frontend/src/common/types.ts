@@ -2,7 +2,7 @@
 import { RouterState } from "redux-first-history";
 import { AnyAction, Reducer } from "redux";
 
-/** Root Type */
+/** Root State Type */
 export interface RootState {
   datas: DatasState;
   comments: CommentsState;
@@ -24,7 +24,7 @@ export interface DataListState {
   error: Error | null;
 }
 
-/** example data type */
+/** data type */
 export interface Datatype {
   id: number;
   text: string;

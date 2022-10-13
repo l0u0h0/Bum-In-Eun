@@ -3,6 +3,7 @@ import { Line } from "react-chartjs-2";
 // import Type
 import { ChartDetailProps } from "../../common/types";
 
+// ChartDetail Component
 const ChartDetail: React.FC<ChartDetailProps> = ({ datas }) => {
   if (datas === null) {
     return <div>데이터 로딩중,,,</div>;

@@ -8,7 +8,7 @@ import Header from "../../common/HeaderComponent";
 // import Type
 import { Datatype, DictionarymainProps } from "../../common/types";
 
-// Main Area
+// Dictionary Main Area
 const DictionaryMain: React.FC<DictionarymainProps> = ({ datas, getDatas }) => {
   const [lists, setLists] = useState([{ num: 0, word: "" }]);
 

@@ -14,7 +14,7 @@ import {
   ModalPropsType,
 } from "../../common/types";
 
-// Detail Area
+// Dictionary Detail Area
 const Dictionarydetail: React.FC<DictionarydetailProps> = ({
   comments,
   getComments,
@@ -70,6 +70,9 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
     if (refResult === "") {
       setNullText(true);
       return;
+    } else if (refResult === " ") {
+      setNullText(true);
+      return;
     }
     if (comments !== null && word !== null) {
       addComment({
@@ -82,6 +85,7 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
       mean: refResult,
       count: 0,
     });
+    /** sort by desc */
     setData(
       copy.sort(function (a, b) {
         return b.count - a.count;

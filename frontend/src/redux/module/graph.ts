@@ -48,11 +48,12 @@ const reducer = handleActions<GraphState, GraphType[]>(
 
 export default reducer;
 
-// Data Actions create
+// Graph Actions create
 export const { getListData } = createActions("GET_LIST_DATA", {
   prefix,
 });
 
+// Graph getListDataSaga create
 function* getListDataSaga(action: Action<string>) {
   try {
     const word = action.payload;

@@ -7,7 +7,7 @@ import Header from "../../common/HeaderComponent";
 // import Type
 import { CrimeresultProps } from "../../common/types";
 
-// Result Area
+// Crime Result Area
 const Crimeresult: React.FC<CrimeresultProps> = ({ datas, getList }) => {
   const location = new URLSearchParams(useLocation().search);
   const type = location.get("category");

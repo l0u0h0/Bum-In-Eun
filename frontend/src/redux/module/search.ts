@@ -48,9 +48,10 @@ const reducer = handleActions<SearchState, SearchType>(
 
 export default reducer;
 
-// Data Actions create
+// Search Actions create
 export const { searchData } = createActions("SEARCH_DATA", { prefix });
 
+// SearchDataSaga create
 function* searchDataSaga(action: Action<string>) {
   try {
     const word = action.payload;

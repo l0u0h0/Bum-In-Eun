@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 // import Component
 import Banner from "../../common/BannerComponent";
 import Header from "../../common/HeaderComponent";
+// import Type
 import { StatisticmainProps } from "../../common/types";
 
-// Main Area
+// Statistic Main Area
 const Statisticmain: React.FC<StatisticmainProps> = ({ datas, getDatas }) => {
   const [datastate, setDatastate] = useState(true);
   const [data, setData] = useState([{ rank: 0, word_1: "", word_2: "" }]);
