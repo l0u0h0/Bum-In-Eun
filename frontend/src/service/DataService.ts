@@ -6,8 +6,9 @@ import { Datatype, DataListType } from "../common/types";
 /** setting API_URL */
 const API_URL =
   process.env.NODE_ENV === "production"
-    ? "https://bumineunapi.herokuapp.com"
+    ? process.env.REACT_APP_API_URL
     : "http://localhost:3306";
+
 // create DataService class
 export default class DataService {
   public static async getDatas(): Promise<Datatype[]> {

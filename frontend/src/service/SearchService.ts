@@ -6,7 +6,7 @@ import { SearchType } from "../common/types";
 /** setting API_URL */
 const API_URL =
   process.env.NODE_ENV === "production"
-    ? "https://bumineunapi.herokuapp.com/search"
+    ? `${process.env.REACT_APP_API_URL}/search`
     : "http://localhost:3306/search";
 
 // create SearchService class

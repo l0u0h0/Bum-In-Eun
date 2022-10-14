@@ -252,8 +252,8 @@ function Body2() {
       headers: {
         "x-api-key":
           process.env.NODE_ENV === "production"
-            ? "AYl1j-zT4UEs5yA1JjPnj2JqB_H31uZM5IyRMWS_LvY"
-            : "IgiTs2CNifPgwa1HPCiAakDtu_0yCO__Zb0BJfPMOFA",
+            ? `${process.env.REACT_APP_NEWS_API_KEY}`
+            : `${process.env.REACT_APP_NAK_develop}`,
       },
     };
     const newsApi = async () => {

@@ -10,7 +10,7 @@ import {
 /** setting API_URL */
 const API_URL =
   process.env.NODE_ENV === "production"
-    ? "https://bumineunapi.herokuapp.com/comment"
+    ? `${process.env.REACT_APP_API_URL}/comment`
     : "http://localhost:3306/comment";
 
 // create CommentService class
