@@ -1,8 +1,7 @@
 const express = require("express");
 const { time, final_df } = require("../models");
 const moment = require("moment");
-const { fn, col, Op, literal } = require("sequelize");
-const { count } = require("console");
+const { fn, Op, literal } = require("sequelize");
 
 const router = express.Router();
 
@@ -17,7 +16,6 @@ router.param("word", async (req, res, next, value) => {
       order: [["month", "desc"]],
       where: {
         text: `${value}`,
-        // year: Year,
       },
     });
     console.log(Year);

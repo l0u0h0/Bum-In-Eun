@@ -1,7 +1,6 @@
 const express = require("express");
 const { crime } = require("../models");
-const moment = require("moment");
-
+// const moment = require("moment");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
@@ -36,8 +35,10 @@ router.get("/GET_DATAS/:type", async (req, res) => {
     console.error(err);
   }
 });
+
 module.exports = router;
 
+/** Crime Example Dataset */
 // const example = [
 //   {
 //     Type: "drug",
