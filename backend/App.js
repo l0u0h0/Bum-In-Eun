@@ -1,3 +1,9 @@
+process.env.NODE_ENV =
+  process.env.NODE_ENV &&
+  process.env.NODE_ENV.trim().toLowerCase() == "production"
+    ? "production"
+    : "development";
+
 // import
 const express = require("express");
 const cors = require("cors");
@@ -17,7 +23,7 @@ const timeRouter = require("./router/time");
 // cors sett
 let corsOption = {
   origin:
-    process.env.ENV === "development"
+    process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
       : process.env.FRONT_URL,
   credentials: true,
