@@ -9,9 +9,6 @@ const API_URL =
     ? process.env.REACT_APP_API_URL
     : "http://localhost:3306";
 
-console.log(API_URL);
-console.log(process.env.REACT_APP_NAV_develop);
-console.log(process.env.REACT_APP_API_URL);
 // create DataService class
 export default class DataService {
   public static async getDatas(): Promise<Datatype[]> {
