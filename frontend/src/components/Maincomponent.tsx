@@ -32,9 +32,11 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
 // Main Area
 const MainComponent: React.FC<Mainprops> = ({
   datas,
+  nowdatas,
   loading,
   error,
   getDatas,
+  getNowDatas,
 }) => {
   useEffect(() => {
     getDatas();
@@ -46,9 +48,11 @@ const MainComponent: React.FC<Mainprops> = ({
       <div className="body">
         <Body1
           datas={datas}
+          nowdatas={nowdatas}
           loading={loading}
           error={error}
           getDatas={getDatas}
+          getNowDatas={getNowDatas}
         />
       </div>
       <div className="body">
@@ -61,7 +65,14 @@ const MainComponent: React.FC<Mainprops> = ({
 };
 
 // Tab Area
-const Body1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
+const Body1: React.FC<Mainprops> = ({
+  datas,
+  nowdatas,
+  loading,
+  error,
+  getDatas,
+  getNowDatas,
+}) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
 
   return (
@@ -96,17 +107,21 @@ const Body1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
           <SwiperSlide>
             <Tab1
               datas={datas}
+              nowdatas={nowdatas}
               loading={loading}
               error={error}
               getDatas={getDatas}
+              getNowDatas={getNowDatas}
             />
           </SwiperSlide>
           <SwiperSlide>
             <Tab2
               datas={datas}
+              nowdatas={nowdatas}
               loading={loading}
               error={error}
               getDatas={getDatas}
+              getNowDatas={getNowDatas}
             />
           </SwiperSlide>
           <SwiperSlide>
@@ -120,7 +135,14 @@ const Body1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
 };
 
 // Tab Fragment
-const Tab1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
+const Tab1: React.FC<Mainprops> = ({
+  datas,
+  nowdatas,
+  loading,
+  error,
+  getDatas,
+  getNowDatas,
+}) => {
   const [now, setNow] = useState("");
 
   useEffect(() => {
@@ -130,13 +152,13 @@ const Tab1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
         "DD"
       )}일 ${dt.format("HH")}시 기준`
     );
-    getDatas();
-  }, [now, getDatas]);
+    getNowDatas();
+  }, [now, getNowDatas]);
 
-  if (datas === null) {
+  if (nowdatas === null) {
     return <div>데이터 로딩중,,,</div>;
   } else {
-    if (datas.length > 5) return <div>데이터 로딩중,,,</div>;
+    if (nowdatas.length > 5) return <div>데이터 로딩중,,,</div>;
   }
 
   return (
@@ -144,13 +166,13 @@ const Tab1: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
       <div className="table-area-first">
         <table>
           <tbody>
-            {datas ? (
-              datas.map((data: Datatype, i) => (
+            {nowdatas ? (
+              nowdatas.map((nowdatas: Datatype, i) => (
                 <tr key={`table_row_${i}`}>
                   <th className="data-rank">{i + 1}.</th>
-                  <td className="data-word">{data.text}</td>
-                  <td className="data-state">-</td>
-                  <td className="data-num">{data.count}</td>
+                  <td className="data-word">{nowdatas.text}</td>
+                  <td className="data-state">{nowdatas.state}</td>
+                  <td className="data-num">{nowdatas.count}</td>
                 </tr>
               ))
             ) : (
@@ -193,7 +215,6 @@ const Tab2: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
                 <tr key={`table_row_${i}`}>
                   <th className="data-rank">{i + 1}.</th>
                   <td className="data-word">{data.text}</td>
-                  <td className="data-state">-</td>
                   <td className="data-num">{data.count}</td>
                 </tr>
               ))

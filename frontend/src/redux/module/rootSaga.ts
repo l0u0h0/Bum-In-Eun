@@ -5,6 +5,7 @@ import { commentsSaga } from "./comment";
 import { searchSaga } from "./search";
 import { timedataSaga } from "./timedata";
 import { graphSaga } from "./graph";
+import { nowdataSaga } from "./nowdata";
 
 // root Saga create
 export default function* rootSaga() {
@@ -14,5 +15,6 @@ export default function* rootSaga() {
     searchSaga(),
     timedataSaga(),
     graphSaga(),
+    nowdataSaga(),
   ]);
 }

@@ -43,7 +43,6 @@ router.get("/GET_NOW_DATAS", async (req, res) => {
       },
     });
     const keyword = getdatas.map((e) => e.dataValues.text);
-    console.log(keyword);
     const getprevdatas = await time.findAll({
       order: [["count", "desc"]],
       limit: 5,
@@ -54,10 +53,34 @@ router.get("/GET_NOW_DATAS", async (req, res) => {
         },
       },
     });
-    getprevdatas.forEach((e) => {
-      console.log(e.dataValues);
-    });
-    res.status(200).json(getdatas);
+    const check = (text, count) => {
+      /**
+       * type 0 = 데이터 증가
+       * type 1 = 데이터 동률
+       * type 2 = 데이터 감소
+       */
+      let type = "";
+      getprevdatas.forEach((e) => {
+        if (e.dataValues.text === text) {
+          e.dataValues.count > count
+            ? (type = "감소")
+            : (e.dataValues.count = count
+                ? (type = "-")
+                : e.dataValues.count < count
+                ? (type = "증가")
+                : 0);
+        } else {
+          type = "증가";
+        }
+      });
+      return type;
+    };
+    const result = getdatas.map((e) => ({
+      text: e.text,
+      count: e.count,
+      state: check(e.text, e.count),
+    }));
+    res.status(200).json(result);
   } catch (err) {
     console.log(err);
   }

@@ -11,6 +11,7 @@ import comments from "./module/comment";
 import search from "./module/search";
 import timedata from "./module/timedata";
 import graphdata from "./module/graph";
+import nowdata from "./module/nowdata";
 
 // history setting
 const { createReduxHistory, routerMiddleware, routerReducer } =
@@ -31,6 +32,7 @@ export const store = createStore(
     search,
     timedata,
     graphdata,
+    nowdata,
   }),
   composeWithDevTools(applyMiddleware(sagaMiddleware, routerMiddleware))
 );

@@ -9,6 +9,7 @@ export interface RootState {
   search: SearchState;
   timedata: TimeState;
   graphdata: GraphState;
+  nowdata: DatasState;
   router: Reducer<RouterState, AnyAction>;
 }
 
@@ -135,9 +136,11 @@ export interface GraphType {
 /** Components props Type */
 export interface Mainprops {
   datas: Datatype[] | null;
+  nowdatas: Datatype[] | null;
   loading: boolean;
   error: Error | null;
   getDatas: () => void;
+  getNowDatas: () => void;
 }
 
 export interface SearchProps {
