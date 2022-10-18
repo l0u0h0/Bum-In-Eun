@@ -32,6 +32,7 @@ export interface Datatype {
   count: number;
   year: number;
   date: number;
+  state: string;
   No: string;
   Type: string;
   Text: string;
