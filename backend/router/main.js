@@ -43,6 +43,7 @@ router.get("/GET_NOW_DATAS", async (req, res) => {
       },
     });
     const keyword = getdatas.map((e) => e.dataValues.text);
+
     const getprevdatas = await time.findAll({
       order: [["count", "desc"]],
       limit: 5,
@@ -75,12 +76,25 @@ router.get("/GET_NOW_DATAS", async (req, res) => {
       });
       return type;
     };
-    const result = getdatas.map((e) => ({
-      text: e.text,
-      count: e.count,
-      state: check(e.text, e.count),
-    }));
-    res.status(200).json(result);
+    const a = 5 - getdatas.length;
+    if (a === 0) {
+      const result = getdatas.map((e) => ({
+        text: e.text,
+        count: e.count,
+        state: check(e.text, e.count),
+      }));
+      res.status(200).json(result);
+    } else {
+      for (i = 0; i < a; i++) {
+        getdatas.push({ text: "noData", count: 0 });
+      }
+      const result = getdatas.map((e) => ({
+        text: e.text,
+        count: e.count,
+        state: e.text !== "noData" ? check(e.text, e.count) : "-",
+      }));
+      res.status(200).json(result);
+    }
   } catch (err) {
     console.log(err);
   }
