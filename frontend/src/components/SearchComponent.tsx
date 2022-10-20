@@ -178,7 +178,8 @@ const MyVerticallyCenteredModal: React.FC<ModalPropsType> = (props) => {
         <Modal.Title id="contained-modal-title-vcenter">Error!</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>검색</h4>
+        <h4>검색과정에서 오류 발생!</h4>
+        <p> 검색어가 입력되지 않았거나 잘못된 작성입니다. </p>
         <p> 검색어 입력을 확인해주시기 바랍니다. </p>
       </Modal.Body>
       <Modal.Footer>
