@@ -105,7 +105,9 @@ const Dictionarydetail: React.FC<DictionarydetailProps> = ({
               {word !== null && data !== null ? (
                 data.map((datarow) => (
                   <tr className="mean-row" key={`table_row_${datarow.idx}`}>
-                    <td className="mean-comment">{datarow.mean}</td>
+                    <td className="mean-comment">
+                      <p>{datarow.mean}</p>
+                    </td>
                     <td className="mean-count">
                       <button
                         onClick={() => {
