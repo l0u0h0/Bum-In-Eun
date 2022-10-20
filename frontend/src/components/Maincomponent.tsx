@@ -157,8 +157,6 @@ const Tab1: React.FC<Mainprops> = ({
 
   if (nowdatas === null) {
     return <div>데이터 로딩중,,,</div>;
-  } else {
-    if (nowdatas.length > 5) return <div>데이터 로딩중,,,</div>;
   }
 
   return (
@@ -176,7 +174,7 @@ const Tab1: React.FC<Mainprops> = ({
                 </tr>
               ))
             ) : (
-              <div>Null...</div>
+              <div>데이터 로딩중...</div>
             )}
           </tbody>
         </table>
@@ -201,8 +199,6 @@ const Tab2: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
 
   if (datas === null) {
     return <div>데이터 로딩중,,,</div>;
-  } else {
-    if (datas.length > 5) return <div>데이터 로딩중,,,</div>;
   }
 
   return (
@@ -215,11 +211,12 @@ const Tab2: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
                 <tr key={`table_row_${i}`}>
                   <th className="data-rank">{i + 1}.</th>
                   <td className="data-word">{data.text}</td>
+                  <td className="data-state"></td>
                   <td className="data-num">{data.count}</td>
                 </tr>
               ))
             ) : (
-              <div>Null...</div>
+              <div>데이터 로딩중...</div>
             )}
           </tbody>
         </table>
@@ -245,6 +242,7 @@ function Tab3({ datas }) {
       <div className="static-data-area" id="static-data-area">
         <Chart datas={datas} />
       </div>
+      <hr />
       <div className="link-area">
         <button className="btn btn--link" onClick={LinkClick}>
           더 많은 정보 확인

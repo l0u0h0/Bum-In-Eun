@@ -143,7 +143,7 @@ function Searchresult({ searchData, staticdata, loading }) {
         <Link to={`/dictionary`}>
           <div className="result-word">
             <h2>은어 사전</h2>
-            <p>아직 은어 사전에 등록되지 않은 단어입니다.</p>
+            <p>은어 사전에 등록되지 않은 단어입니다.</p>
             <p>클릭 시 은어 사전 페이지로 이동합니다.</p>
           </div>
         </Link>
@@ -152,7 +152,9 @@ function Searchresult({ searchData, staticdata, loading }) {
       <Link to={`/statistic/detail?word=${search.word}`}>
         <div className="result-static">
           <h2>통계 추세</h2>
-          {staticdata[0].err ? (
+          {staticdata[0].err ||
+          (search.data.static !== null && search.data.static.datas.text) ===
+            "NoData" ? (
             <p>통계가 집계되지 않았습니다.</p>
           ) : (
             <ChartDetail datas={staticdata} />

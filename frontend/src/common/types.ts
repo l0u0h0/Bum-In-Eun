@@ -39,6 +39,10 @@ export interface Datatype {
   Text: string;
   Mean: string;
   Time: string;
+  datas: {
+    text: string;
+    count: number;
+  };
 }
 export interface DataListType {
   No: string;
@@ -213,6 +217,6 @@ export interface SearchDataState {
       mean: string;
       category: string;
     } | null;
-    static: TimeType[] | null;
+    static: Datatype | null;
   };
 }
