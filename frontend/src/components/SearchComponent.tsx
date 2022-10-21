@@ -128,7 +128,7 @@ function Searchresult({ searchData, staticdata, loading }) {
           <div className="result-crime">
             <h2>범죄 사전</h2>
             <p>카테고리 - {category(search.data.crime?.category)}</p>
-            <p>{search.data.crime?.mean}</p>
+            <p> - &nbsp;{search.data.crime?.mean}</p>
           </div>
         </Link>
       ) : (
@@ -146,7 +146,7 @@ function Searchresult({ searchData, staticdata, loading }) {
             <h2>은어 사전</h2>
             {search.data.dict.mean &&
               search.data.dict.mean.map((text, i) => (
-                <p key={`mean_${i}`}>{text}</p>
+                <p key={`mean_${i}`}> - &nbsp;{text}</p>
               ))}
           </div>
         </Link>
