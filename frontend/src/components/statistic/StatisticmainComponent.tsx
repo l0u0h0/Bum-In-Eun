@@ -43,6 +43,7 @@ const Statisticmain: React.FC<StatisticmainProps> = ({ datas, getDatas }) => {
         <Header />
         <Card body className="staticmain-body">
           <h2 className="main-title">통계</h2>
+          <p>단어 클릭 시 해당 단어 페이지로 이동합니다.</p>
           <hr className="title-body-between" />
           <div className="static-body">
             <table className="static-table">

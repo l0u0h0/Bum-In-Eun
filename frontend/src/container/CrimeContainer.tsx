@@ -2,14 +2,15 @@
 import Crimemain from "../components/crime/CrimemainComponent";
 import Crimeresult from "../components/crime/CrimeresultComponent";
 import Crimedetail from "../components/crime/CrimedetailComponent";
-
-// React import
+// import React
 import { useLocation } from "react-router-dom";
 import React, { useState, useEffect, useCallback } from "react";
+// import Redux
 import { useSelector } from "react-redux";
-import { DataListType, RootState } from "../common/types";
 import { useDispatch } from "react-redux";
-
+// import Type
+import { DataListType, RootState } from "../common/types";
+// import Saga
 import { getListDatas as getListDatasSaga } from "../redux/module/data";
 
 // Container component

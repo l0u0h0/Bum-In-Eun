@@ -15,7 +15,7 @@ export default function Footer() {
           </li>
           <li>
             <a href="https://github.com/l0u0h0/2022_capstone">
-              SNS상에서 자주 쓰이는 은어 분석 사이트 프로젝트
+              SNS상에서 자주 쓰이는 은어 분석 프로젝트
             </a>
           </li>
         </ul>

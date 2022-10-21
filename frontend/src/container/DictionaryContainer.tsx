@@ -1,8 +1,10 @@
-// React import
+// import React
 import React, { useState, useEffect, useCallback } from "react";
+import { useLocation } from "react-router-dom";
+// import Redux
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+// import Type
 import {
   CommentAddType,
   CommentType,
@@ -10,6 +12,7 @@ import {
   Datatype,
   RootState,
 } from "../common/types";
+// import Saga
 import { getDatas as getDataSagaStart } from "../redux/module/data";
 import {
   getComments as getCommentsSagaStart,

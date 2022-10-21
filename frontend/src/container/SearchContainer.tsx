@@ -1,10 +1,12 @@
-// React import
+// import React
 import React, { useCallback } from "react";
+// import Redux
 import { useSelector, useDispatch } from "react-redux";
+// import Type
 import { RootState, SearchType, GraphType } from "../common/types";
-
 // Component import
 import SearchComponent from "../components/SearchComponent";
+// import Saga
 import { searchData as searchDataSagaStart } from "../redux/module/search";
 import { getListData as getListDataSagaStart } from "../redux/module/graph";
 

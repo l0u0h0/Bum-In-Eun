@@ -1,12 +1,12 @@
 // import React
 import React, { useCallback } from "react";
+// import Redux
 import { useDispatch, useSelector } from "react-redux";
+// import Type
 import { Datatype, RootState } from "../common/types";
-
 // Component import
 import MainComponent from "../components/Maincomponent";
-
-// redux state import
+// import Saga
 import { getDatas as getDataSagaStart } from "../redux/module/data";
 import { getNowDatas as getNowDataSagaStart } from "../redux/module/nowdata";
 

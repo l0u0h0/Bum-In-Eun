@@ -4,7 +4,7 @@ import { Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 // import Component
 import Header from "../../common/HeaderComponent";
-// ex_img
+// crime ex_img
 import ex_img from "../../image/camera.png";
 
 // Crime Detail Area

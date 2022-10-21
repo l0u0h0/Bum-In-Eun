@@ -23,6 +23,10 @@ const DictionaryMain: React.FC<DictionarymainProps> = ({ datas, getDatas }) => {
     }
   }, [datas]);
 
+  /**
+   * setLists와 같이 useEffect에서 사용 시
+   * 무한 마운트의 굴레에 빠져버림
+   */
   useEffect(() => {
     getDatas();
   }, [getDatas]);

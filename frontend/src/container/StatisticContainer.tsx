@@ -1,13 +1,15 @@
-// React import
+// import React
 import React, { useState, useEffect, useCallback } from "react";
+import { useLocation } from "react-router-dom";
+// import Redux
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+// import Type
 import { CommentType, GraphType, RootState, TimeType } from "../common/types";
+// import Saga
 import { getDatas as getDatasSagaStart } from "../redux/module/timedata";
 import { getListData as getListDataSagaStart } from "../redux/module/graph";
 import { getComments as getCommentsSagaStart } from "../redux/module/comment";
-
 // Component import
 import Statisticdetail from "../components/statistic/StatisticdetailComponent";
 import Statisticmain from "../components/statistic/StatisticmainComponent";

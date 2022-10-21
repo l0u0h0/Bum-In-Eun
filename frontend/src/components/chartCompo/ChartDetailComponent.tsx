@@ -3,7 +3,10 @@ import { Line } from "react-chartjs-2";
 // import Type
 import { ChartDetailProps } from "../../common/types";
 
-// ChartDetail Component
+/** Chart Detail Component
+ *  단어별 데이터를 받는 그래프 컴포넌트
+ *  월별로 그래프 출력
+ */
 const ChartDetail: React.FC<ChartDetailProps> = ({ datas }) => {
   if (datas === null) {
     return <div>데이터 로딩중,,,</div>;
@@ -61,7 +64,7 @@ const ChartDetail: React.FC<ChartDetailProps> = ({ datas }) => {
     responsive: true,
     title: {
       display: true,
-      text: "실시간 데이터 그래프",
+      text: "단어별 데이터 그래프",
     },
     tooltips: {
       mode: "point" as const,
