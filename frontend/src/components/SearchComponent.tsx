@@ -107,6 +107,17 @@ function Searchresult({ searchData, staticdata, loading }) {
         : setCheckDict(false);
     }
   }, [searchData, staticdata]);
+  const category = (type) => {
+    if (type === "gambling") {
+      return "도박";
+    } else if (type === "voicefishing") {
+      return "보이스 피싱";
+    } else if (type === "drug") {
+      return "마약";
+    } else if (type === "gendercrime") {
+      return "성범죄";
+    }
+  };
 
   return (
     <div className="search-result">
@@ -116,7 +127,7 @@ function Searchresult({ searchData, staticdata, loading }) {
         >
           <div className="result-crime">
             <h2>범죄 사전</h2>
-            <p>카테고리 - {search.data.crime?.category}</p>
+            <p>카테고리 - {category(search.data.crime?.category)}</p>
             <p>{search.data.crime?.mean}</p>
           </div>
         </Link>

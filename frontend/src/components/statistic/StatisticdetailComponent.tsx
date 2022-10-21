@@ -44,13 +44,14 @@ const Statisticdetail: React.FC<StatisticdetailProps> = ({
                 <h3>{word}</h3>
               </div>
             </Link>
+            <p>단어 클릭 시 해당 단어 페이지로 이동합니다.</p>
             <div className="mean-table">
               {mean.length !== 0 ? (
                 mean.map((list, i) => {
                   if (i > 2) {
                     return null;
                   } else {
-                    return <p> - {list.Text}</p>;
+                    return <p> - &nbsp;&nbsp;{list.Text}</p>;
                   }
                 })
               ) : (

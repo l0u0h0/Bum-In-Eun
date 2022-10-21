@@ -56,7 +56,7 @@ const Statisticmain: React.FC<StatisticmainProps> = ({ datas, getDatas }) => {
               <tbody>
                 {data.map((data, num) => (
                   <tr className="static-row" key={`table_row_${num}`}>
-                    <td className="static-rank">{data.rank}</td>
+                    <td className="static-rank">{data.rank}.</td>
                     <td className="static-word_1">
                       <Link to={`/statistic/detail?word=${data.word_1}`}>
                         <div className="static-word-link">{data.word_1}</div>
