@@ -45,6 +45,7 @@ const Crimeresult: React.FC<CrimeresultProps> = ({ datas, getList }) => {
       <Header />
       <Card body className="crimeresult-body">
         <h2 className="result-title">{category}</h2>
+        <p>단어 클릭 시 해당 단어 페이지로 이동합니다.</p>
         <hr className="title-body-between" />
         <div className="result-body">
           <table className="result-table">

@@ -40,7 +40,8 @@ const MainComponent: React.FC<Mainprops> = ({
 }) => {
   useEffect(() => {
     getDatas();
-  }, [getDatas]);
+    getNowDatas();
+  }, [getDatas, getNowDatas]);
 
   return (
     <div className="App-main">
@@ -135,14 +136,7 @@ const Body1: React.FC<Mainprops> = ({
 };
 
 // Tab Fragment
-const Tab1: React.FC<Mainprops> = ({
-  datas,
-  nowdatas,
-  loading,
-  error,
-  getDatas,
-  getNowDatas,
-}) => {
+const Tab1: React.FC<Mainprops> = ({ nowdatas }) => {
   const [now, setNow] = useState("");
 
   useEffect(() => {
@@ -152,8 +146,7 @@ const Tab1: React.FC<Mainprops> = ({
         "DD"
       )}일 ${dt.format("HH")}시 기준`
     );
-    getNowDatas();
-  }, [now, getNowDatas]);
+  }, [now]);
 
   if (nowdatas === null) {
     return <div>데이터 로딩중,,,</div>;
@@ -186,16 +179,12 @@ const Tab1: React.FC<Mainprops> = ({
   );
 };
 
-const Tab2: React.FC<Mainprops> = ({ datas, loading, error, getDatas }) => {
+const Tab2: React.FC<Mainprops> = ({ datas }) => {
   let navigate = useNavigate();
 
   function LinkClick() {
     navigate("/dictionary");
   }
-
-  useEffect(() => {
-    getDatas();
-  }, [getDatas]);
 
   if (datas === null) {
     return <div>데이터 로딩중,,,</div>;
