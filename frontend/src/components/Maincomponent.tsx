@@ -78,7 +78,7 @@ const Body1: React.FC<Mainprops> = ({
 
   return (
     <div className="main-body-first">
-      <h2>Today's</h2>
+      <h2>&nbsp;&nbsp;Today's</h2>
       <hr />
       <div className="swiper-area">
         <Swiper
@@ -162,7 +162,13 @@ const Tab1: React.FC<Mainprops> = ({ nowdatas }) => {
                 <tr key={`table_row_${i}`}>
                   <th className="data-rank">{i + 1}.</th>
                   <td className="data-word">{nowdatas.text}</td>
-                  <td className="data-state">{nowdatas.state}</td>
+                  <td
+                    className={`data-state-${
+                      nowdatas.state === "-" ? "동률" : nowdatas.state
+                    }`}
+                  >
+                    {nowdatas.state}
+                  </td>
                   <td className="data-num">{nowdatas.count}</td>
                 </tr>
               ))
@@ -286,7 +292,7 @@ function Body2() {
 
   return (
     <div className="main-body-second">
-      <h2>범죄 관련 뉴스</h2>
+      <h2>&nbsp;&nbsp;범죄 관련 뉴스</h2>
       <div className="news-area">
         {newslist.map((news) => (
           <News key={news._id} news={news} />

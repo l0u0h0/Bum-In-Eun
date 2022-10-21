@@ -37,7 +37,7 @@ div {
     h2 {
       font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
         sans-serif;
-      color: rgb(99, 99, 99);
+      color: rgb(50, 50, 50);
     }
     .swiper-area {
       margin-top: 5%;
@@ -84,10 +84,20 @@ div {
             padding-left: 3.125rem;
             text-align: start;
           }
-          .data-state {
+          .data-state-증가 {
+            color: #aa0000;
+            width: 7%;
+            font-size: 0.8rem;
+          }
+          .data-state-동률 {
             color: #003333;
             width: 7%;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
+          }
+          .data-state-감소 {
+            color: #000bd3;
+            width: 7%;
+            font-size: 0.8rem;
           }
           .data-num {
             width: 20%;
@@ -97,6 +107,7 @@ div {
           margin-top: 4%;
           padding-right: 1.875rem;
           text-align: end;
+          color: rgb(99, 99, 99);
         }
 
         // TAB FRAGMENT 2
@@ -141,7 +152,7 @@ div {
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
     h2 {
-      color: rgb(99, 99, 99);
+      color: rgb(50, 50, 50);
     }
     .btn--link {
       width: 100%;
