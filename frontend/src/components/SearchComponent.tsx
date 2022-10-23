@@ -121,6 +121,8 @@ function Searchresult({ searchData, staticdata, loading }) {
 
   return (
     <div className="search-result">
+      <h3>{search.word}</h3>
+      <hr />
       {search.data.crime !== null ? (
         <Link
           to={`/crime/detail?category=${search.data.crime?.category}&word=${search.word}&mean=${search.data.crime?.mean}`}
