@@ -265,10 +265,11 @@ function Body2() {
         page_size: "4",
       },
       headers: {
-        "x-api-key": `${process.env.REACT_APP_NAK_develop}`,
-        // process.env.NODE_ENV === "production"
-        //   ? `${process.env.REACT_APP_NEWS_API_KEY}`
-        //   : `${process.env.REACT_APP_NAK_develop}`,
+        // "x-api-key": `${process.env.REACT_APP_NAK_develop}`,
+        "x-api-key":
+          process.env.NODE_ENV === "production"
+            ? `${process.env.REACT_APP_NEWS_API_KEY}`
+            : `${process.env.REACT_APP_NAK_develop}`,
       },
     };
     const newsApi = async () => {
