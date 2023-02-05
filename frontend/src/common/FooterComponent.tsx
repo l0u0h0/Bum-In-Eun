@@ -3,7 +3,8 @@ import React from "react";
 
 // Footer Area
 export default function Footer() {
-  const thisYear = new Date().getFullYear();
+  // const thisYear = new Date().getFullYear();
+  const thisYear = 2022;
   return (
     <footer>
       <div className="inner">
