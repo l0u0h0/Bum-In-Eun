@@ -1,5 +1,7 @@
 # bumineun WebApp repo
 
+> ## 캡스톤 경진대회 프로젝트
+
 > ### `범인은(bumineun)` 팀프로젝트
 
 <img src="https://user-images.githubusercontent.com/72871841/178038944-919e2a64-2b47-4372-aa32-0d102387fece.png" width="45%" alt="예전로고">
