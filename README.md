@@ -3,13 +3,19 @@
 > ## 캡스톤 경진대회 프로젝트
 
 > ### `범인은(bumineun)` 팀프로젝트
+>
+> SNS 커뮤니티 사이트에서의 은어 사용에 대한 분석
 
 <img src="https://user-images.githubusercontent.com/72871841/178038944-919e2a64-2b47-4372-aa32-0d102387fece.png" width="45%" alt="예전로고">
 
 <img src="https://user-images.githubusercontent.com/72871841/178038955-db04c720-7041-429d-9967-259f26f7d91d.png" width="45%" alt="최신로고">
 
+### 안드로이드 버전
+
 [bumineun_android](https://github.com/SNS-bumineun/SNSAnalysis)  
 <https://github.com/SNS-bumineun/SNSAnalysis>
+
+### 웹앱 버전
 
 - 현재 배포 진행중  
   [bumineun_webApp](https://bumineun.netlify.app)  
@@ -18,24 +24,43 @@
 - `android` --> `WebApp`
   ~refactoring
 
+## [프로젝트 소개]
+
+- SNS 커뮤니티 사이트에서의 은어 사용에 대한 분석 웹앱 프로젝트
+- SNS 커뮤니티에서 크롤링한 데이터를 가져와 분석 및 가공하는 로직을 통해 API 서버로부터 클라이언트로 불러와 보여주는 웹앱 프로젝트
+- 웹 개발은 Node.js 기반, 데이터 크롤링 및 형태소 추출은 Python 기반
+- 개발 기간
+  - 2022.09.01 ~ 2022.10.28
+
+## [실행 화면]
+
+- 메인 탭 기능
+  ![메인탭](document/img/메인탭.gif)
+
+- 메인 페이지 & 범죄 사전 페이지
+  ![뉴스API](document/img/뉴스api.gif)
+  ![범죄카테고리](document/img/범죄카테고리.gif)
+
+- 은어 사전 & 통계 페이지
+  ![단어등록추천](document/img/단어등록추천.gif)
+  ![차트](document/img/차트.gif)
+
+- 검색 페이지
+  ![검색_1](document/img/검색_1.gif)
+  ![검색_2](document/img/검색_2.gif)
+
 ---
 
-> using `React`&`typescript`
+### [사용 언어 및 개발 환경]
 
-    Front & Back (2022.07 ~)
-
----
-
-> 사용 라이브러리
->
-> > `swiper`, `sass`, `react-bootstrap`, `react-router-dom.v6`, `axios`, `redux`, `typescript`, `chart.js`
-
-> > `express`, `sequelize`, `mssql_server`
+- **FE**
+  - HTML5, CSS3, ES6, React.js, Redux.js, Redux-Saga, TypeScript, Sass(SCSS), Bootstrap, Chart.js, Swiper.js
+- **BE**
+  - Express.js, Sequelize.js, Axios, MSSQL
+  - Crowling ⇒ Python 환경에서 진행
 
 ---
 
-> 2022.07
->
 > - 메인
 >   - 스와이퍼를 이용한 탭기능 구현
 >   - 공용으로 사용하는 헤더와 베너 컴포넌트 구성
@@ -51,8 +76,6 @@
 >     해당 카테고리 값을 파라미터로 넘겨주는 기능 구현
 >   - 후에 데이터 받아올 테이블 구현
 >   - 데이터 테이블에 링크를 걸어 각 단어의 상세 페이지로 이동 구현
-
-> 2022.08
 >
 > - front, back 영역 구분지어 레포지토리 생성
 > - 사전 컴포넌트
@@ -69,19 +92,17 @@
 >   - 크기 조정, 포지션 값 고정 구현
 >   - 헤더는 z-index 값 9로 고정
 > - CSS
+>
 >   - 반응형 css 구현
-
-> 2022.09
 >
 > - front
 >   - redux-saga로 상태 관리 적용
 >   - typescript 적용으로 타입 지정 적용
 >   - error-boundary로 에러 페이지 적용
 > - back
+>
 >   - nodejs, express로 api 서버 구축
 >   - sequelize로 mssql-server와 연동
-
-> 2022.10
 >
 > - front
 >   - `ChartJS`로 그래프 구현
