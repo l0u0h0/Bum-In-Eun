@@ -35,17 +35,21 @@
 ## [실행 화면]
 
 - 메인 탭 기능
+
   ![메인탭](document/img/메인탭.gif)
 
 - 메인 페이지 & 범죄 사전 페이지
+
   ![뉴스API](document/img/뉴스api.gif)
   ![범죄카테고리](document/img/범죄카테고리.gif)
 
 - 은어 사전 & 통계 페이지
+
   ![단어등록추천](document/img/단어등록추천.gif)
   ![차트](document/img/차트.gif)
 
 - 검색 페이지
+
   ![검색_1](document/img/검색_1.gif)
   ![검색_2](document/img/검색_2.gif)
 
